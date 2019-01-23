@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head lang="en-US">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="In this tutorial, we will build a learn how to link pages within a shiny app.">
+	<meta name="keywords" content="R, rstudio, shiny, tutorials, shinyapps, shiny apps">
+	<meta property="og:title" content="dcrData / Shiny Tutorials / Link Pages Part 1">
+	<meta propert="og:description" content="In this tutorial, we will build a learn how to link pages within a shiny app.">
+	<meta property="twitter:title" content="dcrData / Shiny Tutorials / Link Pages Part 1">
+	<meta property="twitter:description" content="In this tutorial, we will build a learn how to link pages within a shiny app.">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600" rel="stylesheet">
+	<!-- <link rel="stylesheet" type="text/css" href="../css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="../css/styles.min.css">
+	<title>dcrData | Shiny App Tutorials</title>
+</head>
+<body>
+	<div class="block-titlebar">
+		<div class="block-titlebar-content block-grid grid-25-50-25">
+			<div class="titlebar-item align-left">
+				<a href="../index.html">
+					<svg height="20" width="20" role="img" viewBox="0 0 28 18" xmlns="http://www.w3.org/2000/svg">
+						<path stroke="#252525" stroke-width="2px" fill="#252525" d="M20,0 L 5,10, L 20,20 Z"/>
+					</svg>
+				</a>
+			</div>
+			<div class="titlebar-item align-center">
+
+			</div>
+			<div class="titlebar-item align-right">
+				<a href="https://www.twitter.com/dcruvolo" aria-label="follow me on twitter">
+					<svg height="30" width="30" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+				</a>
+				<a href="https://github.com/davidruvolo51/shinyAppTutorials" aria-label="check out the code for the tutorials over on github">
+					<svg height="30" width="30" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="block-tutorial">
+		<div class="block-tutorial-content">
+			<div class="tutorial-header">
+				<h1>Linking Tabs - Part 1</h1>
+				<h2>Creating Links to Other Pages in a Shiny App</h2>
+			</div>
+			<h2>Contents</h2>
+			<section class="toc" aria-label="table of contents">
+				<ol>
+					<li><a href="#hrefs-ex-1-about">Why would I need this?</a></li>
+					<li><a href="#hrefs-ex-1-work">How does it work?</a></li>
+					<li><a href="#hrefs-ex-1-issues">Are there any issues?</a></li>
+					<li><a href="#hrefs-ex-1-run">How do I run the demo?</a></li>
+				</ol>
+			</section>
+			<section id="hrefs-ex-1-about">
+				<h2>Why would I need this?</h2>
+				<p>Traditionally, web links are created by using the <strong>&lt;a&gt;</strong> element and assigning a location through <strong>href</strong>. In shiny, you would do something like this:</p>
+				<pre><code>
+				<span class="comment"># using tags</span>
+				<span class="object">tags</span>$<span class="function">a</span>(<span class="argument">href</span>=<span class="value">"target_page"</span>,<span class="value">"Go to target page"</span>)
+				</code></pre>
+				<p>However, this approach will not work as every time a shiny app is launched, the values for the href attribute in the <strong>&lt;a&gt;</strong> element(s) are regenerated. This makes traditional hyperlink calls (as displayed above) impossible. One way is to work with <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes" aria-label="learn more about data attributes at mozzila dot com">data attributes</a>.</p>
+				<p>In this example, I'll be using the page layout <strong>navbarPage</strong> and <strong>tabPanel</strong>. Let's take a look at <strong>tabPanel</strong>. As written on the shiny reference page for <a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html" aria-label="read more about tab panel at it's reference page">tabPanel</a>, <strong>tabPanel</strong> has the following arguments.</p>
+				<pre><code>
+				<span class="comment"># tabPanel function</span>
+				<span class="function">tabPanel</span>(<span class="argument">title</span>, ..., <span class="argument">value</span>=<span class="value">title</span>, <span class="argument">icon</span>=<span class="logical">NULL</span>)
+				</code></pre>
+				<p>The argument <strong>title</strong> receives the name of the tab. By default, the argument <strong>value</strong> is assigned the value given to <strong>title</strong>. Using a little bit of javascript, we can create a custom function that receives a user-defined destination and searches the information in <strong>value</strong> in order to find the tab with the matching destination.</p>
+				<p>It's important to note that even though <strong>value</strong> receives the values from <strong>title</strong> by default, it is good practice to assign shorter names to <strong>value</strong> to avoid matching errors. For example:</p>
+				<pre><code>
+					<span class="comment"># tabPanel function</span>
+					<span class="function">tabPanel</span>(<span class="argument">title</span>=<span class="value">"My super duper cool home page"</span>, <span class="argument">value</span>=<span class="value">"home"</span>)
+				</code></pre>
+				<p>When shiny apps are launched, <strong>value</strong> is assigned the attribute <strong>data-value</strong>. Using a little bit of javascript, we can use <strong>data-value</strong> instead of <strong>href</strong>.</p>
+			</section>	
+			<section id="hrefs-ex-1-work">			
+				<h2>How does the app work?</h2>
+				<h3>Create Javascript function</h3>
+				<p>The following function loops through all the values in the data-value to look for the desired tab (adapted code from this <a href="https://stackoverflow.com/questions/36412407/shiny-add-link-to-another-tabpanel-in-another-tabpanel">SO question</a>). When a match is found, simulate a mouse click using <strong>click</strong> (this will advance the screen to the desired tab).</p>
+				<pre><code>
+				<span class="comment"># js file</span>
+				<span class="function">var</span> <span class="object">customHref</span> = <span class="function">function</span>(<span class="value">tabName</span>) {
+							<span class="function">var</span> <span class="object">dropdownList</span> = document.<span class="function">getElementsByTagName</span>(<span> class="value">"a"</span>);
+									<span class="function">for</span> (<span class="function">var</span> <span class="object">i</span> = <span class="value">0</span>; <span class="object">i</span> <<span class="object"> dropdownList</span>.<span class="function">length</span>; <span class="object">i</span><span class="argument">++</span>) {
+									<span class="function">var</span> <span class="object">link</span> = <span class="object">dropdownList</span>[<span class="value">i</span>];
+									<span class="function">if</span>(<span class="object">link</span>.<span class="function">getAttribute</span>(<span class="value">"data-value"</span>) == <span class="value">tabName</span>) {
+											<span class="object">link</span>.<span class="function">click</span>();
+									}
+							}
+					};
+				</code></pre>
+				<p>Using the home page we defined earlier, the custom link would look like this:</p>
+				<pre><code>
+				<span class="comment"># using tags with js function</span>
+				<span class="object">tags</span>$<span class="function">a</span>(<span class="argument">"onclick"</span>=<span class="value">"customHref('home')"</span>,<span class="value">"Go to home page"</span>)
+				</code></pre>		
+				<p>What this is saying is: 1) find me all elements with <strong>data-values</strong> and return the values, 2) using the destination I defined, find a match in those values, and 3) when a match is found, move to that tab.</p>
+
+				<h3>Setup ui.R (or app.R) file</h3>
+				<p>You can either place this at the top of the UI or store in a separate file and load using <strong>includeScript</strong> or <strong>tags$script</strong>. In this example, I placed the function in a separate file and reading it in using <strong>tags$script(src=...)</strong>.</p>
+				<pre><code>
+				<span class="comment"># ui.R or app.R</span>
+				<span class="object">ui</span> <- <span class="function">tagList</span>(
+						<span class="comment"># head</span>
+						<span class="object">tags</span>$<span class="function">head</span>(
+								<span class="object">tags</span>$<span class="function">script</span>(<span class="argument">src</span>=<span class="value">"func.js"</span>)
+						),
+
+						<span class="comment"># ui</span>
+						<span class="function">navbarPage</span>(
+								<span class="comment">...</span>
+						)
+				)
+				</code></pre>
+				<h3>Create tabPanels and assign each one a unique value</h3>
+				<p>Next, set up your tabs and give a unique name to the argument <strong>value</strong>.</p>
+				<pre><code>
+				<span class="comment"># ui.R/app.R</span>
+				<span class="package">ui</span> <- <span class="function">tagList</span>(
+						<span class="comment"># head</span>
+						<span class="object">tags</span>$<span class="function">head</span>(
+								<span class="object">tags</span>$<span class="function">script</span>(<span class="argument">src</span>=<span class="value">"func.js"</span>)
+						),
+
+						<span class="comment"># ui</span>
+						<span class="function">navbarPage</span>(
+								<span class="function">tabPanel</span>(<span class="value">"tab 1"</span>, <span class="argument">value</span>=<span class="value">"tab1"</span>),
+								<span class="function">tabPanel</span>(<span class="value">"tab 2"</span>, <span class="argument">value</span>=<span class="value">"tab2"</span>),
+								<span class="function">tabPanel</span>(<span class="value">"tab 3"</span>, <span class="argument">value</span>=<span class="value">"tab3"</span>)
+						)
+				)	
+				</code></pre>
+				<h3>Define the links</h3>
+				<p>In one or all the panels, make a custom link using <strong>tags$a()</strong>. We will also setup a blank shiny server.</p>
+				<pre><code>
+				<span class="comment"># ui.R/app.R</span>
+				<span class="package">ui</span> <- <span class="function">tagList</span>(
+						<span class="comment"># head</span>
+						<span class="object">tags</span>$<span class="function">head</span>(
+								<span class="object">tags</span>$<span class="function">script</span>(<span class="argument">src</span>=<span class="value">"func.js"</span>)
+						),
+
+						<span class="comment"># ui</span>
+						<span class="function">navbarPage</span>(
+								<span class="function">tabPanel</span>(<span class="value">"tab 1"</span>, <span class="argument">value</span>=<span class="value">"tab1"</span>,
+										<span class="object">tags</span>$<span class="function">h1</span>(<span class="value">"Some Title"</span>),
+										<span class="object">tags</span>$<span class="function">a</span>(<span class="argument">"onclick"</span>=<span class="value">"customHref('tab2')"</span>,<span class="value">"Go to the second tab"</span>)
+								),
+								<span class="function">tabPanel</span>(<span class="value">"tab 2"</span>, <span class="argument">value</span>=<span class="value">"tab2"</span>,
+									<span class="object">tags</span>$<span class="function">h1</span>(<span class="value">"Some Title"</span>),
+									<span class="object">tags</span>$<span class="function">a</span>(<span class="argument">"onclick"</span>=<span class="value">"customHref('tab3')"</span>,<span class="value">"Go to the third tab"</span>)
+								),
+								<span class="function">tabPanel</span>(<span class="value">"tab 3"</span>, <span class="argument">value</span>=<span class="value">"tab3"</span>,
+										<span class="object">tags</span>$<span class="function">h1</span>(<span class="value">"Some Title"</span>),
+										<span class="object">tags</span>$<span class="function">a</span>(<span class="argument">"onclick"</span>=<span class="value">"customHref('tab1')"</span>,<span class="value">"Go to the first tab"</span>)
+								)
+						)
+				)
+
+				<span class="comment"># server</span>
+				server <- <span class="function">function</span>(<span class="value">input</span>,<span class="value">output</span>){}
+				</code></pre>
+				<p>Now our app is ready to go. Launch the app and click on the links we setup.</p>
+			</section>
+			<section id="hrefs-ex-1-issues">
+				<h2>Are there any issues?</h2>
+				<p>Yes. If using bootstrap layouts, this does cause the navigation bar to remain open on smaller devices after a link is clicked. To my knowledge, there isn't a solution for this for shiny users.</p>
+			</section>
+			<!-- run app -->
+			<section id="hrefs-ex-1-run">
+				<h2>How can I run this app?</h2>
+				<p>The source code is available on <a class="eLinks" href="https://github.com/davidruvolo51/shinyAppTutorials/tree/master/Internal-Links-Basic-Ex">github</a>. Alternatively, you can run the demo in R using the following code.</p>
+				<pre><code>
+					<span class="comment"># Run in R/Rstudio</span>
+					<span class="function">install.packages</span>("<span class="package">shiny</span>")
+					shiny::<span class="function">runGitHub</span>(<span class="argument">repo</span>=<span class="value">"shinyAppTutorials"</span>,<span class="argument">username</span>=<span class="value">"davidruvolo51"</span>,<span class="argument">subdir</span>=<span class="value">"Internal-Links-Basic-Ex"</span>)
+				</code></pre>
+				<p>Be sure to check out part two: <a href="internal-links-b.html">Linking Tabs - part 2</a></p>.
+			</section>
+		</div>
+	</div>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-76117337-11"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-76117337-11');
+	</script>
+</body>
+</html>
