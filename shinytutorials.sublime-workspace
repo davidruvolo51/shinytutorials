@@ -4,6 +4,70 @@
 		"selected_items":
 		[
 			[
+				"grid",
+				"grid-25-50-25"
+			],
+			[
+				"block",
+				"block-grid"
+			],
+			[
+				"l",
+				"line-height\tproperty"
+			],
+			[
+				"margin",
+				"margin-bottom\tproperty"
+			],
+			[
+				"in",
+				"inline-flex\tdisplay"
+			],
+			[
+				"marg",
+				"margin-bottom\tproperty"
+			],
+			[
+				"conso",
+				"Counsole"
+			],
+			[
+				"Couer",
+				"courier"
+			],
+			[
+				"p",
+				"position\tproperty"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"text-a",
+				"text-align\tproperty"
+			],
+			[
+				"font",
+				"font-size\tproperty"
+			],
+			[
+				"pr",
+				"primary-text-color"
+			],
+			[
+				"te",
+				"text-align\tproperty"
+			],
+			[
+				"sub",
+				"sub-element"
+			],
+			[
+				"stroke",
+				"stroke-width"
+			],
+			[
 				"f",
 				"function"
 			],
@@ -18,10 +82,6 @@
 			[
 				"ar",
 				"argument"
-			],
-			[
-				"mar",
-				"margin\tproperty"
 			],
 			[
 				"page",
@@ -40,16 +100,8 @@
 				"upper-roman\tlist-style"
 			],
 			[
-				"font",
-				"font-size\tproperty"
-			],
-			[
 				"blc",
 				"block-tutorial"
-			],
-			[
-				"margin",
-				"margin-bottom\tproperty"
 			],
 			[
 				"pad",
@@ -148,10 +200,6 @@
 				"data-value"
 			],
 			[
-				"block",
-				"block-sidebar"
-			],
-			[
 				"quer",
 				"querySelectorAll"
 			],
@@ -192,10 +240,6 @@
 				"filterEntriesbyString"
 			],
 			[
-				"grid",
-				"grid-template-columns\tproperty"
-			],
-			[
 				"col",
 				"color\tproperty"
 			],
@@ -228,10 +272,6 @@
 				"border-right\tproperty"
 			],
 			[
-				"p",
-				"primary-color"
-			],
-			[
 				"block-",
 				"block-header"
 			],
@@ -252,10 +292,6 @@
 				"console"
 			],
 			[
-				"l",
-				"li\tTag"
-			],
-			[
 				"co",
 				"color\tproperty"
 			],
@@ -266,10 +302,6 @@
 			[
 				"title",
 				"titlebar-item"
-			],
-			[
-				"in",
-				"inline\tdisplay"
 			],
 			[
 				"inlin",
@@ -306,10 +338,6 @@
 			[
 				"li",
 				"light-gray-color"
-			],
-			[
-				"pr",
-				"primary-black"
 			],
 			[
 				"med",
@@ -362,10 +390,6 @@
 			[
 				"over",
 				"overflow-x\tproperty"
-			],
-			[
-				"te",
-				"text-indent\tproperty"
 			],
 			[
 				"code-",
@@ -490,35 +514,20 @@
 			[
 				"min",
 				"min-width\tproperty"
-			],
-			[
-				"lon",
-				"london"
-			],
-			[
-				"sydney_d",
-				"sydney_date"
-			],
-			[
-				"inn",
-				"innerHTML"
-			],
-			[
-				"london",
-				"london_date"
-			],
-			[
-				"cu",
-				"currtime"
-			],
-			[
-				"curr",
-				"currdate"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 17630,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -683,13 +692,25 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/davidcruvolo/Github/shinytutorials"
+		"/Users/davidcruvolo/Github/shinytutorials",
+		"/Users/davidcruvolo/Github/shinytutorials/css",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials"
 	],
 	"file_history":
 	[
+		"/Users/davidcruvolo/Github/shinytutorials/css/styles.min.css",
+		"/Users/davidcruvolo/Github/shinytutorials/css/styles.css",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/data-editor.html",
+		"/Users/davidcruvolo/Github/shinytutorials/README.md",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/internal-links-a.html",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/internal-links-b.html",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/internal-links-c.html",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/landing-page.html",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/login-screen.html",
+		"/Users/davidcruvolo/Github/shinytutorials/shinytutorials.sublime-workspace",
+		"/Users/davidcruvolo/temp/shinytutorials/shinytutorials.sublime-workspace",
 		"/Users/davidcruvolo/Github/shinytutorials/index.html",
 		"/Users/davidcruvolo/Github/shinytutorials/css/app.css",
-		"/Users/davidcruvolo/Github/shinytutorials/tutorials/data-editor.html",
 		"/Users/davidcruvolo/Github/shinyAppTutorials/Data-Editor/app.R",
 		"/Users/davidcruvolo/Dropbox/USYD_VisualAnalytics/projects/d3/rankings_dash/rankings_dash.sublime-workspace",
 		"/Users/davidcruvolo/Github/pages/shinytutorials/shinytutorials.sublime-workspace",
@@ -804,17 +825,7 @@
 		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/index.html",
 		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/css/styles.min.css",
 		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/tutorials/data-editor.html",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/tutorials/internal-links-a.html",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/tutorials/internal-links-b.html",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/tutorials/internal-links-c.html",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/tutorials/landing-page.html",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/tutorials/login-screen.html",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/index.min.html",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/js/app.min.js",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/js/app.js",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/index.html",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/tutorials/styles.css",
-		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/data-editor.html"
+		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/tutorials/internal-links-a.html"
 	],
 	"find":
 	{
@@ -853,8 +864,38 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1256,
+								1256
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
