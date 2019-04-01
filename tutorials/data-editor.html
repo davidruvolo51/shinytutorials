@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head lang="en-US">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="In this tutorial, we will build a shiny app for editing data in a shiny">
+	<meta name="keywords" content="R, rstudio, shiny, tutorials, shinyapps, shiny apps">
+	<meta property="og:title" content="dcrData / Shiny Tutorials / Build a Data Editor">
+	<meta propert="og:description" content="In this tutorial, we will build a shiny app for editing data in a shiny">
+	<meta property="twitter:title" content="dcrData / Shiny Tutorials / Build a Data Editor">
+	<meta propert="twitter:description" content="In this tutorial, we will build a shiny app for editing data in a shiny">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600" rel="stylesheet">
+	<!-- <link rel="stylesheet" type="text/css" href="../css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="../css/styles.min.css">
+	<title>dcrData | Shiny App Tutorials</title>
+</head>
+<body>
+	<div class="block-titlebar">
+		<div class="block-titlebar-content block-grid grid-25-50-25">
+			<div class="titlebar-item align-left">
+				<a href="../index.html">
+					<svg height="20" width="20" role="img" viewBox="0 0 28 18" xmlns="http://www.w3.org/2000/svg">
+						<path stroke="#252525" stroke-width="2px" fill="#252525" d="M20,0 L 5,10, L 20,20 Z"/>
+					</svg>
+				</a>
+			</div>
+			<div class="titlebar-item align-center">
+
+			</div>
+			<div class="titlebar-item align-right">
+				<a href="https://www.twitter.com/dcruvolo" aria-label="follow me on twitter">
+					<svg height="30" width="30" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+				</a>
+				<a href="https://github.com/davidruvolo51/shinytutorials" aria-label="check out the code for the tutorials over on github">
+					<svg height="30" width="30" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="block-tutorial">
+		<div class="block-tutorial-content">
+			<div class="tutorial-header">
+				<h1>Data Editor</h1>
+				<h2>A shiny app for editing data in a shiny app</h2>
+			</div>
+			<h2>Contents</h2>
+			<section class="toc" aria-label="table of contents">
+				<ol>
+					<li><a href="#data-editor-about" aria-label="see shiny apps that focus on navigation">Why would I need this?</a></li>
+					<li><a href="#data-editor-work">How does the app work?</a></li>
+					<li><a href="#data-editor-run">How can I run the demo?</a></li>
+				</ol>
+			</section>
+			<section id="data-editor-about">
+				<h2>Why would I need this?</h2>
+				<p>This app was created in order to figure out a question I've had for a while: "How can I edit a dataset in a shiny app?"</p>
+				<p>I've developed several shiny apps for the monitoring for small clinical studies and for scientific reporting. In previous situations, I've used a google form as data entry or I used excel forms to store data locally. These methods are fine and they do the job, but it requires a strong data management plan to ensure none of the data goes missing or gets overwritten. This gets really messy if you have multiple people entering and editing data.</p>
+				<p>A data editor would be useful in the event in this situation. This would allow you to keep a master dataset and a historical record of all changes. This would be help if fix typos or other necessary changes (e.g., name changes, modifying a value if it was entered incorrectly, updating information, etc.) on the fly rather than editing the master file itself. This would be better than writing guides on how to modify data, how to document changes, or even have an inbox full of data modification requests.</p>
+				<p>In this tutorial, we will learn how to build a basic data editor in a shiny using the <strong>rhandsontable</strong> package. Here's a preview of what we will make.</p>
+				<img src="https://raw.githubusercontent.com/davidruvolo51/shinyAppTutorials/master/Data-Editor/data-editor.gif" alt="a recording showing how to edit values in a table">
+			</section>
+			<section id="data-editor-work">
+				<h2>How does the app work?</h2>
+				<p>The app was developed with the help of vignettes in the wonderful <strong>rhandsontable</strong> package, various features in the <strong>shinyBS</strong> and <strong>shinyJS</strong> packages. In this example, we will using the <code class="data">mtcars</code> dataset.</p>
+				<p>To make the app work, there's base file <code class="file">cars<u>&nbsp;</u>data.RDS</code>, which is the primary data file (i.e., current).</p>
+				<h3>Building the UI</h3>
+				<p>First things first - let's setup the ui. We will use a <strong>sidebar</strong> layout for our app. We also create a set of buttons that will be used for triggering the editor and for saving data. We will define the following buttons</p>
+				<ul>
+					<li><strong>view</strong>: button to display the table as is (without editing privileges)</li>
+					<li><strong>edit</strong>: button to render table as a <strong>rhandsontable</strong> output</li>
+					<li><strong>cancel</strong>: button to discard all edits and return back to the normal table</li>
+					<li><strong>save</strong>: button to save all edits</li>
+					<li><strong>refresh</strong>: button to refresh the app (pull all changes in to the default view)</li>
+				</ul>
+				<p>We will also create two modals. The first modal will be triggered when the <strong>save</strong> button is clicked and will ask, <strong>are you sure you want to save the changes?</strong>. If the user clicks <strong>yes</strong>, then the save function will run. Once the file is saved, a confirmation dialogue will appear (all changes were saved) and prompting you to refresh the app to view the changes.</p>
+				<p>Here's what our ui looks like.</p>
+				<pre><code>
+				<span class="comment"># build the ui</span>
+				ui <- <span class="function">shinyUI</span>(
+				    <span class="function">fluidPage</span>(
+				        
+				        <span class="comment"># shinyjs</span>
+				        <span class="function">useShinyjs</span>(),
+				        <span class="function">extendShinyjs</span>(<span class="argument">text</span> = <span class="value">"shinyjs.refresh = function(){history.go(0);}"</span>),
+				        
+				        <span class="comment"># title</span>
+				        <span class="function">titlePanel</span>(<span class="value">"Data Editor"</span>),
+				        
+				        <span class="comment"># set layout</span>
+				        <span class="function">sidebarLayout</span>(
+				            
+				            <span class="comment"># sidebarpanel</span>
+				            <span class="function">sidebarPanel</span>(
+				                
+				                <span class="comment"># text + buttons</span>
+				                <span class="function">helpText</span>(<span class="value">"What would you like to do?"</span>),
+				                <span class="function">actionButton</span>(<span class="value">"view"</span>, <span class="argument">label</span> = <span class="value">"view"</span>, <span class="argument">icon</span> = <span class="function">icon</span>(<span class="value">"binoculars"</span>)),
+				                <span class="function">actionButton</span>(<span class="value">"edit"</span>, <span class="argument">label</span> = <span class="value">"edit"</span>, <span class="argument">icon</span> = <span class="function">icon</span>(<span class="value">"pencil"</span>)),
+				                <span class="function">actionButton</span>(<span class="value">"cancel"</span>, <span class="argument">label</span> = <span class="value">"cancel"</span>, <span class="argument">icon</span> = <span class="function">icon</span>(<span class="value">"times"</span>)),
+				                <span class="function">actionButton</span>(<span class="value">"save"</span>, <span class="argument">label</span> = <span class="value">"save"</span>, <span class="argument">icon</span> = <span class="function">icon</span>(<span class="value">"save"</span>)),
+				                <span class="function">actionButton</span>(<span class="value">"refresh"</span>, <span class="argument">label</span> = <span class="value">"refresh"</span>, <span class="argument">icon</span> = <span class="function">icon</span>(<span class="value">"refresh"</span>)),
+				                
+				                <span class="comment"># modal: confirm changes</span>
+				               	<span class="function">bsModal</span>(<span class="argument">id</span> = <span class="value">"saveChanges"</span>, 
+				                        <span class="argument">title</span> = <span class="value">"Do you want to save changes?"</span>,
+				                        <span class="argument">trigger</span> =  <span class="value">"save"</span>, 
+				                        <span class="argument">size</span> = <span class="value">"small"</span>,
+				                        <span class="comment"># text + buttons</span>
+				                        <span class="function">wellPanel</span>(
+				                            <span class="function">helpText</span>(<span class="value">"Saving will overwrite existing data! This cannot be undone."</span>),
+				                            <span class="function">actionButton</span>(<span class="argument">inputId</span> = <span class="value">"no"</span>, <span class="argument">label</span> =  <span class="value">"No"</span>),
+				                            <span class="function">actionButton</span>(<span class="argument">inputId</span> = <span class="value">"yes"</span>, <span class="argument">label</span> = <span class="value">"Yes"</span>)
+				                        )
+				                ),
+				                
+				                <span class="comment"># modal: notification</span>
+				                <span class="function">bsModal</span>(<span class="argument">id</span> = <span class="value">"okay"</span>, 
+				                        <span class="argument">title</span> = <span class="value">"Save was successful!"</span>, 
+				                        <span class="argument">trigger</span> = <span class="value">"yes"</span>, 
+				                        <span class="argument">size</span> = <span class="value">"small"</span>,
+				                        
+				                        <span class="comment"># notification</span>
+				                        <span class="function">wellPanel</span>(<span class="function">
+				                        		helpText</span>(<span class="value">"Changes were saved successfully. Refresh the page for changes to take effect."</span>)
+				                        )
+				                )
+				            ),
+				            
+				            <span class="comment"># main panel</span>
+				            <span class="function">mainPanel</span>(
+				                
+				                <span class="comment"># orientation text: current mode - view vs edit</span>
+				                <span class="function">uiOutput</span>(<span class="value">"helperText"</span>),
+				                <span class="function">hr</span>(),
+				                
+				                <span class="comment"># table outputs</span>
+				                <span class="function">dataTableOutput</span>(<span class="value">"table"</span>),
+				                <span class="function">rHandsontableOutput</span>(<span class="value">"hot"</span>)
+				            )
+				        )
+				    )
+				)
+				</code></pre>
+				<p>Now let's move over to the server.</p>
+				<h3>Building the server</h3>
+				<p>Let's set the defaults. In our app, we've created a <strong>helperText</strong> element that will allow us to pass messages to the UI. This is useful for letting the user know which mode they are currently in (e.g., view or edit). We will set a default message to <strong>view</strong>. We will also set the default <strong>dataTableOutput</strong> to render our dataset as is. Also by default, we will hide the <strong>cancel</strong>, <strong>save</strong>, and <strong>refresh</strong> buttons as these buttons are only necessary in <strong>editing</strong> mode. There are also a few events for showing and hiding buttons. I won't go into detail in this guide. The source code is self explanatory.</p>
+				<p>The most important default is preparing an object to process the changes from the editing mode. We will create a reactiveValue object and call it <strong>values</strong>. Here's what our server setup looks like when we put in all of the default parameters. We will set up the observeEvents for all of the buttons. Also we will also define the logic for loading in the dataset.</p>
+				<pre><code>
+					<span class="comment"># logic for loading data file using mtcars</span>
+					testFile <- <span class="value">"cars_data.rds"</span>
+
+					<span class="comment"># if our data file exists, otherwise create it!</span>
+					<span class="function">if</span>(<span class="function">file.exists</span>(testFile)){
+					    mtcarsDF <- <span class="function">readRDS</span>(<span class="value">"cars_data.rds"</span>)
+					} <span class="function">else</span> {
+					    mtcarsDF <- mtcars
+					    <span class="function">row.names</span>(mtcarsDF)</span> <- <span class="logical">NULL</span>
+					    mtcarsDF$<span class="argument">car</span> <- <span class="function">row.names</span>(mtcars)
+					    mtcarsDF <- mtcarsDF[,<span class="function">c</span>(12, 1:11)]
+					}
+
+					<span class="comment"># server </span>
+					server <- <span class="function">function</span>(<span class="value">input</span>, <span class="value">output</span>, <span class="value">session</span>){
+
+							<span class="comment"># orientation text: mode - view vs edit</span>
+						    output$helperText <- <span class="function">renderUI</span>({
+						        <span class="function">h3</span>(<span class="value">"View Mode"</span>)
+						    })
+						    
+						    <span class="comment"># datatable: view</span>
+						    output$table <- DT::<span class="function">renderDataTable</span>({
+						        DT::<span class="function">datatable</span>(mtcarsDF, <span class="argument">selection</span> = <span class="value">"none"</span>)
+						    })
+						    
+						    <span class="comment"># initiate values for edits</span>
+						    values = <span class="function">reactiveValues</span>()
+
+						    <span class="comment"># refresh page</span>
+						    <span class="function">observeEvent</span>(input$refresh, {
+						        js$<span class="function">refresh</span>()
+						    })
+
+						    <span class="comment"># if view or cancel is clicked, go back to default view</span>
+						    <span class="function">observeEvent</span>({input$view input$cancel}, {
+						    			...
+									})
+
+						    <span class="comment"># switch to editing mode</span>
+    						<span class="function">observeEvent</span>(input$edit, {
+    									...
+    						})
+
+
+    						<span class="comment"># save changes</span>
+    						<span class="function">observeEvent</span>(input$yes,{
+    									...
+    						})
+    			}
+				</code></pre>
+				<p>The events for view, cancel, and refresh are pretty straightforward. These events show and hide buttons, as well refresh the view. Let's focus on the events for editing and saving</p>
+				<h3>Editing Mode</h3>
+				<p>When the user clicks the edit button, the displayed table switches to an rhandsontable output. The following code allows us to make changes and directly render the changes in the ui. It also stores the changes into our reactive object <strong>values</strong>.</p>
+				<pre><code>
+				<span class="function">observeEvent</span>(input$edit, {
+						...
+
+						<span class="comment"># make data.frame of edits</span>
+			  	data <- <span class="function">reactive</span>({
+			        <span class="function">if</span>(!<span class="function">is.null</span>(input$<span class="logical">hot</span>)){
+			            DF <- <span class="function">hot_to_r</span>(input$<span class="logical">hot</span>)
+			        } <span class="function">else</span> {
+			            <span class="function">if</span>(<span class="function">is.null</span>(values[[<span class="value">"DF"</span>]])){
+			                DF <- <span class="function">data.frame</span>(<span class="value">mtcarsDF</span>)
+			        				} <span class="function">else</span> {
+			                DF <- <span class="function">values</span>[[<span class="value">"DF"</span>]]
+			            }
+			        }
+			            
+			        values[[<span class="value">"DF"</span>]] = DF
+			        DF
+			            
+			    })
+			        
+			    <span class="comment"># render table</span>
+			    output$hot <- <span class="function">renderRHandsontable</span>({
+			            DF = <span class="function">data</span>()
+			            <span class="function">if</span> (!<span class="function">is.null</span>(<span class="value">DF</span>))
+			                <span class="function">rhandsontable</span>(<span class="value">DF</span>, <span class="argument">stretchH</span> = <span class="value">"all"</span>)
+			 			})
+			})
+				</code></pre>
+				<p></p>
+				<h3>Saving Changes</h3>
+				<p>In this app, we've defined the save process as:</p>
+				<ol> 
+					<li><strong>Create a backup of the master file</strong> we will rename our current master file to include a timestamp (the time the save event was triggered).</li>
+					<li><strong>Create a new master file</strong>: Now that we've created a backup of our master, we can now create a new master file that includes all of the changes we made. The present method saves the changes to a <strong>.RDS</strong> file. Alternatively, you can write the changes to csv or your preferred place (e.g., googlesheets, mongoDB, etc.).</li>
+				</ol>
+				<pre><code>
+				<span class="comment"># When yes is clicked, save data as RDS</span>
+				<span class="function">observeEvent</span>(input$save,&#123;
+					
+						finalDF <- <span class="function">isolate</span>(values[[<span class="value">"DF"</span>]])
+
+      <span class="comment"># write data + backup current version</span>
+      <span class="function">if</span>(<span class="function">file.exists</span>(<span class="value">"cars_data.RDS"</span>)){
+        			
+									<span class="comment"># rename current master file</span>
+									<span class="function">file.rename</span>(
+        				<span class="argument">from</span> = <span class="value">"cars_data.RDS"</span>,
+        				<span class="argument">to</span> = <span class="function">paste0</span>("cars_data_",<span class="function">format</span>(<span class="function">Sys.time</span>(),"%Y%m%d-%H%M%S"),".RDS")
+       			)
+        			
+      			<span class="comment"># write edits to file</span>
+       			<span class="function">saveRDS</span>(mtcarsDF, <span class="argument">file</span> = <span class="value">"cars_data.RDS"</span>)
+        			
+       } <span class="function">else</span> {
+        		
+        		<span class="comment"># save data if a master file isn't present</span>
+        		<span class="function">saveRDS</span>(mtcarsDF, <span class="argument">file</span> = <span class="value">"cars_data.RDS"</span>)
+
+       }
+
+				})
+				</code></pre>
+				<p>Once the save event runs, the user will receive a notification saying that the file was saved and will inform the user to refresh the page. When the page is refreshed, the master file will be reloaded and the previous version will be uneffected. Creating backups is a good way to track changes in the data. The timestamp is formated to: yyyymmdd-HHMMSS. Seconds may not be necessary in all cases; adjust as required.</p>
+			</section>
+			<section>
+				<h2 id="data-editor-run">How can I run the demo?</h2>
+				<p>The source code is available on <a href="https://github.com/davidruvolo51/shinyAppTutorials/tree/master/Data-Editor">github</a>. Alternatively, you can run the demo in R using the following code.</p>
+			</section>
+			<pre><code>
+				<span class="comment"># Run in R/Rstudio</span>
+				<span class="function">install.packages</span>("<span class="value">shiny</span>")
+				shiny::<span class="function">runGitHub</span>(<span class="argument">repo</span>=<span class="value">"shinyAppTutorials"</span>,<span class="argument">username</span>=<span class="value">"davidruvolo51"</span>,<span class="argument">subdir</span>=<span class="value">"Data-Editor"</span>)
+			</code></pre>
+		</div>
+	</div>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-76117337-11"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-76117337-11');
+	</script>
+</body>
+</html>

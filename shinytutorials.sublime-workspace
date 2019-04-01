@@ -1,0 +1,1000 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"grid",
+				"grid-25-50-25"
+			],
+			[
+				"block",
+				"block-grid"
+			],
+			[
+				"l",
+				"line-height\tproperty"
+			],
+			[
+				"margin",
+				"margin-bottom\tproperty"
+			],
+			[
+				"in",
+				"inline-flex\tdisplay"
+			],
+			[
+				"marg",
+				"margin-bottom\tproperty"
+			],
+			[
+				"conso",
+				"Counsole"
+			],
+			[
+				"Couer",
+				"courier"
+			],
+			[
+				"p",
+				"position\tproperty"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"text-a",
+				"text-align\tproperty"
+			],
+			[
+				"font",
+				"font-size\tproperty"
+			],
+			[
+				"pr",
+				"primary-text-color"
+			],
+			[
+				"te",
+				"text-align\tproperty"
+			],
+			[
+				"sub",
+				"sub-element"
+			],
+			[
+				"stroke",
+				"stroke-width"
+			],
+			[
+				"f",
+				"function"
+			],
+			[
+				"lo",
+				"logical"
+			],
+			[
+				"com",
+				"comment"
+			],
+			[
+				"ar",
+				"argument"
+			],
+			[
+				"page",
+				"page-background-color"
+			],
+			[
+				"padd",
+				"padding\tproperty"
+			],
+			[
+				"fon",
+				"font-size\tproperty"
+			],
+			[
+				"ro",
+				"upper-roman\tlist-style"
+			],
+			[
+				"blc",
+				"block-tutorial"
+			],
+			[
+				"pad",
+				"padding-bottom\tproperty"
+			],
+			[
+				"mag",
+				"margin-bottom\tproperty"
+			],
+			[
+				"bak",
+				"page-background-color"
+			],
+			[
+				"al",
+				"align-left"
+			],
+			[
+				"font-",
+				"font-size\tproperty"
+			],
+			[
+				"i",
+				"italic\tfont-style"
+			],
+			[
+				"sec",
+				"secondary-text-color"
+			],
+			[
+				"tex",
+				"text-transform\tproperty"
+			],
+			[
+				"le",
+				"letter-spacing\tproperty"
+			],
+			[
+				"backd",
+				"background-image\tproperty"
+			],
+			[
+				"gt",
+				"github"
+			],
+			[
+				"border",
+				"border-bottom\tproperty"
+			],
+			[
+				"se",
+				"secondary-color-text"
+			],
+			[
+				"back",
+				"background-color\tproperty"
+			],
+			[
+				"res",
+				"resetFilter"
+			],
+			[
+				"g",
+				"getElementById"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"sel",
+				"selected-tag"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"fi",
+				"filterEntriesByString"
+			],
+			[
+				"add",
+				"addEventListener"
+			],
+			[
+				"tag",
+				"tagValue"
+			],
+			[
+				"filter",
+				"filterEntriesByString"
+			],
+			[
+				"data",
+				"data-value"
+			],
+			[
+				"quer",
+				"querySelectorAll"
+			],
+			[
+				"to",
+				"toggle"
+			],
+			[
+				"get",
+				"getAttribute"
+			],
+			[
+				"blo",
+				"block"
+			],
+			[
+				"gr",
+				"grid"
+			],
+			[
+				"fl",
+				"flex-start\tjustify-content"
+			],
+			[
+				"ali",
+				"align-items\tproperty"
+			],
+			[
+				"di",
+				"display\tproperty"
+			],
+			[
+				"filt",
+				"filterEntriesByString"
+			],
+			[
+				"filterEntriesB",
+				"filterEntriesbyString"
+			],
+			[
+				"col",
+				"color\tproperty"
+			],
+			[
+				"ma",
+				"margin\tproperty"
+			],
+			[
+				"bac",
+				"background-color\tproperty"
+			],
+			[
+				"cont",
+				"content-entry-section"
+			],
+			[
+				"no",
+				"nomatches"
+			],
+			[
+				"query",
+				"querySelectorAll"
+			],
+			[
+				"blok",
+				"block-search"
+			],
+			[
+				"border-r",
+				"border-right\tproperty"
+			],
+			[
+				"block-",
+				"block-header"
+			],
+			[
+				"s",
+				"style"
+			],
+			[
+				"e",
+				"entries"
+			],
+			[
+				"fil",
+				"filter"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"co",
+				"color\tproperty"
+			],
+			[
+				"align-",
+				"align-right"
+			],
+			[
+				"title",
+				"titlebar-item"
+			],
+			[
+				"inlin",
+				"inline-block\tdisplay"
+			],
+			[
+				"content",
+				"content-entry"
+			],
+			[
+				"bord",
+				"border-bottom\tproperty"
+			],
+			[
+				"tit",
+				"titlebar-item"
+			],
+			[
+				"color",
+				"color-1"
+			],
+			[
+				"bkac",
+				"background-color\tproperty"
+			],
+			[
+				"box",
+				"box-shadow-color"
+			],
+			[
+				"b",
+				"blue"
+			],
+			[
+				"li",
+				"light-gray-color"
+			],
+			[
+				"med",
+				"medium-gray-color"
+			],
+			[
+				"me",
+				"medium-gray-color"
+			],
+			[
+				"gridr",
+				"grid-row-gap\tproperty"
+			],
+			[
+				"bloc",
+				"block-content"
+			],
+			[
+				"item",
+				"item-description"
+			],
+			[
+				"item-",
+				"item-description"
+			],
+			[
+				"styl",
+				"stylesheet"
+			],
+			[
+				"grid-",
+				"grid-box-header"
+			],
+			[
+				"table",
+				"tableBtn"
+			],
+			[
+				"tran",
+				"transform\tproperty"
+			],
+			[
+				"bl",
+				"block-content"
+			],
+			[
+				"hea",
+				"header-font-color"
+			],
+			[
+				"over",
+				"overflow-x\tproperty"
+			],
+			[
+				"code-",
+				"code-font-color"
+			],
+			[
+				"bo",
+				"border-color"
+			],
+			[
+				"h",
+				"height\tproperty"
+			],
+			[
+				"paddin",
+				"padding-top\tproperty"
+			],
+			[
+				"ligh",
+				"light-background"
+			],
+			[
+				"dark",
+				"dark-border"
+			],
+			[
+				"lig",
+				"light-font"
+			],
+			[
+				"backg",
+				"background\tproperty"
+			],
+			[
+				"pa",
+				"padding-bottom\tproperty"
+			],
+			[
+				"turo",
+				"tutorial"
+			],
+			[
+				"met",
+				"meta\tTag"
+			],
+			[
+				"wid",
+				"width\tproperty"
+			],
+			[
+				"inel",
+				"inline-block\tdisplay"
+			],
+			[
+				"grid-r",
+				"grid-row\tproperty"
+			],
+			[
+				"grid-c",
+				"grid-column\tproperty"
+			],
+			[
+				"grid-tem",
+				"grid-template-columns\tproperty"
+			],
+			[
+				"grid-te",
+				"grid-template-columns\tproperty"
+			],
+			[
+				"el",
+				"elem"
+			],
+			[
+				"inner",
+				"innerHTML"
+			],
+			[
+				"class",
+				"classList"
+			],
+			[
+				"padding",
+				"padding-top\tproperty"
+			],
+			[
+				"grid-ro",
+				"grid-row-gap\tproperty"
+			],
+			[
+				"grid-co",
+				"grid-column-gap\tproperty"
+			],
+			[
+				"font-s",
+				"font-size\tproperty"
+			],
+			[
+				"night",
+				"nightorday"
+			],
+			[
+				"st",
+				"st-louis-clock"
+			],
+			[
+				"sydney_t",
+				"sydney_tod"
+			],
+			[
+				"sydney",
+				"sydney-clock"
+			],
+			[
+				"time",
+				"timeofday"
+			],
+			[
+				"wi",
+				"width\tproperty"
+			],
+			[
+				"min",
+				"min-width\tproperty"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 17630,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Traditional"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Script Builder"
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 335.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"crea",
+				"Quick File Creator: Create file"
+			],
+			[
+				"lo",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"creat",
+				"Quick File Creator: Create file"
+			],
+			[
+				"file",
+				"Quick File Creator: Create file"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Custom HTML template"
+			],
+			[
+				"create",
+				"Quick File Creator: Create file"
+			],
+			[
+				"lor",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"qui",
+				"Quick File Creator: Create file"
+			],
+			[
+				"Dir",
+				"Quick File Creator: Create directory"
+			],
+			[
+				"Markdown P",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"Markdown",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"package in",
+				"Package Control: Install Package"
+			],
+			[
+				"Qu",
+				"Quick File Creator: Create file"
+			],
+			[
+				"Package Control: In",
+				"Package Control: Install Package"
+			],
+			[
+				"Mark",
+				"Markmon launch"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"package control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"package control",
+				"Package Control: Add Channel"
+			]
+		],
+		"width": 410.0
+	},
+	"console":
+	{
+		"height": 320.0,
+		"history":
+		[
+			"sublime.find_resources(\"*.sublime-snippet\")",
+			"ls",
+			"pwd"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/davidcruvolo/Github/shinytutorials",
+		"/Users/davidcruvolo/Github/shinytutorials/css",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials"
+	],
+	"file_history":
+	[
+		"/Users/davidcruvolo/Github/shinytutorials/css/styles.min.css",
+		"/Users/davidcruvolo/Github/shinytutorials/css/styles.css",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/data-editor.html",
+		"/Users/davidcruvolo/Github/shinytutorials/README.md",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/internal-links-a.html",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/internal-links-b.html",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/internal-links-c.html",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/landing-page.html",
+		"/Users/davidcruvolo/Github/shinytutorials/tutorials/login-screen.html",
+		"/Users/davidcruvolo/Github/shinytutorials/shinytutorials.sublime-workspace",
+		"/Users/davidcruvolo/temp/shinytutorials/shinytutorials.sublime-workspace",
+		"/Users/davidcruvolo/Github/shinytutorials/index.html",
+		"/Users/davidcruvolo/Github/shinytutorials/css/app.css",
+		"/Users/davidcruvolo/Github/shinyAppTutorials/Data-Editor/app.R",
+		"/Users/davidcruvolo/Dropbox/USYD_VisualAnalytics/projects/d3/rankings_dash/rankings_dash.sublime-workspace",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/shinytutorials.sublime-workspace",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/tutorials/login-screen.html",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/tutorials/landing-page.html",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/tutorials/data-editor.html",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/tutorials/internal-links-a.html",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/tutorials/internal-links-b.html",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/tutorials/internal-links-c.html",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/css/styles.css",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/js/app.js",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/index_OLD.html",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/index.html",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/js/app.min.js",
+		"/Users/davidcruvolo/Dropbox/Programming/html/theme-switcher/theme.html",
+		"/Users/davidcruvolo/Dropbox/Programming/html/theme-switcher/theme.js",
+		"/Users/davidcruvolo/Dropbox/Programming/html/theme-switcher/theme.css",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/shiny_pres_master/www/assets/radio_input/radio.css",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/shiny_pres_master/www/assets/radio_input/radio.js",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/input_widget_testing/www/assets/radio_input/radio.css",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/input_widget_testing/www/assets/radio_input/radio.js",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/input_widget_testing/www/assets/radioGroup/test.html",
+		"/Users/davidcruvolo/Desktop/d3_dash/dash.js",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/input_widget_testing/www/assets/radioGroup/radioGroup.js",
+		"/Users/davidcruvolo/Github/pages/shinytutorials/css/styles.min.css",
+		"/Users/davidcruvolo/Dropbox/Programming/html/browser-dash/browser.html",
+		"/Users/davidcruvolo/Dropbox/Programming/html/browser-dash/browser.css",
+		"/Users/davidcruvolo/Dropbox/Programming/html/browser-dash/browser.js",
+		"/Users/davidcruvolo/Dropbox/Programming/html/BrowserTab/styles.css",
+		"/Users/davidcruvolo/Dropbox/Programming/html/BrowserTab/index.html",
+		"/Users/davidcruvolo/Dropbox/Programming/projects/Personal_Page/Version_7.0_final/index.html",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/dash/dash.html",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/dash/dash.css",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/dash/dash.js",
+		"/Users/davidcruvolo/Dropbox/Rstudio/scripts/analysis_injuries.df.R",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/dash/dash.sublime-project",
+		"/Volumes/druv5154/rstudio/projects/network_viz/shiny_prep.sh",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/scp_prep.sh",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/server/landing-page/index.html",
+		"/Users/davidcruvolo/Dropbox/Programming/svg/images/icons/warning.svg",
+		"/Users/davidcruvolo/Dropbox/Programming/svg/images/icons/icon-checkmark.svg",
+		"/Users/davidcruvolo/Dropbox/Programming/svg/images/icons/icon-message-bubble.svg",
+		"/Users/davidcruvolo/Dropbox/Programming/svg/images/ice-web-app/sketch.svg",
+		"/Users/davidcruvolo/Dropbox/Programming/svg/images/ice-web-app/browser.svg",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/cal-heat-map/cal.css",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/cal-heat-map/cal.js",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/cal-heat-map/cal.html",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/collapsible-tree/tree.html",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/cal-heat-map/data.json",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/collapsible-tree/tree.css",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/collapsible-tree/tree.js",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/barchart-horz/barchart-horiz.html",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/barchart-horz/styles.css",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/barchart/barchart.html",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/barchart/index.js",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/barchart-horz/index.js",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/scatter/scatter.html",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/scatter/scatter.js",
+		"/Users/davidcruvolo/Dropbox/Programming/d3/barchart/styles.css",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/app/www/css/styles.sass",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/app/www/js/app.min.js",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/app/www/js/app.js",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/app/www/css/app_old.css",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/app/www/css/styles.min.css",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/server/landing-page/css/app.sass",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/app/www/css/app.css",
+		"/Users/davidcruvolo/Github/sites/shinyapptutorials/index.html",
+		"/Users/davidcruvolo/Github/sites/shinyapptutorials/tutorials/login-screen.html",
+		"/Users/davidcruvolo/Github/sites/shinyapptutorials/tutorials/landing-page.html",
+		"/Users/davidcruvolo/Github/sites/shinyapptutorials/tutorials/internal-links-c.html",
+		"/Users/davidcruvolo/Github/sites/shinyapptutorials/tutorials/internal-links-b.html",
+		"/Users/davidcruvolo/Github/sites/shinyapptutorials/tutorials/internal-links-a.html",
+		"/Users/davidcruvolo/Github/sites/shinyapptutorials/tutorials/data-editor.html",
+		"/Users/davidcruvolo/Github/sites/shinyapptutorials/css/styles.min.css",
+		"/Users/davidcruvolo/Github/sites/shinyapptutorials/css/styles.css",
+		"/Users/davidcruvolo/Github/sites/shinyapptutorials/svg/home.svg",
+		"/Users/davidcruvolo/Github/shinyAppGallery/index.html",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/server/landing-page/css/app.css",
+		"/Users/davidcruvolo/Dropbox/Programming/html/transitCSS/css/transit.css",
+		"/Users/davidcruvolo/Dropbox/Rstudio/shiny/antipsych-se-app/server/landing-page/js/app.js",
+		"/Users/davidcruvolo/Dropbox/Programming/projects/Personal_Page/Version_7.0_final/css/styles.css",
+		"/Volumes/druv5154/projects/tableau_d3/index.html",
+		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/css/styles.css",
+		"/Users/davidcruvolo/Desktop/table.txt",
+		"/Users/davidcruvolo/Desktop/table.html",
+		"/Users/davidcruvolo/Desktop/test.html",
+		"/Users/davidcruvolo/Dropbox/USYD_VisualAnalytics/projects/network_viz/www/css/app.css",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/runing_map_w_features.svg",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/data/running_data/running-routes-campsie.txt",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/data/running_data/sydenham/doc.kml",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/data/running_data/campsie/doc.kml",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/data/geographical/LR/doc.kml",
+		"/Volumes/druv5154/rstudio/projects/oge_gps/scripts/scopus_api/NAN_modularFunctions_EID_wPANDAS_v07H.py",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/test.svg",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/rruning_map_w_features.svg",
+		"/Users/davidcruvolo/Dropbox/Programming/svg/animations/line-graph/line_graph.css",
+		"/Users/davidcruvolo/Dropbox/Programming/svg/animations/line-graph/line_graph.html",
+		"/Users/davidcruvolo/Downloads/public_NSW_Base_Map.kml",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/data/geographical/Train Stations/doc.txt",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/data/geographical/T3/doc.txt",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/data/geographical/T1/doc.kml",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/data/geographical/River/doc 2.txt",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/data/geographical/LR Stations/doc.txt",
+		"/Users/davidcruvolo/Dropbox/Rstudio/projects/running_routes/data/geographical/LR/doc.txt",
+		"/Users/davidcruvolo/Dropbox/Programming/html/dailyUI/1_sign_up/sign_up.css",
+		"/Users/davidcruvolo/Dropbox/Programming/html/dailyUI/1_sign_up/sign_up.html",
+		"/Users/davidcruvolo/Dropbox/Rstudio/markdown/rmd_template.Rmd",
+		"/Users/davidcruvolo/Desktop/index.html",
+		"/Users/davidcruvolo/Desktop/data_vis_talk/index.html",
+		"/Users/davidcruvolo/Desktop/data_vis_talk/grants_by_gender/www/css/blocks.css",
+		"/Users/davidcruvolo/Desktop/data_vis_talk/world_map/index.html",
+		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/index.html",
+		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/css/styles.min.css",
+		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/tutorials/data-editor.html",
+		"/Users/davidcruvolo/Github/davidruvolo51.github.io/projects/shinyapptutorials/tutorials/internal-links-a.html"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"secondary-color-text",
+			"secondary-colour-text",
+			"--primary-color",
+			"bran"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1256,
+								1256
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.latextools":
+	{
+		"height": 100.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 25.0
+	},
+	"pinned_build_system": "",
+	"project": "shinytutorials.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/temp/index.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Github/davidruvolo51.github.io/davidruvolo51.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 279.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
