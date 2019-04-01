@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en-US">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="In this tutorial, we will build a learn how to link pages within a shiny app.">
+	<meta name="keywords" content="R, rstudio, shiny, tutorials, shinyapps, shiny apps">
+	<meta property="og:title" content="dcrData / Shiny Tutorials / Link Pages Part 3">
+	<meta propert="og:description" content="In this tutorial, we will build a learn how to link pages within a shiny app.">
+	<meta property="twitter:title" content="dcrData / Shiny Tutorials / Link Pages Part 3">
+	<meta propert="twitter:description" content="In this tutorial, we will build a learn how to link pages within a shiny app.">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600" rel="stylesheet">
+	<!-- <link rel="stylesheet" type="text/css" href="../css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="../css/styles.min.css">
+	<title>dcrData | Shiny App Tutorials</title>
+</head>
+<body>
+	<div class="block-titlebar">
+		<div class="block-titlebar-content block-grid grid-25-50-25">
+			<div class="titlebar-item align-left">
+				<a href="../index.html">
+					<svg height="20" width="20" role="img" viewBox="0 0 28 18" xmlns="http://www.w3.org/2000/svg">
+						<path stroke="#252525" stroke-width="2px" fill="#252525" d="M20,0 L 5,10, L 20,20 Z"/>
+					</svg>
+				</a>
+			</div>
+			<div class="titlebar-item align-center">
+			</div>
+			<div class="titlebar-item align-right">
+				<a href="https://www.twitter.com/dcruvolo" aria-label="follow me on twitter">
+					<svg height="30" width="30" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+				</a>
+				<a href="https://github.com/davidruvolo51/shinytutorials" aria-label="check out the code for the tutorials over on github">
+					<svg height="30" width="30" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="block-tutorial">
+		<div class="block-tutorial-content">
+			<div class="tutorial-header">
+				<h1>Linking Tabs - Part 3</h1>
+				<h2>Creating links to specific elements on other pages</h2>
+			</div>
+			<h2>Contents</h2>
+			<section class="toc" aria-label="table of contents">
+				<ol>
+					<li><a href="#hrefs-ex-3-about">Why would I need this?</a></li>
+					<li><a href="#hrefs-ex-3-work">How does this app work?</a></li>
+					<li><a href="#hrefs-ex-3-run">How do I run the demo?</a></li>
+				</ol>
+			</section>
+			<section id="hrefs-ex-3-about">
+				<h2>Why would I need this?</h2>
+				<p>In <a href="internal-links-a.html">part 1</a> and <a href="internal-links-b.html">part 2</a>, we learned how to create custom links to other pages in our shiny app and how to embed links in visualizations. But what if a shiny app uses multiple <strong>tabPanels</strong> and <strong>tabsetPanels</strong>? Can we apply the same concept to get to a specifc tab on another page?</p>
+				<p>Sort of. Let's dive into this.</p>
+			</section>
+			<section id="hrefs-ex-3-work">
+				<h2>How does this work?</h2>
+				<p>Using the layout defined in the earlier example, we will expand on it to include <strong>tabsetPanel</strong>. We then integrate the <strong>customHref</strong> function to target a specific tab on another page.</p>
+				<h3>Building the UI</h3>
+				<p>We will build the ui to include a <strong>tabsetPanel</strong> and assign the <strong>value</strong> to each panel like we did in the earlier examples. We will also define the server.</p>
+				<pre><code>
+				<span class="comment"># ui</span>
+				<span class="package">ui</span> <- <span class="function">tagList</span>(
+						<span class="comment"># head</span>
+						<span class="object">tags</span>$<span class="function">head</span>(
+								<span class="object">tags</span>$<span class="function">script</span>(<span class="argument">src</span>=<span class="value">"func.js"</span>)
+						),
+
+						<span class="comment"># body</span>
+						<span class="function">navbarPage</span>(
+								<span class="function">tabPanel</span>(<span class="value">"tab 1"</span>, <span class="argument">value</span>=<span class="value">"tab1"</span>,
+										<span class="object">tags</span>$<span class="function">h1</span>(<span class="value">"Some Title"</span>),
+										<span class="object">tags</span>$<span class="function">a</span>(...)
+								),
+								<span class="function">tabPanel</span>(<span class="value">"tab 2"</span>, <span class="argument">value</span>=<span class="value">"tab2"</span>,
+										<span class="object">tags</span>$<span class="function">h1</span>(<span class="value">"Some Title"</span>),
+										<span class="function">tabsetPanel</span>(
+												<span class="function">tabPanel</span>(<span class="value">"subtab a"</span>, <span class="argument">value</span>=<span class="value">"subtabA"</span>),
+												<span class="function">tabPanel</span>(<span class="value">"subtab B"</span>, <span class="argument">value</span>=<span class="value">"subtabB"</span>)
+										)
+								)
+						)
+				)
+
+				<span class="comment"># server</span>
+				server <- <span class="function">function</span>(<span class="value">input</span>,<span class="value">output</span>){}	
+				</code></pre>
+				<p>Let's take a closer look at the links.</p>
+				<h3>Defining the links</h3>
+				<p>In code above, we will now fill in the <strong>tags$a()</strong>. The formula is as same as before: <strong>tags$a([text to display], [onclick event])</strong>.  Try setting our event as with the link to tab <strong>A</strong> on the second page.</p>
+				<pre><code>
+				<span class="comment"># using tags with js function</span>
+				<span class="object">tags</span>$<span class="function">a</span>(<span class="argument">"onclick"</span>=<span class="value">"customHref('subtabB');"</span>,<span class="value">"Go to the second tab on page 2"</span>)
+				</code></pre>	
+				<p>What happens? Nothing.</p>
+				<p>In order to move to specific tab on another page, we will make two calls to the <strong>customHref</strong> function. The first call will be to the page where the tab is located and the second is to the tab itself. We will change our link to:</p>
+				<pre><code>
+				<span class="comment"># using tags with js function</span>
+				<span class="object">tags</span>$<span class="function">a</span>(<span class="argument">"onclick"</span>=<span class="value">"customHref('tab2'); customHref('subtabB');"</span>,<span class="value">"Go to the second tab on page 2"</span>)
+				</code></pre>
+				<p>Now, set the links to go for other pages. Try adding more pages and more tabs. Remember to get to a specific tab, first select the page the tab is located on, and the select the tab.</p>
+			</section>
+			<section id="hrefs-ex-3-run">
+				<h2>How can I run this app?</h2>
+				<p>The source code is available on <a href="https://github.com/davidruvolo51/shinyAppTutorials/tree/master/Internal-Links-Demo">github</a>. Alternatively, you can run the demo in R using the following code.</p>
+				<pre><code>
+					<span class="comment"># Run in R/Rstudio</span>
+					<span class="function">install.packages</span>("<span class="package">shiny</span>")
+					<span class="package">shiny</span>::<span class="function">runGitHub</span>(<span class="argument">repo</span>=<span class="value">"shinyAppTutorials"</span>,<span class="argument">username</span>=<span class="value">"davidruvolo51"</span>,<span class="argument">subdir</span>=<span class="value">"Internal-Links-Demo"</span>)
+				</code></pre>
+			</section>
+		</div>
+	</div>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-76117337-11"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-76117337-11');
+	</script>
+</body>
+</html>
