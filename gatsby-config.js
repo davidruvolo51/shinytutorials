@@ -1,54 +1,40 @@
 module.exports = {
-  pathPrefix: "/shinytutorials",
   siteMetadata: {
-    title: `dcrData | shinyTutorials`,
+    title: `shinyTutorials`,
     description: `a collection of how-to guides and demonstrations for building shiny apps`,
     author: `@dcruvolo`,
   },
+  pathPrefix: "/shinytutorials",
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        path: `${__dirname}/src/pages`,
+        name: `pages`,
+        ignore: process.env.NODE_ENV === `production` && [`**/draft-*`]
       },
     },
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /images/,
+          include: `/components/images/`,
         },
-      },
-    },
-    `gatsby-transformer-remark`,
-    'gatsby-plugin-offline',
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/posts`,
-        name: "posts",
       },
     },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -57,12 +43,13 @@ module.exports = {
               aliases: {},
               showLineNumbers: false,
               noInlineHighlight: true,
-            },
+            }
           },
-        ],
-      },
+          "gatsby-remark-copy-linked-files",
+        ]
+      }
     },
-    `gatsby-plugin-sass`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

@@ -1,11 +1,12 @@
 {
   "name": "gatsby-starter-default",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "a collection of shiny tutorials",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "dcruvolo",
   "dependencies": {
     "gatsby": "^2.2.10",
+    "gatsby-cli": "^2.8.5",
     "gatsby-image": "^2.0.34",
     "gatsby-plugin-google-analytics": "^2.0.18",
     "gatsby-plugin-manifest": "^2.0.24",
@@ -13,7 +14,9 @@
     "gatsby-plugin-react-helmet": "^3.0.10",
     "gatsby-plugin-react-svg": "^2.1.1",
     "gatsby-plugin-sass": "^2.0.11",
-    "gatsby-plugin-sharp": "^2.0.32",
+    "gatsby-plugin-sharp": "^2.0.33",
+    "gatsby-remark-copy-linked-files": "^2.0.11",
+    "gatsby-remark-images": "^3.0.10",
     "gatsby-remark-prismjs": "^3.2.6",
     "gatsby-source-filesystem": "^2.0.28",
     "gatsby-transformer-remark": "^2.3.8",
@@ -26,6 +29,7 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "prettier": "^1.16.4"
   },
   "keywords": [
@@ -34,7 +38,10 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "buildWithPaths": "gatsby build --prefix-paths",
+    "clean": "rm -rf .cache public",
     "develop": "gatsby develop",
+    "deploy": "gh-pages -d public -b updates -m 'blog updates'",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",

@@ -1,22 +1,42 @@
+////////////////////////////////////////////////////////////////////////////////
+// FILE: tutorials.js
+// AUTHOR: David Ruvolo
+// CREATED: 2019-10-25
+// MODIFIED: 2019-10-25
+// PURPOSE: layout component for tutorials
+// DEPENDENCIES: see below
+// STATUS: in.progress
+// COMMENTS: NA
+////////////////////////////////////////////////////////////////////////////////
+// BEGIN
 import React from "react"
-import Layout from "../components/layout"
 import { graphql } from "gatsby"
 
+import App from "../components/layouts/app"
+import Main from "../components/layouts/main"
+import Article from "../components/layouts/article"
 function BlogPost(props) {
-  const post = props.data.markdownRemark
+
+  // define data
+  const post = props.data.markdownRemark;
+  const keywords = Array.from([post.frontmatter.keywords.flat().sort()][0]);
+
+  // render
   return (
-    <Layout>
-      <main className="main" id="content" aria-label="main content">
-        <article className="tutorial-post">
-          <header className="tutorial-header">
-            <h1>{post.frontmatter.title}</h1>
-            <p>{post.frontmatter.subtitle}</p>
-            <time>{post.frontmatter.date}</time>
-          </header>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        </article>
-      </main>
-    </Layout>
+    <App title={post.frontmatter.title} description={post.frontmatter.abstract} author="dcruvolo" keywords={keywords}>
+      <Main className="tutorial">
+        <Article
+          post={post.html}
+          title={post.frontmatter.title}
+          subtitle={post.frontmatter.subtitle}
+          abstract={post.frontmatter.abstract}
+          date={post.frontmatter.date}
+          updated={post.frontmatter.updated}
+          keywords={keywords}
+          className="flex-child"
+        />
+      </Main>
+    </App>
   )
 }
 
@@ -28,8 +48,9 @@ export const query = graphql`
       frontmatter {
         title
         subtitle
-        excerpt
+        abstract
         date
+        updated
         keywords
       }
     }

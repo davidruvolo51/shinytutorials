@@ -1,0 +1,134 @@
+@import "_variables";
+.main {
+	padding: 0;
+	min-height: 60vh;
+
+	.main-section {
+		width: 90%;
+		padding: 44px 0;
+		margin: 0 auto;
+	}
+
+	.tutorial-latest {
+
+		h2 {
+			text-align: center;
+			text-transform: uppercase;
+			padding: 0;
+			margin: 0;
+			letter-spacing: 2px;
+		}
+
+		.post.post-feature {
+			width: 100%;
+		}
+	}
+
+	.tutorial-index {
+		padding: 0;
+		padding-bottom: 66px;
+		background-color: $ultra-light;
+
+		// styling for index.js - sidebar
+		.tutorial-index-sidebar {
+			position: static;
+			padding-top: 50px;
+
+			.sidebar-content {
+				width: 80%;
+				margin: 0 auto;
+
+				.taglist {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					margin-bottom: 44px;
+
+					.taglist-item {
+						width: 200px;
+						padding: 0 24px;
+						padding-left: 0;
+						margin-bottom: 12px;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+
+		// styling for index.js - list of posts
+		.tutorial-index-posts {
+			padding: 32px 0;
+
+			h2 {
+				padding-left: 32px;
+			}
+
+			.post.post-plain {
+				border-bottom: 1px solid $light;
+				-webkit-box-shadow: none;
+				box-shadow: none;
+
+				&:last-child {
+					border-bottom: none;
+					-webkit-box-shadow: none;
+					box-shadow: none;
+				}
+			}
+
+			form {
+				padding-left: 32px;
+				padding-right: 32px;
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+		}
+	}
+
+	// styling for posts
+	&.tutorial {
+		padding: 50px 0;
+		background-color: $ultra-light;
+	}
+}
+
+@media screen and (min-width: 972px) {
+	.main {
+		.main-section {
+			max-width: 972px;
+		}
+
+		.tutorial-latest {
+			.post.post-feature {
+				max-width: 40%;
+			}
+		}
+		.tutorial-index {
+			.tutorial-index-sidebar {
+				padding-top: 82px;
+				position: -webkit-sticky;
+				position: sticky;
+				top: 0;
+				height: 100%;
+			}
+			.tutorial-index-posts {
+				padding-top: 82px;
+
+				form {
+					width: 80%;
+					-webkit-box-shadow: -4px 0 2px $light, 4px 0 2px $light, 0 -4px 2px $light;
+					box-shadow: -4px 0 2px $light, 4px 0 2px $light, 0 -4px 2px $light;
+				}
+
+				.post.post-plain {
+					width: 80%;
+					box-shadow: -4px 0 2px $light, 4px 0 2px $light;
+					
+					&:last-child {
+						-webkit-box-shadow: -4px 0 2px $light, 4px 0 2px $light, 0 4px 2px $light;	
+						box-shadow: -4px 0 2px $light, 4px 0 2px $light, 0 4px 2px $light;	
+					}
+				}
+			}
+		}
+	}
+}

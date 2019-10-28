@@ -1,0 +1,61 @@
+// import PropTypes from "prop-types"
+import React, { Component } from 'react'
+
+
+class Search extends Component {
+    
+    // init state
+    state = {
+        query: "",
+        results: [],
+    }
+
+    // prevent default function
+    handleSubmit = (event) => {
+        event.preventDefault()
+    }
+
+    // filter html elements function
+    filterPostsByString(string){
+
+        // define vars
+        let q = string.toLowerCase();
+        let data = document.querySelectorAll(".searchable");
+        
+        // search -- show/hide results
+        if(q === ""){
+            for(var e=0; e < data.length; e++){
+                data[e].style.display = "block";
+            }
+        } else {
+
+            // run through all ".posts" and show/hide div based on the query
+            for(var i = 0; i < data.length; i++){
+                if(data[i].innerHTML.toLowerCase().indexOf(q) > 0){
+                    data[i].style.display = "block";
+                } else {
+                    data[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    // search event
+    search = (event) => {
+        const query = event.target.value;
+        const results = this.filterPostsByString(query);
+        this.setState({results, query})
+    }
+
+    render(){
+        return(
+        <form className="form" aria-label="search for tutorials" onSubmit={this.handleSubmit}>
+            <label className="input-label" htmlFor="search">Search for a tutorial</label>
+            <p className="input-example">Search by tag, keyword, title, date. Example: css, 2018, editing</p>
+            <input className="input input-select" type="search" name="search" id="search" value={this.state.query} onChange={this.search}/>
+        </form>
+        )
+    }
+}
+
+export default Search

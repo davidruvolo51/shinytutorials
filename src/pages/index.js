@@ -1,76 +1,113 @@
+////////////////////////////////////////////////////////////////////////////////
+// FILE: index.js
+// AUTHOR: David Ruvolo
+// CREATED: 2019-10-25
+// MODIFIED: 2019-10-25
+// PURPOSE: react component for home page
+// DEPENDENCIES: see below
+// STATUS: in.progress
+// COMMENTS: NA
+////////////////////////////////////////////////////////////////////////////////
+// BEGIN
+
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import Hero from "../images/dashboard.svg"
-import SEO from "../components/seo"
-import Search from "../components/searchForm"
-import KeyWordButton from "../components/keywordButton"
-import Reset from "../components/resetBtn"
+// import layout components
+import App from "../components/layouts/app"
+import Main from "../components/layouts/main"
+import Hero from "../components/layouts/hero"
+import Section from "../components/layouts/section"
+import Sidebar from "../components/layouts/sidebar"
+import Search from "../components/elements/searchForm"
+import Reset from "../components/elements/resetBtn"
+import TagsList from "../components/elements/tagsList"
+import Post from "../components/layouts/post-entry"
 
+// build component
 const IndexPage = (props) => {
 
-  // get posts data
-  const postList = props.data.allMarkdownRemark;
+	// get posts data
+	const postList = props.data.allMarkdownRemark;
+	const keywords = Array.from([...new Set(postList.edges.map(n => n.node.frontmatter.keywords).flat().sort())][0]);
+	const dates = Array.from([...new Set(postList.edges.map(n => n.node.frontmatter.date).flat().sort())][0]);
+	const latestPost1 = postList.edges.filter(n => n.node.frontmatter.date === dates[dates.length - 1])[0];
+	const latestPost2 = postList.edges.filter(n => n.node.frontmatter.date === dates[dates.length - 2])[0];
 
-  // get unique keywords
-  const keywords = Array.from([...new Set(postList.edges.map(n => n.node.frontmatter.keywords).flat().sort())][0]);
-
-  // render  
-  return (
-    <Layout>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <header className="hero">
-        <div className="hero-content">
-          <h3>shinyTutorials</h3>
-          <h1>A collection of methods and techniques for building shiny apps.</h1>
-          <Hero className="hero-image" />
-        </div>
-      </header>
-      <div className="tutorial-block" aria-label="tutorials: view, search, and filter tutorials">
-        <nav className="tutorial-nav tutorial-tags" aria-label="categories: filter tutorials by a specific category">
-          <h2 className="menu-title">Tags</h2>
-          <ul className="menu">
-          {
-            keywords.map( (key,k) => (
-              <li key={key} className="menu-item">
-                <KeyWordButton keyword={key}>{key}</KeyWordButton>
-              </li>
-            ))
-          }
-          </ul>
-          <Reset />
-        </nav>
-        <article className="tutorial-list">
-          <div className="tutorial-list-content">
-            <h2>Tutorials</h2>
-            <Search />
-            {postList.edges.map(({node},i) => (
-              <section className="post" aria-label={node.frontmatter.title} key={node.frontmatter.title.toString()}>
-                <Link to={node.fields.slug} className="link">
-                  <h1 className="post-title">{node.frontmatter.title}</h1>
-                </Link>
-                <p className="post-desc">{node.frontmatter.excerpt}</p>
-                <span className="post-date">{node.frontmatter.date}</span>
-                <ul className="post-tags-list">
-                {node.frontmatter.keywords.map(tag => (
-                  <li key={tag.toString()}>{tag}</li>
-                ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-        </article>
-      </div>
-    </Layout>
-  )
+	// render  
+	return (
+		<App
+			title="home"
+			description="A collection of methods and techniques for building shiny apps"
+			author="dcruvolo"
+			keywords={["shiny", "shiny tutorials", "r", "shiny examples"]}
+		>
+			<Hero
+				title="shinyTutorials"
+				subtitle="A collection of methods and techniques for building shiny apps"
+				image="dashboard"
+				className="hero-style-3"
+			/>
+			<Main>
+				<Section className="tutorial-latest" aria-label="latest post">
+					<h2>Latest Posts</h2>
+					<div className="flex flex-50x2-layout">
+						<Post
+							isFeature={true}
+							className="flex-child"
+							title={latestPost1.node.frontmatter.title}
+							link={latestPost1.node.fields.slug}
+							abstract={latestPost1.node.frontmatter.abstract}
+							date={latestPost1.node.frontmatter.date}
+							keywords={latestPost1.node.frontmatter.keywords}
+						/>
+						<Post
+							isFeature={true}
+							className="flex-child"
+							title={latestPost2.node.frontmatter.title}
+							link={latestPost2.node.fields.slug}
+							abstract={latestPost2.node.frontmatter.abstract}
+							date={latestPost2.node.frontmatter.date}
+							keywords={latestPost2.node.frontmatter.keywords}
+						/>
+					</div>
+				</Section>
+				<div className="flex flex-30x70-layout tutorial-index">
+					<Sidebar className="flex-child tutorial-index-sidebar">
+						<h2 className="menu-title">Filter Posts</h2>
+						<TagsList keywords={keywords} />
+						<Reset />
+					</Sidebar>
+					<article className="flex-child tutorial-index-posts">
+						<h2>Tutorials</h2>
+						<Search />
+						{
+							// map nodes -> blog post lists
+							postList.edges.map(({ node }, i) => (
+								<Post
+									className="searchable"
+									title={node.frontmatter.title}
+									link={node.fields.slug}
+									abstract={node.frontmatter.abstract}
+									date={node.frontmatter.date}
+									keywords={node.frontmatter.keywords}
+									id={i}
+								/>
+							))
+						}
+					</article>
+				</div>
+			</Main>
+		</App>
+	)
 }
-
 export default IndexPage
 
+
+// define query
 export const listQuery = graphql`
   query ListQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___title, frontmatter___date] }) {
       edges {
         node {
           fields {
@@ -78,8 +115,8 @@ export const listQuery = graphql`
           }
           excerpt(pruneLength: 250)
           frontmatter {
-            excerpt
-            date(formatString: "MMMM YYYY")
+			abstract
+            date
             title
             keywords
           }

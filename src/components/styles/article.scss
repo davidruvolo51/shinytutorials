@@ -1,0 +1,118 @@
+@import "_variables";
+.article {
+	width: 100%;
+	padding: 32px 0;
+	background-color: $pure-light;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+
+	.article-header,
+	.article-body,
+	.article-footer {
+		display: block;
+		width: 90%;
+		margin: 0 auto;
+    }
+    
+    .article-header {
+        padding-top: 32px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid $semi-dark;
+        
+        h1 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12pt;
+            color: $semi-dark;
+        }
+        
+        h2 {
+            font-size: 32pt;
+            color: $dark;
+        }
+
+        p {
+            margin: 0;
+            color: $semi-dark;
+        }
+        
+        time {
+            font-size: 11pt;
+            color: $semi-dark;
+        }
+    }
+
+	.article-body {
+		h2 {
+			padding: 0;
+			margin: 0;
+			margin-top: 32px;
+		}
+
+		a {
+			color: $primary;
+		}
+
+		code {
+			word-wrap: break-word;
+		}
+
+		blockquote {
+			background-color: $ultra-light;
+			padding: 16px 12px;
+			margin: 44px 0;
+			border-left: 10px solid $primary;
+        }
+        
+        ol {
+            li {
+                margin: 0;
+                padding: 0;
+
+                p {
+                    padding: 0;
+                    margin: 0;
+                    line-height: 1;
+                }
+
+                a {
+                    padding: 0;
+                    margin: 0;
+                    line-height: 1.5;
+                }
+
+                ol {
+                    list-style-type: lower-alpha;
+                }
+            }
+        }
+	}
+
+	.article-footer {
+		border-top: 1px solid $light;
+
+		.post-meta-tags {
+			margin-left: 0;
+		}
+
+		.date {
+			display: block;
+			margin-right: 12px;
+			color: $semi-dark;
+
+			time {
+				font-family: "Courier New", Courier, monospace;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 972px) {
+	.article {
+		max-width: 912px;
+		margin: 0 auto;
+		margin-top: 55px;
+		-webkit-box-shadow: 0 3px 4px $light;
+		box-shadow: 0 3px 4px $light;
+	}
+}

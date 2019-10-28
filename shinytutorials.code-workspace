@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			// shiny app tutorials (blog)
+			"path": ".",
+			"name": "shinytutorials"
+		}
+	],
+	"settings": {}
+}
