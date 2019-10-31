@@ -75,11 +75,12 @@ const IndexPage = (props) => {
 				<div className="flex flex-30x70-layout tutorial-index">
 					<Sidebar className="flex-child tutorial-index-sidebar">
 						<h2 className="menu-title">Filter Posts</h2>
+						<p className="menu-caption">Select a keyword</p>
 						<TagsList keywords={keywords} />
 						<Reset />
 					</Sidebar>
 					<article className="flex-child tutorial-index-posts">
-						<h2>Tutorials</h2>
+						<h2>Available Tutorials</h2>
 						<Search />
 						{
 							// map nodes -> blog post lists

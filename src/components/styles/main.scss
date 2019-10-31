@@ -10,6 +10,7 @@
 	}
 
 	.tutorial-latest {
+		padding-bottom: 72px;
 
 		h2 {
 			text-align: center;
@@ -38,11 +39,18 @@
 				width: 80%;
 				margin: 0 auto;
 
+				.menu-caption {
+					margin: 0;
+					margin-bottom: 12px;
+					line-height: 1.3;
+				}
+
 				.taglist {
 					list-style: none;
 					margin: 0;
 					padding: 0;
 					margin-bottom: 44px;
+					margin-left: -6px;
 
 					.taglist-item {
 						width: 200px;
