@@ -8,21 +8,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
-    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
         name: `pages`,
         ignore: process.env.NODE_ENV === `production` && [`**/draft-*`]
-      },
-    },
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: `/components/images/`,
-        },
       },
     },
     {
@@ -49,7 +40,6 @@ module.exports = {
         ]
       }
     },
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

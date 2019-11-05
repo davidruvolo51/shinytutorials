@@ -9,13 +9,16 @@ keywords: ["rmarkdown"]
 
 ## Contents
 
-1. Why would I need this?
-2. How do I get this working?
-    1. Preparing the UI
-    2. Drafting your Rmarkdown template as a parameterized report
-    3. Rending the template server-side
-3. Further Thoughts
-4. How do I run the example?
+1. [Why would I need this?](#about)
+2. [How do I get this working?](#work)
+    1. [Preparing the UI](#work-ui)
+    2. [Drafting your Rmarkdown template as a parameterized report](#work-template)
+    3. [Rending the template server-side](#work-render)
+3. [Further Thoughts](#further-thoughts)
+4. [How do I run the example?](#run)
+
+
+<span id="about"></span>
 
 ## Why would I need this?
 
@@ -27,6 +30,8 @@ The purpose of this app is to create a shiny app that allows users to make a sel
 
 Let's get started!
 
+<span id="work"></span>
+
 ## How do I get this working?
 
 The beauty of this approach is that your can write your UI using good ole Rmarkdown. In terms of the shiny UI, there isn't much to do unless you want to have inputs and other elements besides the report. To get the app running, this tutorial will cover three steps.
@@ -36,6 +41,8 @@ The beauty of this approach is that your can write your UI using good ole Rmarkd
 3. Write a render function that compiles the template 
 
 This app will demonstrate how to render a report based on user selection.
+
+<span id="work-ui"></span>
 
 ### Preparing the UI
 
@@ -97,6 +104,7 @@ htmlOutput("report")
 
 See the `app.R` file for the full ui code.
 
+<span id="work-template"></span>
 
 ### Drafting your rmarkdown template as a parameterized report
 
@@ -166,6 +174,8 @@ kableExtra::kable(top_ten) %>% kable_styling()
 ```
 
 That's the basics for the Rmarkdown template! You can create many more visualizations as you like. Just remember to reference the `params$your_param_name_here` each time.
+
+<span id="work-render"></span>
 
 ### Rendering the template server-side
 
@@ -261,6 +271,8 @@ observeEvent(input$render, {
 
 That's it. 
 
+<span id="further-thoughts"></span>
+
 ## Further thoughts
 
 You can create additional templates, render them accordingly, and pass as many parameters as you like. I haven't tested interactive visualizations in templates, but I would imagine they would work as long as you reference the correct `param`. 
@@ -268,6 +280,8 @@ You can create additional templates, render them accordingly, and pass as many p
 Even though this is basic example, I've noticed that it takes a few seconds to render and load the template. The dataset is fairly small too. I would recommend preprocessing the data outside the markdown template (where possible). You can use loading animations and run them while the template is rendering. There are few loading ui packages on github. Search for `r shiny loading screen animations`.
 
 For more information on parameterized reports, check out the [documentation](https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F).
+
+<span id="run"></span>
 
 ## How do I run the example?
 

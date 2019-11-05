@@ -9,100 +9,54 @@
 	background-color: $pure-light;
 	overflow: hidden;
 
-	.hero-content {
-		width: 90%;
-		margin: 0 auto;
-		padding: 72px 0;
-		z-index: 2;
+	&.hero-index {
+		
+		.hero-content {
+			width: 90%;
+			margin: 0 auto;
+			padding: 72px 0;
+			z-index: 2;
 
-		h1 {
-			font-size: 21pt;
-			letter-spacing: 2.5px;
+			h1 {
+				font-size: 21pt;
+				letter-spacing: 2.5px;
+			}
+
+			h2 {
+				font-weight: 600;
+				font-size: 32pt;
+				letter-spacing: 2px;
+			}
+
+			time {
+				font-size: 16px;
+				font-weight: 600;
+			}
+
+			.hero-image {
+				display: block;
+				width: 300px;
+				margin: 44px auto;
+				-webkit-box-shadow: 0 12px 3px -6px $med;
+				box-shadow: 0 12px 3px -6px $med;
+			}
 		}
+	}
 
-		h2 {
-			font-weight: 600;
-			font-size: 32pt;
-			letter-spacing: 2px;
-		}
+	&.hero-text {
+		.hero-content {
+			width: 90%;
+			margin: 0 auto;
+			padding: 82px 0;
+			padding-bottom: 0;
 
-		time {
-			font-size: 16px;
-			font-weight: 600;
-		}
-
-		.hero-image {
-			display: block;
-			width: 300px;
-			margin: 44px auto;
-			-webkit-box-shadow: 0 12px 3px -6px $med;
-			box-shadow: 0 12px 3px -6px $med;
+			p {
+				margin: 0;
+			}
 		}
 	}
 
 	&.hero-style-1 {
-		position: relative;
-
-		&:before {
-			content: " ";
-			position: absolute;
-			width: 250%;
-			height: 60%;
-			background-color: $primary;
-			top: -30%;
-			right: -60%;
-			-webkit-transform: rotate(8deg);
-			-ms-transform: rotate(8deg);
-			transform: rotate(8deg);
-		}
-
-		&:after {
-			content: " ";
-			position: absolute;
-			width: 250%;
-			height: 60%;
-			background-color: $primary;
-			opacity: 0.25;
-			top: -25%;
-			right: -60%;
-			-webkit-transform: rotate(6.5deg);
-			-ms-transform: rotate(6.5deg);
-			transform: rotate(6.5deg);
-		}
-	}
-
-	&.hero-style-2 {
-		position: relative;
-
-		&:before {
-			content: " ";
-			position: absolute;
-			width: 160%;
-			height: 45%;
-			background-color: $primary;
-			bottom: -30%;
-			right: -60%;
-			-webkit-transform: rotate(-18deg);
-			-ms-transform: rotate(-18deg);
-			transform: rotate(-18deg);
-		}
-
-		&:after {
-			content: " ";
-			position: absolute;
-			width: 170%;
-			height: 45%;
-			background-color: $primary;
-			opacity: 0.25;
-			bottom: -30%;
-			right: -60%;
-			-webkit-transform: rotate(-14deg);
-			-ms-transform: rotate(-14deg);
-			transform: rotate(-14deg);
-		}
-	}
-
-	&.hero-style-3 {
 		background-image: url(../images/hero-bk-gray.svg);
 		background-size: cover;
 		background-position: 50% 50%;
@@ -112,14 +66,17 @@
 
 @media screen and (min-width: 972px) {
 	.hero {
-		.hero-content {
-			width: 100%;
-			max-width: 912px;
+		&.hero-index,
+		&.hero-text {
+			.hero-content {
+				width: 100%;
+				max-width: 912px;
 
-			.hero-image {
-				-webkit-transform: scale(1.25);
-				-ms-transform: scale(1.25);
-				transform: scale(1.25);
+				.hero-image {
+					-webkit-transform: scale(1.25);
+					-ms-transform: scale(1.25);
+					transform: scale(1.25);
+				}
 			}
 		}
 	}

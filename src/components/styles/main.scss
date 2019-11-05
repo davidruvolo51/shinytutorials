@@ -9,15 +9,16 @@
 		margin: 0 auto;
 	}
 
+	// latest tutorials section on index.js (home page)
 	.tutorial-latest {
 		padding-bottom: 72px;
 
 		h2 {
 			text-align: center;
 			text-transform: uppercase;
+			letter-spacing: 2px;
 			padding: 0;
 			margin: 0;
-			letter-spacing: 2px;
 		}
 
 		.post.post-feature {
@@ -25,6 +26,18 @@
 		}
 	}
 
+	// get involved section on index.js (home page)
+	.get-involved {
+		h2 {
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			padding: 0;
+			margin: 0;
+		}
+	}
+
+	// tutorial index page (/tutorials/)
 	.tutorial-index {
 		padding: 0;
 		padding-bottom: 66px;
@@ -108,6 +121,11 @@
 		.tutorial-latest {
 			.post.post-feature {
 				max-width: 40%;
+				margin-left: 0;
+
+				&:nth-child(1){
+					margin-right: 32px;
+				}
 			}
 		}
 		.tutorial-index {

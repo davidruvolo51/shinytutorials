@@ -16,7 +16,7 @@ import Dashboard from "../images/dashboard"
 import DashboardFail from "../images/dashboard-fail"
 const Hero = (props) => {
     return (
-        <header className={ props.className ? `hero ${props.className}` : "hero"} style={props.style ? props.style : null} >
+        <header className={ props.className ? `hero hero-index ${props.className}` : "hero hero-index"} style={props.style ? props.style : null} >
             <div className="hero-content">
                 {
                     // set image

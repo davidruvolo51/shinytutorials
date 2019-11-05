@@ -6,5 +6,7 @@
 			"name": "shinytutorials"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"sassVariablesHelper.route": "/src/components/styles/_variables.scss"
+	}
 }
