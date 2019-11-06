@@ -2,7 +2,7 @@
 // FILE: hero.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-10-25
+// MODIFIED: 2019-11-5
 // PURPOSE: react component for page heros
 // DEPENDENCIES: see below
 // STATUS: working

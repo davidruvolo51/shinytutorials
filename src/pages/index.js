@@ -2,10 +2,10 @@
 // FILE: index.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-10-25
+// MODIFIED: 2019-11-06
 // PURPOSE: react component for home page
 // DEPENDENCIES: see below
-// STATUS: in.progress
+// STATUS: working
 // COMMENTS: NA
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN

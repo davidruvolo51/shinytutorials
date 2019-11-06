@@ -2,10 +2,10 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2019-11-05
+// MODIFIED: 2019-11-06
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
-// STATUS: in.progress
+// STATUS: working
 // COMMENTS: NA
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
@@ -53,6 +53,7 @@ const Tutorials = (props) => {
 								<Post
 									className="searchable"
 									title={node.frontmatter.title}
+									titleIsLink={true}
 									link={node.fields.slug}
 									abstract={node.frontmatter.abstract}
 									date={node.frontmatter.date}

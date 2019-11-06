@@ -2,11 +2,21 @@
 // FILE: post-entry.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2019-10-27
+// MODIFIED: 2019-11-06
 // PURPOSE: react component for post entries
 // DEPENDENCIES: react
-// STATUS: in.progress
-// COMMENTS: NA
+// STATUS: working
+// COMMENTS:
+//      The following props are used in this component
+//          - id: unique it (useful for rendering posts in an interation)
+//          - className: optional class names
+//          - isFeature: applies css class if true 
+//          - title: post title
+//          - titleIsLink: render post title as link (logical) 
+//          - link: link to the post (uses <Link />)
+//          - abstract: summary of the post
+//          - date: date the post was released
+//          - keywords: an array of keywords
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
@@ -17,7 +27,17 @@ const Post = (props) => {
     const css = props.isFeature ? `${c} post-feature` : `${c} post-plain`;
     return (
         <div className={ css } aria-label={props.title} key={props.id ? props.id : null}>
-            <h1 className="post-title">{props.title}</h1>
+            {
+                props.titleIsLink
+                ? (
+                    <h1 className="post-title-link">
+                        <Link to={props.link}>{props.title}</Link>
+                    </h1>
+                )
+                : (
+                    <h1 className="post-title">{props.title}</h1>
+                )
+            }
             <p className="post-desc">{props.abstract}</p>
             <ul className="post-meta" aria-label="post details">
                 <li className="post-meta-item">

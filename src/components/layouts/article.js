@@ -2,10 +2,10 @@
 // FILE: article.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-10-25
+// MODIFIED: 2019-11-06
 // PURPOSE: react component for tutorials, i.e. as articles
 // DEPENDENCIES: see below
-// STATUS: in.progress
+// STATUS: working
 // COMMENTS: requirements for this component are
 //      - post: the prop that contains the content
 //      - date: the date the post was published
