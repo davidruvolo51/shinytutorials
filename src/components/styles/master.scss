@@ -210,4 +210,29 @@ div.gatsby-highlight {
 	}
 }
 
+table {
+	width: 100%;
+	margin: 6px auto;
+	font-weight: normal;
+	border-spacing: 0;
+	text-align: left;
+	margin-top: 8px;
+  }
+  
+  table thead tr th {
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 14px;
+	padding: 4px 12px;
+	border-bottom: 1px solid $dark;
+  }
+  
+  table tbody tr td {
+	padding: 24px 12px;
+  }
+  
+  table tbody tr:nth-child(even) {
+	background-color: $ultra-light;
+  }
+
 @import "flex";

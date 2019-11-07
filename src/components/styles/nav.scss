@@ -12,8 +12,8 @@
 	column-gap: 0;
 	row-gap: 0;
 	background-color: $pure-light;
-	-webkit-box-shadow: 0 2px 6px $med;
-	box-shadow: 0 2px 6px $med;
+	-webkit-box-shadow: 0 2px 6px $shadow;
+	box-shadow: 0 2px 6px $shadow;
 	z-index: 15;
 
 	.nav-item {
@@ -64,8 +64,8 @@
 			width: 100%;
 			height: auto;
             clip: auto;
-            -webkit-box-shadow: 0 6px 6px $med;
-            box-shadow: 0 6px 6px $med;
+            -webkit-box-shadow: 0 6px 6px $shadow;
+            box-shadow: 0 6px 6px $shadow;
 		}
 	}
 

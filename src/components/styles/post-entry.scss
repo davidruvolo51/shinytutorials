@@ -57,8 +57,8 @@
 	&.post-feature {
 		margin: 16px auto;
 		background-color: white;
-		-webkit-box-shadow: 0 0 4px 2px $light;
-		box-shadow: 0 0 4px 2px $light;
+		-webkit-box-shadow: 0 0 4px 2px $shadow;
+		box-shadow: 0 0 4px 2px $shadow;
 		border-radius: 4px;
 
 		&:first-child {
@@ -107,8 +107,8 @@
 
 		&.post-feature {
 			max-width: 912px;
-			-webkit-box-shadow: 0 0 4px 2px $light;
-			box-shadow: 0 0 4px 2px $light;
+			-webkit-box-shadow: 0 0 4px 2px $shadow;
+			box-shadow: 0 0 4px 2px $shadow;
 
 			.post-desc {
 				width: 100%;
