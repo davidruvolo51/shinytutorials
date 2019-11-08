@@ -70,6 +70,7 @@ const IndexPage = (props) => {
 							keywords={latestPost2.node.frontmatter.keywords}
 						/>
 					</div>
+					<Link to="tutorials" className="btn-link btn-primary btn-centered">Read More</Link>
 				</Section>
 			</Main>
 		</App>

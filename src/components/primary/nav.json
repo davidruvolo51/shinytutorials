@@ -1,0 +1,20 @@
+{
+    "links": [
+        {
+            "name": "Home",
+            "path": ""
+        },
+        {
+            "name": "Tutorials",
+            "path": "tutorials"
+        },
+        {
+            "name": "Gallery",
+            "path": "gallery"
+        },
+        {
+            "name": "About",
+            "path": "about"
+        }
+    ]
+}
