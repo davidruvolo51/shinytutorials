@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-10-25
+// MODIFIED: 2019-11-14
 // PURPOSE: layout component for tutorials
 // DEPENDENCIES: see below
 // STATUS: in.progress
@@ -11,7 +11,6 @@
 // BEGIN
 import React from "react"
 import { graphql } from "gatsby"
-
 import App from "../components/layouts/app"
 import Main from "../components/layouts/main"
 import Article from "../components/layouts/article"

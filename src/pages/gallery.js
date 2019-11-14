@@ -11,15 +11,17 @@
 // BEGIN
 import React from "react"
 import App from "../components/layouts/app"
+import Hero from "../components/layouts/hero-alt"
 import Main from "../components/layouts/main"
 import Section from "../components/layouts/section"
-const Gallery = () => {
+function Gallery(props){
     return (
         <App title="gallery" description="A collection of methods and techniques for building shiny apps" author="dcruvolo" keywords={["shiny", "shiny tutorials", "r", "shiny examples"]}>
-            <Main style={{padding: "72px 0"}}>
-                <Section aria-label="introduction">
-                    <h2>Shiny Apps Gallery</h2>
-                    <p>I'm planning to use this page as a gallery of shiny applications that demonstrate the concepts outlined in the tutorials. There are few examples available on github at <a href="https://github.com/davidruvolo51/shinyAppGallery">shinyAppGallery</a>, but these are fairly outdated. I'm currently redesigning and updating these applications (some are way overdue) so check back here soon for updates!</p>
+            <Hero title="Shiny Apps Gallery" text="Below you can find examples of shiny applications that demonstrate some of the methods discussed in the tutorials."/>
+            <Main className="shinyapps-gallery" style={{padding: "72px 0"}}>
+                <Section aria-labelledBy="shiny-apps-gallery-title">
+                    <h2 id="shiny-apps-gallery-title">Available Applications</h2>
+                    <p>I'm currently redesigning and updating the applications available in the <a href="https://github.com/davidruvolo51/shinyAppGallery">shinyAppGallery</a> repository (some are way overdue) so check back here soon for updates!</p>
                 </Section>
             </Main>
         </App>

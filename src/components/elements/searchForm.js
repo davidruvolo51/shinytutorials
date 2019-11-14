@@ -1,7 +1,16 @@
 // import PropTypes from "prop-types"
+////////////////////////////////////////////////////////////////////////////////
+// FILE: searchForm.js
+// AUTHOR: David Ruvolo
+// CREATED: 2019-11-06
+// MODIFIED: 2019-11-14
+// PURPOSE: react component for search
+// DEPENDENCIES: react
+// STATUS: working
+// COMMENTS: NA
+////////////////////////////////////////////////////////////////////////////////
+// BEGIN
 import React, { Component } from 'react'
-
-
 class Search extends Component {
     
     // init state

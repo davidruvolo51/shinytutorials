@@ -2,7 +2,7 @@
 // FILE: section.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-26
-// MODIFIED: 2019-10-26
+// MODIFIED: 2019-11-14
 // PURPOSE: react component for sections
 // DEPENDENCIES: react
 // STATUS: working
@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
-const Section = (props) => {
+function Section(props){
     return (
         <section className={props.className ? `main-section ${props.className}` : `main-section`}>
             {props.children}

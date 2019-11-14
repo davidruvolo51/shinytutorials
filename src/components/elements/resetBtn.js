@@ -1,13 +1,22 @@
+////////////////////////////////////////////////////////////////////////////////
+// FILE: resetBtn.js
+// AUTHOR: David Ruvolo
+// CREATED: 2019-11-06
+// MODIFIED: 2019-11-14
+// PURPOSE: react component for reset button
+// DEPENDENCIES: React
+// STATUS: working
+// COMMENTS: NA
+////////////////////////////////////////////////////////////////////////////////
+// BEGIN
 import React, { Component } from 'react'
-
-
 class Reset extends Component {
 
     // function to reset selected tags and to show all blocks
     resetForm(){
 
         // gather elements
-        const tags = document.querySelectorAll(".taglist .btn");
+        const tags = document.querySelectorAll(".btn-keyword");
         const data = document.querySelectorAll(".post");
 
         // remove classes and show all posts
@@ -27,6 +36,4 @@ class Reset extends Component {
     }
 
 }
-
-
 export default Reset

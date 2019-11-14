@@ -2,7 +2,7 @@
 // FILE: app.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-06
+// MODIFIED: 2019-11-14
 // PURPOSE: react component for app wrapper
 // DEPENDENCIES: see below
 // STATUS: working
@@ -14,7 +14,7 @@ import SEO from "../seo"
 import Header from "../primary/header"
 import Footer from "../primary/footer"
 import "../styles/master.scss"
-const App = (props) => {
+function App(props){
     return (
         <>
             <SEO title={props.title} keywords={props.keywords} description={props.description} author={props.author} />

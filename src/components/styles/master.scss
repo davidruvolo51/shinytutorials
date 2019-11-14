@@ -38,6 +38,9 @@ h6 {
 p {
 	color: $semi-dark;
 	line-height: $body-line-height;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 12px;
 }
 
 li {
@@ -100,7 +103,6 @@ button {
 	appearance: none;
 	display: block;
 	border: none;
-	outline: none;
 	cursor: pointer;
 }
 

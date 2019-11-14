@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
-const Dashboard = (props) => {
+function DashboardFail(props){
     return (
         <svg className={props.className ? `illustration ${props.className}` : `illustration`} width="300px" height="200px" viewBox="0 0 300 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <title>dashboard</title>
@@ -175,4 +175,4 @@ const Dashboard = (props) => {
         </svg >
     )
 }
-export default Dashboard
+export default DashboardFail

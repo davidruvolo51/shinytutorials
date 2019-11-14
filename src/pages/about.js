@@ -2,7 +2,7 @@
 // FILE: about.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2019-10-27
+// MODIFIED: 2019-11-14
 // PURPOSE: about page
 // DEPENDENCIES: see below
 // STATUS: in.progress
@@ -10,14 +10,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
-
 import App from "../components/layouts/app"
 import Main from "../components/layouts/main"
 import Section from "../components/layouts/section"
 
 // page
-const About = (props) => {
-
+function About(props){
     return (
         <App title="about" description="A collection of methods and techniques for building shiny apps" author="dcruvolo" keywords={["shiny", "shiny tutorials", "r", "shiny examples"]}>
             <Main style={{padding: "72px 0"}}>

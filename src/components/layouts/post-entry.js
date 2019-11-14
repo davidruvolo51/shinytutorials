@@ -2,7 +2,7 @@
 // FILE: post-entry.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2019-11-06
+// MODIFIED: 2019-11-14
 // PURPOSE: react component for post entries
 // DEPENDENCIES: react
 // STATUS: working
@@ -22,20 +22,20 @@
 import React from "react"
 import { Link } from "gatsby"
 import "../styles/post-entry.scss"
-const Post = (props) => {
+function Post(props){
     const c = props.className ? `post ${props.className}` : `post`
     const css = props.isFeature ? `${c} post-feature` : `${c} post-plain`;
     return (
-        <div className={ css } aria-label={props.title} key={props.id ? props.id : null}>
+        <div className={ css } aria-labelledBy={props.title} key={props.id ? props.id : null}>
             {
                 props.titleIsLink
                 ? (
-                    <h1 className="post-title-link">
+                    <h1 id={props.title} className="post-title-link">
                         <Link to={props.link}>{props.title}</Link>
                     </h1>
                 )
                 : (
-                    <h1 className="post-title">{props.title}</h1>
+                    <h1 id={props.title} className="post-title">{props.title}</h1>
                 )
             }
             <p className="post-desc">{props.abstract}</p>

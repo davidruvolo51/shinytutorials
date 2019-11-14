@@ -2,7 +2,7 @@
 // FILE: hero-alt.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2019-11-05
+// MODIFIED: 2019-11-14
 // PURPOSE: hero-alt is a text based hero for other pages and sections
 // DEPENDENCIES: see below
 // STATUS: working
@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
-const Header = (props) => {
+function Header(props){
     return (
         <header className={props.className ? `hero hero-text ${props.className}` : "hero hero-text"}>
             <div className="hero-content">

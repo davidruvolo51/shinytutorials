@@ -2,7 +2,7 @@
 // FILE: hero.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-5
+// MODIFIED: 2019-11-15
 // PURPOSE: react component for page heros
 // DEPENDENCIES: see below
 // STATUS: working
@@ -14,7 +14,7 @@ import "../styles/hero.scss"
 import BarChart from "../images/barchart"
 import Dashboard from "../images/dashboard"
 import DashboardFail from "../images/dashboard-fail"
-const Hero = (props) => {
+function Hero(props){
     return (
         <header className={ props.className ? `hero hero-index ${props.className}` : "hero hero-index"} style={props.style ? props.style : null} >
             <div className="hero-content">

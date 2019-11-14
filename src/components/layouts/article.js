@@ -2,7 +2,7 @@
 // FILE: article.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-06
+// MODIFIED: 2019-11-14
 // PURPOSE: react component for tutorials, i.e. as articles
 // DEPENDENCIES: see below
 // STATUS: working
@@ -15,7 +15,7 @@
 // BEGIN
 import React from "react"
 import "../styles/article.scss"
-const Article = (props) => {
+function Article(props){
     // date options
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
 

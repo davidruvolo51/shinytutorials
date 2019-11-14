@@ -2,15 +2,15 @@
 // FILE: sidebar.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-06
+// MODIFIED: 2019-11-14
 // PURPOSE: react component for sidebar
-// DEPENDENCIES: see below
+// DEPENDENCIES: react
 // STATUS: working
 // COMMENTS: NA
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
-const Sidebar = (props) => {
+function Sidebar(props){
     return (
         <aside className={props.className ? `sidebar ${props.className}` : "sidebar"}>
             <section className="sidebar-content">

@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2019-11-06
+// MODIFIED: 2019-11-14
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -22,7 +22,7 @@ import Reset from "../../components/elements/resetBtn"
 import TagsList from "../../components/elements/tagsList"
 import Post from "../../components/layouts/post-entry"
 
-const Tutorials = (props) => {
+function Tutorials(props){
 
     // get posts data
 	const postList = props.data.allMarkdownRemark;

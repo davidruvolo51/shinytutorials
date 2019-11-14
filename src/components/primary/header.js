@@ -2,7 +2,7 @@
 // FILE: header.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-10-25
+// MODIFIED: 2019-11-14
 // PURPOSE: react component for page header, i.e., navbar
 // DEPENDENCIES: react, link, home icon
 // STATUS: working
@@ -11,11 +11,9 @@
 // BEGIN
 import React, { Component } from "react"
 import { Link } from "gatsby"
-
 import Nav from "./nav"
 import "../styles/nav.scss"
 import MenuBtn from "../elements/menuBtn"
-
 class Header extends Component {
 
 	constructor(props) {

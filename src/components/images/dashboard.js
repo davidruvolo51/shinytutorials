@@ -2,7 +2,7 @@
 // FILE: dashboard.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-10-25
+// MODIFIED: 2019-11-14
 // PURPOSE: react component for dashboard illustration
 // DEPENDENCIES: react
 // STATUS: working
@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
-const Dashboard = (props) => {
+function Dashboard(props){
     return (
         <svg className={props.className ? `illustration ${props.className}` : `illustration`} width="300px" height="200px" viewBox="0 0 300 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <title>dashboard</title>

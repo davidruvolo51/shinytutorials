@@ -1,3 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
+// FILE: seo.js
+// AUTHOR: David Ruvolo
+// CREATED: 2019-11-14
+// MODIFIED: 2019-11-14
+// PURPOSE: seo component
+// DEPENDENCIES: react, proptipes, helmet
+// STATUS: working
+// COMMENTS: NA
+////////////////////////////////////////////////////////////////////////////////
+// BEGIN
+
+
 /**
  * SEO component that queries for data with
  *  Gatsby's useStaticQuery React hook

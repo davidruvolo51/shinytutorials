@@ -2,9 +2,9 @@
 // FILE: footer.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-10-25
+// MODIFIED: 2019-11-14
 // PURPOSE: footer component
-// DEPENDENCIES: see below
+// DEPENDENCIES: react, footer.scss, nav, twitter icon, github icon
 // STATUS: working 
 // COMMENTS: NA
 ////////////////////////////////////////////////////////////////////////////////
@@ -14,7 +14,7 @@ import "../styles/footer.scss"
 import Nav from "./nav"
 import Twitter from "../images/twitter"
 import Github from "../images/github"
-const Footer = () => {
+function Footer(){
   return (
     <footer className="footer">
       <h2>shinyTutorials</h2>
@@ -35,5 +35,4 @@ const Footer = () => {
     </footer>
   )
 }
-
 export default Footer

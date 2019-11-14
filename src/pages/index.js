@@ -2,14 +2,13 @@
 // FILE: index.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-06
+// MODIFIED: 2019-11-14
 // PURPOSE: react component for home page
 // DEPENDENCIES: see below
 // STATUS: working
 // COMMENTS: NA
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
-
 import React from "react"
 import { graphql, Link } from "gatsby"
 
@@ -21,7 +20,7 @@ import Section from "../components/layouts/section"
 import Post from "../components/layouts/post-entry"
 
 // build component
-const IndexPage = (props) => {
+function IndexPage(props) {
 
 	// get posts data
 	const postList = props.data.allMarkdownRemark;
