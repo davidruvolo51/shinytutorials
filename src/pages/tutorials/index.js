@@ -55,6 +55,7 @@ function Tutorials(props){
 									title={node.frontmatter.title}
 									titleIsLink={true}
 									link={node.fields.slug}
+									linkLabel="Read"
 									abstract={node.frontmatter.abstract}
 									date={node.frontmatter.date}
 									keywords={node.frontmatter.keywords}

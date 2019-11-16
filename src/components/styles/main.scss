@@ -5,7 +5,7 @@
 
 	.main-section {
 		width: 90%;
-		padding: 44px 0;
+		padding: 24px 0;
 		margin: 0 auto;
 	}
 
@@ -71,6 +71,7 @@
 
 			h2 {
 				padding-left: 32px;
+				margin-bottom: 32px;
 			}
 
 			.post.post-plain {
@@ -103,6 +104,21 @@
 	// styling for application gallery
 	&.shinyapps-gallery {
 		background-color: $ultra-light;
+
+		.main-section {
+			width: 100%;
+
+			h2 {
+				padding-left: 32px;
+				margin-bottom: 32px;
+			}
+
+			.shinyapp-entry {
+				border-radius: none;
+				box-shadow: none;
+				border-bottom: 1px solid $light;
+			}
+		}
 	}
 }
 
@@ -146,6 +162,21 @@
 					&:last-child {
 						-webkit-box-shadow: -4px 0 2px $shadow, 4px 0 2px $shadow, 0 4px 2px $shadow;	
 						box-shadow: -4px 0 2px $shadow, 4px 0 2px $shadow, 0 4px 2px $shadow;	
+					}
+				}
+			}
+		}
+		&.shinyapps-gallery {
+			.main-section{
+				.shinyapp-entry {
+					margin-bottom: 32px;
+					border-bottom: none;
+					-webkit-box-shadow: 0 0 6px 0 $shadow;
+					box-shadow: 0 0 6px 0 $shadow;
+					border-radius: 4px;
+
+					.post-desc {
+						width: 90%;
 					}
 				}
 			}

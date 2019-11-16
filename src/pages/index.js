@@ -45,7 +45,7 @@ function IndexPage(props) {
 			<Main>
 				<Section aria-label="introduction">
 					<h2>Hello!</h2>
-					<p>This site was developed to provide a series of practical examples for developing shiny applications. All of the tutorials can be found in the <Link to="/tutorials">Tutorials</Link> index and you can read more about this project on the <Link to="/about">About</Link> page. If you have any questions, checkout the github repository <a href="https://github.com/davidruvolo51/shinyAppTutorials">Shiny Tutorials</a> or tweet me <a href="https://twitter.com/dcruvolo">@dcruvolo</a>.</p>
+					<p>This site was developed to provide a series of practical examples for developing shiny applications. All of the tutorials can be found in the <Link to="/tutorials">Tutorials</Link> index and you can read more about this project on the <Link to="/about">About</Link> page. I also have some example applications in the <Link to="/gallery">Gallery</Link>. If you have any questions, checkout the github repository <a href="https://github.com/davidruvolo51/shinyAppTutorials">Shiny Tutorials</a> or tweet me <a href="https://twitter.com/dcruvolo">@dcruvolo</a>.</p>
 				</Section>
 				<Section className="tutorial-latest" aria-label="latest post">
 					<h2>Latest Posts</h2>
@@ -55,6 +55,7 @@ function IndexPage(props) {
 							className="flex-child"
 							title={latestPost1.node.frontmatter.title}
 							link={latestPost1.node.fields.slug}
+							linkLabel="Read"
 							abstract={latestPost1.node.frontmatter.abstract}
 							date={latestPost1.node.frontmatter.date}
 							keywords={latestPost1.node.frontmatter.keywords}
@@ -64,6 +65,7 @@ function IndexPage(props) {
 							className="flex-child"
 							title={latestPost2.node.frontmatter.title}
 							link={latestPost2.node.fields.slug}
+							linkLabel="Read"
 							abstract={latestPost2.node.frontmatter.abstract}
 							date={latestPost2.node.frontmatter.date}
 							keywords={latestPost2.node.frontmatter.keywords}
