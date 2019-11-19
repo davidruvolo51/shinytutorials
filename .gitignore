@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -59,11 +60,9 @@ typings/
 #public
 
 # Mac files
+=======
+.cache
+node_modules
+>>>>>>> master
 .DS_Store
-
-# Yarn
-yarn-error.log
-.pnp/
-.pnp.js
-# Yarn Integrity file
-.yarn-integrity
+src
