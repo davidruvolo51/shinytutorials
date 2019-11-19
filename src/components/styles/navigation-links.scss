@@ -1,0 +1,49 @@
+@import "_variables";
+.menu {
+	width: 100%;
+	margin: 0 auto;
+	list-style: none;
+	padding: 12px 0;
+
+	.menu-item {
+		display: block;
+		padding: 0;
+		margin: 0;
+		margin-bottom: 12px;
+
+		.menu-link {
+			position: relative;
+			text-transform: uppercase;
+			font-size: 11pt;
+			letter-spacing: 2px;
+			font-weight: 600;
+			color: $primary;
+			padding-bottom: 4px;
+			border-bottom: 2px solid transparent;
+
+			.menu-link-icon {
+				position: relative;
+				padding-right: 6px;
+				top: 4px;
+
+				path {
+					fill: $primary;
+				}
+			}
+
+			&:hover {
+				border-bottom-color: $primary;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 972px) {
+	.menu {
+		.menu-item {
+			display: inline-block;
+			margin: 0;
+			margin-right: 18px;
+		}
+	}
+}

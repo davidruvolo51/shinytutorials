@@ -1,0 +1,124 @@
+@import "_variables";
+
+.nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: -ms-grid;
+	display: grid;
+	grid-template-columns: 65% 35%;
+	grid-template-areas: "brandLink menuBtn";
+	column-gap: 0;
+	row-gap: 0;
+	background-color: $pure-light;
+	-webkit-box-shadow: 0 2px 6px $shadow;
+	box-shadow: 0 2px 6px $shadow;
+	z-index: 15;
+
+	.nav-item {
+		display: flex;
+        align-items: center;
+	}
+
+	.nav-item.brand-link {
+		grid-area: brandLink;
+		color: $primary;
+		font-weight: 600;
+		font-size: 14pt;
+		letter-spacing: 2px;
+		padding: 0;
+		padding-left: 16px;
+		box-shadow: none;
+
+		.brand-link-icon {
+			path {
+				fill: $primary;
+			}
+		}
+	}
+
+	.navigation {
+		display: block;
+		position: absolute;
+		top: 48px;
+		width: 1px;
+		height: 1px;
+		clip: rect(0 0 0 0);
+		clip: rect(0, 0, 0, 0);
+		padding: 32px 0;
+        background-color: $pure-light;
+        z-index: 14;
+
+		.menu-item {
+			display: block;
+            text-align: center;
+            
+            .menu-link {
+				font-size: 16pt;
+				box-shadow: none;
+            }
+		}
+
+		&.expanded {
+			width: 100%;
+			height: auto;
+            clip: auto;
+            -webkit-box-shadow: 0 6px 6px $shadow;
+            box-shadow: 0 6px 6px $shadow;
+		}
+	}
+
+	.menu-btns {
+        justify-content: flex-end;
+        grid-area: menuBtn;
+        
+        .menu-button {
+            margin: 0;
+            
+            #menuBtn {
+                margin-right: 16px;
+            }
+        }
+	}
+}
+
+@media screen and (min-width: 972px) {
+	.nav {
+		display: grid;
+		grid-template-areas: "brandLink navLinks";
+		grid-template-columns: 200px 80%;
+
+		.nav-item.brand-link {
+			padding-bottom: 0;
+            grid-area: brandLink;
+		}
+
+		.nav-item.navigation {
+            position: static;
+            display: flex;
+            width: 100%;
+            grid-area: navLinks;
+            box-shadow: none;
+
+			.menu-item {
+				display: inline-block;
+                width: auto;
+                margin: 0;
+                margin-right: 24px;
+
+                .menu-link {
+                    font-size: 11pt;
+                }
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+
+		.nav-item.menu-btns {
+			display: none;
+		}
+	}
+}

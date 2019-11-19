@@ -1,0 +1,10 @@
+{
+	"folders":[
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"sassVariablesHelper.route": "src/components/styles/_variables.scss"
+	}
+}
