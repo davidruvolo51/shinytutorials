@@ -1,9 +1,9 @@
 ---
 title: "Custom Select Inputs"
 subtitle: "Creating your own select inputs with style"
-abstract: "For some apps, you may need to style the selectInput widget. Styling the element can be tricky. Learn how to use standard html elements and css to create your own input. (More examples and improvements coming soon!)"
+abstract: "For some apps, you may need to style the selectInput widget. Styling the element can be tricky. Learn how to use standard html elements and css to create your own input."
 date: "2019-11-04"
-updated: "2019-11-04"
+updated: "2019-11-19"
 keywords: ["css", "html"]
 ---
 
@@ -11,8 +11,8 @@ keywords: ["css", "html"]
 
 1. [Why would I need this?](#about)
 2. [How do I get this working](#work)
-    - [Preparing the UI](#work-ui)
-    - [Adding CSS](#work-css)
+    1. [Preparing the UI](#work-ui)
+    2. [Adding CSS](#work-css)
 3. [Futher Thoughts](#further-thoughts)
 4. [How do I run the example](#run)
 
@@ -34,7 +34,11 @@ To address the original question, we will create our own select input with html 
 
 > I would use caution before implementing this approach in any production application without extensive testing. This example uses the css property `appearance` which is still fairly experimental. This may cause elements to behave and look differently across browsers and devices. Check a CSS coverage site such as caniuse.com for browser support and implementation guidelines. Also, conduct tests on the target browsers and devices before moving your app to production.
 
-In the future, I plan on developing tutorials that provide more alternatives so stay tuned!
+In the future, I plan on developing tutorials that provide more alternatives so stay tuned! 
+
+For now, we will create an application with a custom select input. We will also display the selection in an output element just to demonstrate that the input is working with shiny. Here is what the final app will look like.
+
+![select input shiny application](./select_input_preview.png)
 
 <span id="work"></span>
 

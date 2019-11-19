@@ -2,7 +2,7 @@
 // FILE: gallery.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-08
-// MODIFIED: 2019-11-08
+// MODIFIED: 2019-11-19
 // PURPOSE: react component for gallery page
 // DEPENDENCIES: react
 // STATUS: in.progress
@@ -15,7 +15,7 @@ import Hero from "../components/layouts/hero-alt"
 import Main from "../components/layouts/main"
 import Section from "../components/layouts/section"
 import Post from "../components/layouts/post-entry"
-function Gallery(props){
+function Gallery(){
     return (
         <App title="gallery" description="A collection of methods and techniques for building shiny apps" author="dcruvolo" keywords={["shiny", "shiny tutorials", "r", "shiny examples"]}>
             <Hero title="Shiny Apps Gallery" text="Below you can find examples of shiny applications that demonstrate some of the methods discussed in the tutorials."/>

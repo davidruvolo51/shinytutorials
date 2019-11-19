@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2019-11-14
+// MODIFIED: 2019-11-19
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -26,7 +26,7 @@ function Tutorials(props){
 
     // get posts data
 	const postList = props.data.allMarkdownRemark;
-	const keywords = Array.from([...new Set(postList.edges.map(n => n.node.frontmatter.keywords).flat().sort())][0]);
+	const keywords = Array.from([...new Set(postList.edges.map(n => n.node.frontmatter.keywords).flat().sort())])
 
     return (
         <App
@@ -41,7 +41,7 @@ function Tutorials(props){
 					<Sidebar className="flex-child tutorial-index-sidebar">
 						<h2 className="menu-title">Filter Posts</h2>
 						<p className="menu-caption">Select a keyword</p>
-						<TagsList keywords={keywords} />
+						<TagsList keywords={ keywords } />
 						<Reset />
 					</Sidebar>
 					<article className="flex-child tutorial-index-posts">
@@ -59,7 +59,7 @@ function Tutorials(props){
 									abstract={node.frontmatter.abstract}
 									date={node.frontmatter.date}
 									keywords={node.frontmatter.keywords}
-									id={i}
+									id={`${node.frontmatter.title}-${i}`}
 								/>
 							))
 						}
@@ -75,13 +75,12 @@ export default Tutorials
 // define query
 export const MainIndex = graphql`
   query MainIndex {
-    allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___title, frontmatter___date] }) {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
           fields {
             slug
           }
-          excerpt(pruneLength: 250)
           frontmatter {
 			abstract
             date

@@ -1,13 +1,35 @@
 
 # Shiny Tutorials
 
-A collection of tips and tutorials for building shiny apps. The site can be found here: [davidruvolo51.github.io/shinytutorials](https://davidruvolo51.github.io/shinytutorials/).
+Repository for the [shinytutorials](https://davidruvolo51.github.io/shinytutorials/) static site based on the [shinyAppTutorials](https://github.com/davidruvolo51/shinyAppTutorials) repository.
 
-## About
 
-This site was built using gatsbyjs. In the past, I've written the tutorials in pure html. It was a pain to manage the content manually. I've used R packages for creating blogs, but I found them a bit bulky and the "out of the box" templates were not always compatible with what I wanted to do or required a lot of work to incorprate a desired style/structure. I've wanted to learn react and gastbyjs was a good opportunity to make the switch. So far I'm a big fan!
+## Requirements
+
+coming soon
+
+
+## Dev
+
+Development work
+
+```bash
+rm -rf public
+gatsby develop
+```
+
+Building site
+
+```bash
+rm -rf public
+gatsby develop --prefix-paths
+```
+
+
 
 ## Contributing
 
-Anyone is welcome to contribute to the site: edits, new posts, etc. Feel free to get in touch with me if you are interested. Use the development branch to build the site and commit the `public/` folder to the `updates` branch. Open a pull request and we can work through the changes. 
+Anyone is welcome to contribute to the site: edits, new posts, etc. Feel free to get in touch with me if you are interested. Use the `dev` branch to build the site and then open a pull request. 
+
+Please see the [shinyAppTutorials](https://github.com/davidruvolo51/shinyAppTutorials) repository for ideas and open issues as this repo is mainly for the development of the site.
 

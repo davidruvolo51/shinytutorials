@@ -1,12 +1,10 @@
 {
-	"folders": [
+	"folders":[
 		{
-			// shiny app tutorials (blog)
-			"path": ".",
-			"name": "shinytutorials"
+			"path": "."
 		}
 	],
 	"settings": {
-		"sassVariablesHelper.route": "/src/components/styles/_variables.scss"
+		"sassVariablesHelper.route": "src/components/styles/_variables.scss"
 	}
 }

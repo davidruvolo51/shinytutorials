@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-14
+// MODIFIED: 2019-11-19
 // PURPOSE: layout component for tutorials
 // DEPENDENCIES: see below
 // STATUS: in.progress
@@ -18,7 +18,7 @@ function BlogPost(props) {
 
   // define data
   const post = props.data.markdownRemark;
-  const keywords = Array.from([post.frontmatter.keywords.flat().sort()][0]);
+  const keywords = Array.from([post.frontmatter.keywords.sort()][0]);
 
   // render
   return (
@@ -41,7 +41,7 @@ function BlogPost(props) {
 
 export default BlogPost
 export const query = graphql`
-  query PostQuery($slug: String!) {
+  query postQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {

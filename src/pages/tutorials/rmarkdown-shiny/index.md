@@ -26,7 +26,9 @@ Rmarkdown is useful tool for generating data-driven documents in the R environme
 
 The [data](https://github.com/fivethirtyeight/data/tree/master/librarians) used in this app comes from 538's article titled, [Where are America's Librarians](https://fivethirtyeight.com/features/where-are-americas-librarians/). I have a local copy of the data which can be updated by running the script `scripts/data_0_source.R`. On a side note, I prefer to work with a local copy of a dataset or other dependency. This limits the number of external requests that are made at the begining of the app which may result in slow startup times. 
 
-The purpose of this app is to create a shiny app that allows users to make a selection, transform data based on that selection, and then render and display a report using the transformed data. The dataset is grouped by state (variable: `prim_state`). In this example, we will create a select input element that will allow us to filter the data by state, and then render a report using the state level data.
+The purpose of this app is to create a shiny app that allows users to make a selection, transform data based on that selection, and then render and display a report using the transformed data. The dataset is grouped by state (variable: `prim_state`). In this example, we will create a select input element that will allow us to filter the data by state, and then render a report using the state level data. Here's the application we will create.
+
+![rmarkdown shiny application preview](./rmarkdown_preview.png)
 
 Let's get started!
 
@@ -75,7 +77,7 @@ tags$form(
             # set default selected option
             c("Select a State",
 
-                # wrap each distinct value as: <option value="prim_state">prim_state</  option>
+                # wrap each distinct value as: <option value="prim_state">prim_state</option>
                 sapply(
 
                     # pull unique values and order them
@@ -278,6 +280,8 @@ That's it.
 You can create additional templates, render them accordingly, and pass as many parameters as you like. I haven't tested interactive visualizations in templates, but I would imagine they would work as long as you reference the correct `param`. 
 
 Even though this is basic example, I've noticed that it takes a few seconds to render and load the template. The dataset is fairly small too. I would recommend preprocessing the data outside the markdown template (where possible). You can use loading animations and run them while the template is rendering. There are few loading ui packages on github. Search for `r shiny loading screen animations`.
+
+Another thing I noticed when using parameterized reports in shiny applications, is that the it additional shared css files are loaded into the application (i.e., shiny dependencies). This may be an issue if you are using custom css as some styles will be overwritten or clash with the additional css files. To my knowledge, there doesn't seem to be a way to prevent the css files from loading. 
 
 For more information on parameterized reports, check out the [documentation](https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F).
 

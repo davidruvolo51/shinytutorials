@@ -33,14 +33,41 @@
 
         p {
             margin: 0;
-            color: $semi-dark;
-        }
-        
-        time {
-			line-height: 2;
-            font-size: 14pt;
-            color: $semi-dark;
-        }
+			color: $semi-dark;
+			margin-bottom: 12px;
+			line-height: 1.5;
+		}
+		
+        .article-dates {
+			margin: 0;
+			line-height: 1.5;
+			font-size: 11pt;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			color: $semi-dark;
+			
+			time {
+				margin-left: 4px;
+			}
+		}
+		.post-meta-tags {
+			margin: 0;
+			margin-left: 0;
+
+			li {
+				margin-left: 0;
+				margin-right: 8px;
+
+				code {
+					background-color: $primary;
+					color: $ultra-light;
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
     }
 
 	.article-body {
@@ -52,10 +79,6 @@
 
 		a {
 			color: $primary;
-		}
-
-		code {
-			word-wrap: break-word;
 		}
 
 		blockquote {
@@ -86,30 +109,6 @@
                     list-style-type: lower-alpha;
                 }
             }
-        }
-	}
-
-	.article-footer {
-		padding-top: 32px;
-		border-top: 1px solid $light;
-
-		.post-meta-tags {
-			margin: 0;
-			margin-left: 0;
-
-			li {
-				margin-left: 0;
-			}
-		}
-
-		.date {
-			display: block;
-			margin-right: 12px;
-			color: $semi-dark;
-
-			time {
-				font-family: "Courier New", Courier, monospace;
-			}
 		}
 	}
 }

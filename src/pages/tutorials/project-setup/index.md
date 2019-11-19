@@ -4,7 +4,7 @@ subtitle: "My default project structure and shortcuts"
 abstract: "Over the years, I developed a standard project structure that works well with developing shinyapps. See how I structure projects and view my shortcuts for getting projects up and running."
 keywords: ["workflow"]
 date: "2019-04-16"
-updated: "2019-10-25"
+updated: "2019-11-19"
 ---
 
 ## Contents
@@ -23,7 +23,7 @@ Over the years, I developed a standard project structure that works well with my
 
 Let's take a look at a sample project structure.
 
-![a tree structure of a project directory](https://res.cloudinary.com/dcruvolo/image/upload/v1555415966/example-project-tree_lfceib.png)
+![a tree structure of a project directory](./example-project-tree.png)
 
 On my desktop, I created a new project called "my-shinyapp" and I created a few sample files. In "my-shinyapp", I have a few child directories.
 
@@ -179,7 +179,7 @@ options(stringsAsFactors = FALSE)
  `r format(Sys.Date(),"%d %B %Y")`.
 ```
 
-This is critical for a lot of projects as I store my code in many palces (dropbox, shared network servers, github, or other cloud services) and I access these files from different machines. The header informs me if what the script does, what packages are required, and any other information I need in order to run the script. It's not uncommon for the time between reading/editing scripts can be months and I cannot always remember what a file does from the name alone. This provides enough context for me to resume working on a script. 
+This is critical for a lot of projects as I store my code in many places (dropbox, shared network servers, github, or other cloud services) and I access these files from different machines. The header informs me if what the script does, what packages are required, and any other information I need in order to run the script. It's not uncommon for the time between reading/editing scripts can be months and I cannot always remember what a file does from the name alone. This provides enough context for me to resume working on a script. 
 
 Let's see this snippet in action!
 

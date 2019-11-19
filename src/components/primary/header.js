@@ -23,15 +23,17 @@ class Header extends Component {
 
 	// function: when screen is resized
 	___closeMenuOnResize() {
-		let breakpoint = 862;
-		let width = window.innerWidth;
-		if (width >= breakpoint) {
-			const toggle = document.getElementById("menuBtn");
-			const menu = document.querySelector(".navigation");
-			menu.classList.remove("expanded");
-			toggle.classList.remove("open");
-			toggle.setAttribute("aria-expanded", false);
-			menu.setAttribute("hidden", true);
+		if (typeof window !== "undefined") {
+			let breakpoint = 862;
+			let width = window.innerWidth;
+			if (width >= breakpoint) {
+				const toggle = document.getElementById("menuBtn");
+				const menu = document.querySelector(".navigation");
+				menu.classList.remove("expanded");
+				toggle.classList.remove("open");
+				toggle.setAttribute("aria-expanded", false);
+				menu.setAttribute("hidden", true);
+			}
 		}
 	}
 

@@ -2,7 +2,7 @@
 // FILE: index.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-14
+// MODIFIED: 2019-11-19
 // PURPOSE: react component for home page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -22,11 +22,9 @@ import Post from "../components/layouts/post-entry"
 // build component
 function IndexPage(props) {
 
-	// get posts data
-	const postList = props.data.allMarkdownRemark;
-	const dates = Array.from([...new Set(postList.edges.map(n => n.node.frontmatter.date).flat().sort())][0]);
-	const latestPost1 = postList.edges.filter(n => n.node.frontmatter.date === dates[dates.length - 1])[0];
-	const latestPost2 = postList.edges.filter(n => n.node.frontmatter.date === dates[dates.length - 2])[0];
+	// isolate first and second posts for ease
+	const latestPost1 = props.data.allMarkdownRemark.edges[0].node
+	const latestPost2 = props.data.allMarkdownRemark.edges[1].node
 
 	// render  
 	return (
@@ -53,22 +51,24 @@ function IndexPage(props) {
 						<Post
 							isFeature={true}
 							className="flex-child"
-							title={latestPost1.node.frontmatter.title}
-							link={latestPost1.node.fields.slug}
+							title={latestPost1.frontmatter.title}
+							link={latestPost1.fields.slug}
 							linkLabel="Read"
-							abstract={latestPost1.node.frontmatter.abstract}
-							date={latestPost1.node.frontmatter.date}
-							keywords={latestPost1.node.frontmatter.keywords}
+							abstract={latestPost1.frontmatter.abstract}
+							date={latestPost1.frontmatter.date}
+							keywords={latestPost1.frontmatter.keywords}
+							id={latestPost1.frontmatter.title}
 						/>
 						<Post
 							isFeature={true}
 							className="flex-child"
-							title={latestPost2.node.frontmatter.title}
-							link={latestPost2.node.fields.slug}
+							title={latestPost2.frontmatter.title}
+							link={latestPost2.fields.slug}
 							linkLabel="Read"
-							abstract={latestPost2.node.frontmatter.abstract}
-							date={latestPost2.node.frontmatter.date}
-							keywords={latestPost2.node.frontmatter.keywords}
+							abstract={latestPost2.frontmatter.abstract}
+							date={latestPost2.frontmatter.date}
+							keywords={latestPost2.frontmatter.keywords}
+							id={latestPost1.frontmatter.title}
 						/>
 					</div>
 					<Link to="tutorials" className="btn-link btn-primary btn-centered">Read More</Link>
@@ -81,23 +81,22 @@ export default IndexPage
 
 
 // define query
-export const listQuery = graphql`
-  query ListQuery {
-    allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___title, frontmatter___date] }) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          excerpt(pruneLength: 250)
-          frontmatter {
+export const latestPosts = graphql`
+query RecentPosts {
+	allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}, limit: 2) {
+	  edges {
+		node {
+		  fields {
+			slug
+		  }
+		  frontmatter {
 			abstract
-            date
-            title
-            keywords
-          }
-        }
-      }
-    }
-  }
+			date
+			title
+			keywords
+		  }
+		}
+	  }
+	}
+  }  
 `
