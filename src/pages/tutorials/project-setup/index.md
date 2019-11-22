@@ -1,27 +1,25 @@
 ---
 title: "How I structure my shiny projects"
 subtitle: "My default project structure and shortcuts"
-abstract: "Over the years, I developed a standard project structure that works well with developing shinyapps. See how I structure projects and view my shortcuts for getting projects up and running."
+abstract: "Over the years, I developed a standard project structure that works well with developing shiny applications. See how I structure projects and view my shortcuts for getting projects up and running."
 keywords: ["workflow"]
 date: "2019-04-16"
-updated: "2019-11-19"
+updated: "2019-11-22"
 ---
 
 ## Contents
 
-- [Project Structure](#project-structure)
-    - [data](#data)
-    - [scripts & utils](#scripts-utils)
-- [Terminal Functions](#terminal-functions)
-- [Notating Scripts](#notating-scripts)
+1. [Project Structure](#project-structure)
+    1. [Data](#data)
+    2. [Scripts & utils](#scripts-utils)
+2. [Terminal Functions](#terminal-functions)
+3. [Notating Scripts](#notating-scripts)
 
 <span id="project-structure"/>
 
 ## Project Structures 
 
-Over the years, I developed a standard project structure that works well with my workflow. Projects typically have a few child directories including the `www/` for custom css and javascript files, as well as for storing local copies of other assets needed for the project (I'm a big fan of having a copy of all assets stored locally). 
-
-Let's take a look at a sample project structure.
+Over the years, I developed a standard project structure that works well with my workflow. Let's take a look at a sample project structure.
 
 ![a tree structure of a project directory](./example-project-tree.png)
 
@@ -32,34 +30,47 @@ On my desktop, I created a new project called "my-shinyapp" and I created a few 
 - `utils/`: a place for functions used shinyapp or during the data sourcing process
 - `www/`: all assets used in the shinyapp (imgs, css, js, etc.).
 
+These are the most common folders in my projects. If the app calls for any other javascript libraries, I will add them in `www/assets/`.
+
 <span id="data"/>
 
 ### Data 
 
-All data files are placed in `data`. These files follow strict naming conventions that relate to their scource and stage of the data cleaning process. For example, if my shinyapp uses data from a sql database, I will name it something like: `sql_extract_{name of table}`. Once the data is clean, I will create a new file and assign a name that resembles the stage of the data process: `sql_cleaned_{name of table}`, `sql_summarized_{name of table}`, and so forth. I will follow a similar path for different data sources (e.g., `gh_` for github, `figshare_`, etc.). When I've cleaned the data from all sources, I will merge them into a master file(s) and use the `master_*` files in the shinyapp.
+All datasets that are used in the app are placed in the `data` folder. I try to follow a standard naming convention that indicates the data source and stage of the data cleaning process. 
 
-This is helpful as I always have a local copy of the original data source and post-cleaning datasets. This eliminates the need to fetch the data each time I need to make a changes to the cleaning process. 
+For example, if my shinyapp uses data from a sql database, I will start by writing the results from the main query to an rds file and give the file a meaningful name. 
 
-This approach saved me from delays at work when a few teams lost database access when a server upgrade reset access credentials. I could continue to develop the shinyapp, and then refresh the data when access credentials were restored.
+```r
+saveRDS(results, "data/sql_mytable_raw.RDS")
+```
+
+As the data is cleaned, I will create a new file and assign a name that resembles that reflects the current status. For example, if the data is cleaned or summarized.
+
+```r
+saveRDS(cleaned, "data/sql_mytable_clean.RDS")
+saveRDS(summarized, "data/sql_mytable_summarized.RDS")
+```
+
+This is approach is helpful as I always have a local copy of the original data source and all of the preparation stages. This eliminates the need to fetch the data each time I need to make a changes to the cleaning process. This approach saved me from delays at work when a server upgrade caused everyone to lose access to the database. It took a few days until it was fixed, but I was able to keep working using the local files and refresh the data when the server was back online.
 
 <span id="scripts-utils"/>
 
 ### Scripts & Utils
 
-In `scripts/`, I create all the files needed to prepare the master dataset for the shinyapp (`.R`, `.sql`, etc.). All helper functions are stored in `utils/`. I alway prefix these files with `data_*` and create a new file for each step. Most projects will the following files:
+In `scripts/`, I will create all the files needed to prepare the master dataset for the shinyapp (`.R`, `.sql`, etc.). All helper functions are stored in `utils/`. I alway prefix these files with `data_*` and create a new file for each step. Most projects will the following files:
 
 - `data_0_source.R`: pull data from the source
 - `data_1_clean.R`: clean the data
 - `data_2_transform.R`: reshape the data into the desired format
 - `data_3_merge.R`: prepare data and write master dataset
 
-I always start with `data_0_source.R`. Often the cleaning and transformation scripts are combined into one, but in some projects these steps can be pretty intensive. It's best to isolate these steps to "modularize" recurring procedures. This often comes in handy when more than one project uses the same data source(s) or have the same cleaning process. These files can be copied into the new project directory rather than rewriting them from scratch.
-
 <span id="terminal-functions"/>
 
 ## Terminal Functions
 
-I like to work through the terminal and I created a two bash functions to initialize shinyapp projects and `.Rproj` files. The function `init-rproj` creates the `.Rproj` file using the name of the current directory. The function `init-shinyapp` creates the defaults folders and commonly used files (`ui.R`, `global.R`, `server.R`). By default, the `init-shinyapp` function initiates the `init-rproj` function so you do not need to run this command separately. Here are the functions:
+I like to work through the terminal and I created a two bash functions to initialize shinyapp projects and `.Rproj` files. The function `init-rproj` creates the `.Rproj` file using the name of the current directory. The function `init-shinyapp` creates the defaults folders and commonly used files (`ui.R`, `global.R`, `server.R`). By default, the `init-shinyapp` function initiates the `init-rproj` function so you do not need to run this command separately. 
+
+Here are the functions.
 
 ```bash
 # init-rprojs
@@ -81,7 +92,7 @@ function init-rproj() {
     printf "\n" >> $rproj
     printf "EnableCodeIndexing: Yes\n" >> $rproj
     printf "UseSpacesForTab: Yes\n" >> $rproj
-    printf "NumSpacesForTab: 2\n" >> $rproj
+    printf "NumSpacesForTab: 4\n" >> $rproj
     printf "Encoding: UTF-8\n" >> $rproj
     printf "RnwWeave: Sweave\n" >> $rproj
     printf "LaTeX: pdfLaTeX\n" >> $rproj
@@ -95,18 +106,11 @@ function init-rproj() {
 function init-shinyapp() {
 
     # create dirs
-    mkdir data
-    mkdir scripts
-    mkdir utils
-    mkdir www
-    mkdir www/css
-    mkdir www/js
-    mkdir www/imgs
+    mkdir data scripts utils www www/css www/js www/imgs
 
     # create starter files
-    touch ui.R
-    touch server.R
-    touch global.R
+    touch ui.R server.R global.R
+    touch www/css/styles.css www/js/index.js
 
     # create .Rproj
     init-rproj
@@ -156,7 +160,11 @@ init-shinyapp
 
 ## Notating Scripts
 
-A lot of these workflows are based on personal preference and what works well with work projects. Perhaps the best method I use is adding a header to scripts. I use quite a few snippets and most of these are for notating scripts. The one I use the most is `headerDefault`, which produces:
+A lot of these workflows are based on personal preference and what works well with work projects. I use quite a few snippets and most of these are for notating scripts. My favorite notation snippet is `headerDefault`.
+
+`headerDefault` inserts a template for me to fill out. This includes the name of the file, author (usually my name), general purpose of the script, required packages and dependencies, and current status (I usually use "in.progress", "working; complete", or "archived"), as well as writing any notes for me or my collaborators. 
+
+Here's what `headerDefault` produces.
 
 ```r
 #'//////////////////////////////////////////////////////////
@@ -173,13 +181,13 @@ A lot of these workflows are based on personal preference and what works well wi
 options(stringsAsFactors = FALSE)
 ```
 
-`headerDefault` inserts a template for me to fill out. This includes the name of the file, author (usually my name), general purpose of the script, required packages and dependencies, and current status (I usually use "in.progress", "working; complete", or "archived"), as well as writing any notes for me or my collaborators. The dates are rendered to the current date via:
+The dates are rendered using the following code.
 
 ```r
  `r format(Sys.Date(),"%d %B %Y")`.
 ```
 
-This is critical for a lot of projects as I store my code in many places (dropbox, shared network servers, github, or other cloud services) and I access these files from different machines. The header informs me if what the script does, what packages are required, and any other information I need in order to run the script. It's not uncommon for the time between reading/editing scripts can be months and I cannot always remember what a file does from the name alone. This provides enough context for me to resume working on a script. 
+I've found this snippet to be critical for a lot of projects as I store my code in many places (dropbox, shared network servers, github, or other cloud services) and I access these files from different machines. It can be months since I last opened a file and I cannot always tell what a script does from the name alone. This header informs me of what the script does, are there any required packages, and other information I need in order to run the script.
 
 Let's see this snippet in action!
 
@@ -205,13 +213,3 @@ snippet headerDefault
 	options(stringsAsFactors = FALSE)
 	${7}
 ```
-
-
-
-
-
-
-
-
-
-
