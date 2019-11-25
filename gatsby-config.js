@@ -1,5 +1,5 @@
-// pathPrefix: `/shinytutorials`,
 module.exports = {
+	pathPrefix: `/shinytutorials`,
 	siteMetadata: {
 		title: `shinyTutorials`,
 		description: `a collection of how-to guides and demonstrations for building shiny apps`,
