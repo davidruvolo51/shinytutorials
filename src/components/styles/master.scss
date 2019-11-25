@@ -252,4 +252,8 @@ table tbody tr:nth-child(even) {
 	box-shadow: none;
 }
 
+:not(pre) > code {
+	font-size: 14pt;
+}
+
 @import "flex";
