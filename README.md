@@ -6,9 +6,13 @@ Repository for the [shinytutorials](https://davidruvolo51.github.io/shinytutoria
 
 ## Development
 
-For working on the site, you will need to install a few tools. Checkout the [gatsbyJS](https://www.gatsbyjs.org) for the latest install instructions. You will also need to install [Node](https://nodejs.org/en/). See the last section in this document for the gatsby setup.
+For working on the site, you will need to install a few tools. Checkout the [gatsbyJS](https://www.gatsbyjs.org) for the latest install instructions. You will also need to install [Node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/get-npm). Afterwards, install all plugins using - 
 
-To begin, clone this repository and start the development server.
+```bash
+npm install
+```
+
+Then start the developer server.  This will start the site at `locahost:8000`.
 
 ```bash
 gatsby develop
@@ -62,40 +66,3 @@ Before files are pushed to the repository, copy the `public` folder into the `do
 Anyone is welcome to contribute to the site: edits, new posts, etc. Feel free to get in touch with me if you are interested. Use the `dev` branch to build the site and then open a pull request. 
 
 Please see the [shinyAppTutorials](https://github.com/davidruvolo51/shinyAppTutorials) repository for ideas and open issues as this repo is mainly for the development of the site.
-
-## Gatsby Info
-
-Here is a list of the installed tools. (`gatsby info`)
-
-```
-System:
-    OS: macOS 10.14.6
-    CPU: (4) x64 Intel(R) Core(TM) i5-4250U CPU @ 1.30GHz
-    Shell: 3.2.57 - /bin/bash
-  Binaries:
-    Node: 12.13.0 - /usr/local/bin/node
-    Yarn: 1.19.1 - /usr/local/bin/yarn
-    npm: 6.13.0 - /usr/local/bin/npm
-  Languages:
-    Python: 2.7.16 - /usr/bin/python
-  Browsers:
-    Chrome: 78.0.3904.97
-    Firefox: 70.0.1
-    Safari: 13.0.3
-  npmPackages:
-    gatsby: ^2.17.11 => 2.17.11
-    gatsby-image: ^2.2.31 => 2.2.31
-    gatsby-plugin-google-analytics: ^2.1.28 => 2.1.28
-    gatsby-plugin-manifest: ^2.2.27 => 2.2.27
-    gatsby-plugin-offline: ^3.0.19 => 3.0.19
-    gatsby-plugin-react-helmet: ^3.1.14 => 3.1.14
-    gatsby-plugin-sass: ^2.1.23 => 2.1.23
-    gatsby-plugin-sharp: ^2.3.2 => 2.3.2
-    gatsby-remark-images: ^3.1.32 => 3.1.32
-    gatsby-remark-prismjs: ^3.3.23 => 3.3.23
-    gatsby-source-filesystem: ^2.1.36 => 2.1.36
-    gatsby-transformer-remark: ^2.6.37 => 2.6.37
-    gatsby-transformer-sharp: ^2.3.3 => 2.3.3
-  npmGlobalPackages:
-    gatsby-cli: 2.8.8
-```

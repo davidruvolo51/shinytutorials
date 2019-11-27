@@ -2,7 +2,7 @@
 // FILE: post-entry.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2019-11-19
+// MODIFIED: 2019-11-27
 // PURPOSE: react component for post entries
 // DEPENDENCIES: react
 // STATUS: working
@@ -41,8 +41,6 @@ function isExternalLink(string) {
 
 }
 
-
-
 // render post component
 function Post(props) {
 
@@ -53,6 +51,14 @@ function Post(props) {
     // return component
     return (
         <div className={css_type} aria-labelledby={props.title} key={props.id ? props.id : null}>
+            {
+                // should an image by rendered
+                props.img
+                ? (
+                    <div className="post-image" style={{ backgroundImage: `url(${props.img})`, height: `${ props.imgHeight ? props.imgHeight : "250px"}` }} />
+                )
+                : null
+            }
             {
                 // should a link be rendered
                 props.titleIsLink
