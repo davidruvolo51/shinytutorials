@@ -2,7 +2,7 @@
   "name": "gatsby-starter-default",
   "private": true,
   "description": "a collection of shiny tutorials",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "dcruvolo",
   "dependencies": {
     "gatsby": "^2.17.11",
@@ -19,6 +19,7 @@
     "gatsby-transformer-remark": "^2.6.37",
     "gatsby-transformer-sharp": "^2.3.3",
     "node-sass": "^4.13.0",
+    "prism-themes": "^1.3.0",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
@@ -26,7 +27,6 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -40,14 +40,13 @@
     "start": "npm run develop",
     "serve": "gatsby serve --prefix-paths -o",
     "clean": "rm -rf .cache public",
-    "deploy": "gh-pages README.md -d public -b updates --prefix public -m 'blog updates'",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/davidruvolo51/shinytutorials"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/davidruvolo51/shinytutorials/issues"
   }
 }

@@ -2,6 +2,12 @@
 .post {
 	padding: 32px;
 
+	.post-image {
+		background-position: center center;
+		background-size: cover;
+		margin-bottom: 12px;
+	}
+
 	.post-title {
 		margin: 0;
 		padding: 0;

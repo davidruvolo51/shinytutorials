@@ -5,4 +5,4 @@
  */
 
 // You can delete this file if you're not using it
-require("prismjs/themes/prism-a11y-dark.css")
+require("prism-themes/themes/prism-a11y-dark.css")
