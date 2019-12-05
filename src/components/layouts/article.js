@@ -25,7 +25,14 @@ function Article(props) {
                 <p className="article-dates">Published:<time>{props.date}</time></p>
                 {
                     props.updated
-                        ? (<p className="article-dates">Updated:<time>{props.updated}</time></p>)
+                        ? (
+                            props.updated !== props.date
+                            ? (
+                                // console.log(props.updated, props.data)
+                            <p className="article-dates">Updated:<time>{props.updated}</time></p>
+                            )
+                            : null
+                        )
                         : null
                 }
                 {
