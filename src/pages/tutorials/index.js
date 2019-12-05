@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2019-11-19
+// MODIFIED: 2019-12-05
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -85,7 +85,8 @@ export const MainIndex = graphql`
 			abstract
             date
             title
-            keywords
+			keywords
+			updated
           }
         }
       }

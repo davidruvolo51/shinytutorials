@@ -27,16 +27,16 @@ import { Link } from "gatsby"
 import "../styles/post-entry.scss"
 
 // process link: is it an internal or external link?
-function isExternalLink(string) {
+function isExternalLink(props) {
 
     // match for external pattern - http will catch https
     const pattern = new RegExp("http");
-    if (string.match(pattern)) {
-        return true;
+    if (props.link.match(pattern)) {
+        return <a href={props.link} className="post-link">{props.linkLabel}</a>;
     }
     // match for internal pattern
-    if (string[0] === "/") {
-        return false
+    if (props.link[0] === "/") {
+        return <Link to={props.link} className="post-link">{props.linkLabel}</Link>
     }
 
 }
@@ -91,11 +91,7 @@ function Post(props) {
             {
                 // some logic to determine if the input link is internal or external
                 props.link
-                    ? (
-                        isExternalLink(props.link)
-                            ? <a href={props.link} className="post-link">{props.linkLabel}</a>
-                            : <Link to={props.link} className="post-link">{props.linkLabel}</Link>
-                    )
+                    ? isExternalLink(props)
                     : null
             }
         </div>
