@@ -41,7 +41,7 @@ function IndexPage(props) {
 				className="hero-style-1"
 			/>
 			<Main>
-				<Section aria-label="introduction">
+				<Section className="welcome-section" aria-label="introduction">
 					<h2>Hello!</h2>
 					<p>This site was developed to provide a series of practical examples for developing shiny applications. All of the tutorials can be found in the <Link to="/tutorials">Tutorials</Link> index and you can read more about this project on the <Link to="/about">About</Link> page. I also have some example applications in the <Link to="/gallery">Gallery</Link>. If you have any questions, checkout the github repository <a href="https://github.com/davidruvolo51/shinyAppTutorials">Shiny Tutorials</a> or tweet me <a href="https://twitter.com/dcruvolo">@dcruvolo</a>.</p>
 				</Section>
