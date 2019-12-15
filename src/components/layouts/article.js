@@ -2,7 +2,7 @@
 // FILE: article.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-19
+// MODIFIED: 2019-12-15
 // PURPOSE: react component for tutorials, i.e. as articles
 // DEPENDENCIES: see below
 // STATUS: working
@@ -14,6 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
+import PropTypes from "prop-types"
 import "../styles/article.scss"
 function Article(props) {
     return (
@@ -55,4 +56,17 @@ function Article(props) {
         </article>
     )
 }
+
+// define props
+Article.propTypes = {
+    className: PropTypes.string,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    abstract: PropTypes.string,
+    date: PropTypes.string,
+    updated: PropTypes.string,
+    keywords: PropTypes.array
+}
+
+// export
 export default Article

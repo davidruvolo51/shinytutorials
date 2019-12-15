@@ -2,7 +2,7 @@
 // FILE: hero.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-15
+// MODIFIED: 2019-12-15
 // PURPOSE: react component for page heros
 // DEPENDENCIES: see below
 // STATUS: working
@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
+import PropTypes from "prop-types"
 import "../styles/hero.scss"
 import BarChart from "../images/barchart"
 import Dashboard from "../images/dashboard"
@@ -43,4 +44,15 @@ function Hero(props){
         </header>
     )
 }
+
+// SET PROPS
+Hero.propTypes = {
+    className: PropTypes.string,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    date: PropTypes.string
+}
+
+// EXPORT
 export default Hero

@@ -29,7 +29,7 @@ function prepData(data) {
         out.push({
             "repo": data[i].name,
             "created": formatTime(data[i].created_at),
-            "lastUpdated": formatTime(data[i].updated_at),
+            "updated": formatTime(data[i].updated_at),
             "issues": data[i].open_issues_count,
             "stars": data[i].stargazers_count,
             "forks": data[i].forks_count,

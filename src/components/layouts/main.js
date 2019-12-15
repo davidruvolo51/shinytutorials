@@ -2,7 +2,7 @@
 // FILE: main.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-14
+// MODIFIED: 2019-12-15
 // PURPOSE: react component for <main> layout
 // DEPENDENCIES: NA
 // STATUS: working
@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
+import PropTypes from "prop-types"
 import "../styles/main.scss"
 function Main(props){
     return (
@@ -18,4 +19,11 @@ function Main(props){
         </main>
     )
 }
+
+// set props
+Main.propTypes = {
+    className: PropTypes.string
+}
+
+// export
 export default Main

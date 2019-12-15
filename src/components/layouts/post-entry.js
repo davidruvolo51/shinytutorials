@@ -2,7 +2,7 @@
 // FILE: post-entry.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2019-11-27
+// MODIFIED: 2019-12-15
 // PURPOSE: react component for post entries
 // DEPENDENCIES: react
 // STATUS: working
@@ -23,6 +23,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
+import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import "../styles/post-entry.scss"
 
@@ -97,4 +98,19 @@ function Post(props) {
         </div>
     )
 }
+
+// PROPS
+Post.propTypes = {
+    className: PropTypes.string,
+    isFeature: PropTypes.bool,
+    titleIsLink: PropTypes.bool,
+    img: PropTypes.string,
+    imgHeight: PropTypes.string,
+    title: PropTypes.string,
+    link: PropTypes.string,
+    date: PropTypes.string,
+    keywords: PropTypes.array
+}
+
+// EXPORT 
 export default Post
