@@ -2,7 +2,7 @@
 // FILE: tagsList.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-25
+// MODIFIED: 2019-12-15
 // PURPOSE: react component for tags list, i.e., list of keywords
 // DEPENDENCIES: see below
 // STATUS: in.progress
@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
+import PropTypes from "prop-types"
 import KeyWordButton from "./keywordButton"
 function Taglist(props){
     return (
@@ -24,4 +25,12 @@ function Taglist(props){
         </ul>
     )
 }
+
+// set props
+Taglist.propTypes = {
+  className: PropTypes.string,
+  keywords: PropTypes.array.isRequired
+}
+
+// export
 export default Taglist

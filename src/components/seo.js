@@ -2,22 +2,13 @@
 // FILE: seo.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-14
-// MODIFIED: 2019-11-14
+// MODIFIED: 2019-12-15
 // PURPOSE: seo component
 // DEPENDENCIES: react, proptipes, helmet
 // STATUS: working
 // COMMENTS: NA
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
-
-
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"

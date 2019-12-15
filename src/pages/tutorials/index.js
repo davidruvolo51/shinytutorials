@@ -35,11 +35,11 @@ function Tutorials(props){
 			author="dcruvolo"
 			keywords={["shiny", "shiny tutorials", "r", "shiny examples"]}
 		>
-			<Hero title="Available Tutorials" text="Below you can find all of the available tutorials. Search for a tutorial by name, topic, date, etc or filter posts by keyword."/>
+			<Hero title="Available Tutorials" text="Below you can find all of the available tutorials. Search for a tutorial by name, topic, date, or keyword."/>
 			<Main>
 				<div className="flex flex-30x70-layout tutorial-index">
 					<Sidebar className="flex-child tutorial-index-sidebar">
-						<h2 className="menu-title">Filter Posts</h2>
+						<h2 className="menu-title">Filter Tutorials</h2>
 						<p className="menu-caption">Select a keyword</p>
 						<TagsList keywords={ keywords } />
 						<Reset />
