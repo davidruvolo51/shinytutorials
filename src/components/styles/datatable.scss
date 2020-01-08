@@ -1,0 +1,110 @@
+@import "_variables.scss";
+
+.datatable {
+	width: 100%;
+	margin: 6px auto;
+	margin-top: 8px;
+	font-weight: normal;
+	border-spacing: 0;
+	text-align: left;
+	font-size: 13pt;
+
+	// styling for caption
+	caption {
+		text-align: left;
+		font-size: 16pt;
+		margin: 12px 0;
+		color: $dark;
+		font-weight: 600;
+	}
+
+	// table header
+	thead {
+		tr {
+			th {
+				font-weight: 600;
+				padding: 4px 12px;
+				border-bottom: 1px solid $dark;
+				color: $dark;
+			}
+		}
+	}
+
+	// body
+	tbody {
+		tr {
+			td {
+                padding: 24px 12px;
+
+                .hidden-colname {
+                    display: none;
+                }
+            }
+            
+            &:nth-child(even){
+                background-color: $ultra-light;
+            }
+		}
+	}
+}
+
+
+@media (max-width: 892px) {
+
+    .datatable {
+
+        // table header
+        thead {
+            display: none;
+        }
+
+        // body
+        tbody {
+
+            // row
+            tr {
+                display: block;
+                margin-bottom: 16px;
+                counter-increment: rowCounter;
+
+                &:nth-child(even) {
+                	background-color: transparent;
+                }
+
+                // cell
+                td {
+                    display: block;
+                    padding: 6px;
+                    padding-right: 0;
+                    color: $semi-dark;
+
+                    &:first-child {
+                        font-size: 16pt;
+                        color: $dark;
+
+                        &::before {
+                            content: counter(rowCounter) ".";
+                            display: inline-block;
+                            margin-right: 4px;
+                            font-size: 15pt;
+                        }
+                    }
+
+                    &:not(:first-child){
+                        border-bottom: 1px solid $ultra-light;;
+                    }
+
+                
+                    .hidden-colname {
+                        display: inline-block;
+                        width: 150px;
+
+                        &::after {
+                            content: ":";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
