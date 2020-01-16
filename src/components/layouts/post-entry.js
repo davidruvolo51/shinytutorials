@@ -2,7 +2,7 @@
 // FILE: post-entry.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2019-12-15
+// MODIFIED: 2020-01-16
 // PURPOSE: react component for post entries
 // DEPENDENCIES: react
 // STATUS: working
@@ -80,8 +80,8 @@ function Post(props) {
                 <li className="post-meta-item">
                     <ul className="post-meta-tags" aria-label="post tags">
                         {
-                            props.keywords.map(tag => (
-                                <li key={tag}>
+                            props.keywords.map( (tag, i) => (
+                                <li key={i}>
                                     <code className={`tag tag-${tag}`}>{tag}</code>
                                 </li>
                             ))
