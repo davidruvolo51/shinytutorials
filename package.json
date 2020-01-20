@@ -39,7 +39,7 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve --prefix-paths -o",
-    "clean": "rm -rf .cache public",
+    "clean": "rm -rf .cache/ public/ docs/",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
