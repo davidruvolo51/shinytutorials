@@ -569,7 +569,7 @@ uiOutput("tbl")
 
 ### Writing the CSS styles
 
- Using [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) and [pseudo-elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements), the column name is displayed before the value of a cell only when the screen width is less than a maximum value. In this example, I'm using `892px` as a break point.
+ Using [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) and [pseudo-elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements), the column name is displayed before the value of a cell only when the screen width is less than a maximum value. In this example, I'm using `892px` as a break point. This breakpoint is completely arbitrary. I typically choose breakpoints around `900px`, but the final point depends on the table structure and the cell content. Choose a number and see how the table looks when the screen is resized and adjust as necessary. 
 
 ```css
 @media (max-width: 892px){
@@ -579,9 +579,10 @@ uiOutput("tbl")
  
 In the datatable function, each cell (`td`) was given a span element that has the class `hidden-colname`. In a css file, the properties associated with this class will be modified to visually hide or display elements. 
 
-Using the breakpoint `892px`, the following properties are used to visually display the column names and visually hide the table header when screen size is less than the `892px`.
+Using the breakpoint `892px`, the following properties are used to visually display the column names and visually hide the table header when screen size is less than the `892px`. All cells and row headers (if present) are displayed as blocks.
 
 ```css
+/* screens less than 892px */
 @media (max-width: 892px){
     .datatable thead {
         position: absolute;
@@ -590,6 +591,12 @@ Using the breakpoint `892px`, the following properties are used to visually disp
         width: 1px;
         height: 1px;
         overflow: hidden;
+    }
+
+    .datatable tbody tr th,
+    .datatable tbody tr td {
+        display: block;
+        padding: 5px 0 5px 12px;
     }
 
     .datatable .hidden-colname {
@@ -623,7 +630,7 @@ There are additional stylings in the css file. I will not discuss them here as t
 
 ~~There are accessibility concerns when the table is transformed. For inviduals who use screen readers or other web assistive technologies, does the layout make sense and can the information be understood? Since the display properties of table elements are adjusted, it is likely that the screen readers will not treat the cells as standard table elements. It is likely that the cells will be interpreted as regular text elements. Adding additional attributes might help address this, but more research is required. Please keep this in mind when implementing this approach into your application. I will address this in the near future.~~
 
-As of January 14th, the above concern has been largely addressed. Although, I'm still testing and making adjustments. I'm not quite ready to remove this item yet as it may be useful.
+As of January 14th, the above concern has been largely addressed. Although, I'm still testing and making adjustments. I'm not quite ready to remove this item yet as it may be useful for future readers.
 
 This approach provides a simple method for converting data to HTML tables. However, it is fairly basic in features. There is no support for more advanced layouts (i.e., nested tables, grouped columns or rows) as complex layouts are a difficult to make accessible. As this function was originally intended to address an issue for a work project, I did not have a need for complex layouts and other rendering options. Although, it is likely that I will need this in the near future. Stay tuned for future updates! 
 
@@ -635,3 +642,5 @@ The demo can be run by cloning the [shinyAppTutorials](https://github.com/davidr
 install.packages(shiny)
 shiny::runGitHub(repo = "shinyAppTutorials", username = "davidruvolo51", subdir="responsive-datatables")
 ```
+
+I would also checkout the tutorial [Using SASS in Shiny](../sass-in-shiny/) where I recreate this application using sass.
