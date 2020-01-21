@@ -3,7 +3,7 @@ title: "Responsive Datatables"
 subtitle: "Creating a custom datatable function to reorgranize content for mobile devices"
 abstract: "Data tables are a good method for displaying data on the web. However, this can lead to issues of content overflows on mobile devices or if the browser is resized. In this tutorial, we will learn how to create a responsive table for use in shiny."
 date: "2019-12-12"
-updated: "2020-01-14"
+updated: "2020-01-20"
 keywords: ["html","css"]
 ---
 
