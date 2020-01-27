@@ -67,7 +67,7 @@
 		box-shadow: 0 0 4px 2px $shadow;
 		border-radius: 4px;
 
-		&:first-child {
+		&:nth-child(odd) {
 			border-top: 6px solid $primary;
 
 			.post-link {
@@ -75,7 +75,7 @@
 			}
 		}
 
-		&:last-child {
+		&:nth-child(even) {
 			border-top: 6px solid $secondary;
 
 			.post-link {
