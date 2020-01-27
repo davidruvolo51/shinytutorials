@@ -45,8 +45,9 @@ function IndexPage(props) {
 					<h2>Hello!</h2>
 					<p>This site was developed to provide a series of practical examples for developing shiny applications. All of the tutorials can be found in the <Link to="/tutorials">Tutorials</Link> index and you can read more about this project on the <Link to="/about">About</Link> page. I also have some example applications in the <Link to="/gallery">Gallery</Link>. If you have any questions, checkout the github repository <a href="https://github.com/davidruvolo51/shinyAppTutorials">Shiny Tutorials</a> or tweet me <a href="https://twitter.com/dcruvolo">@dcruvolo</a>.</p>
 				</Section>
-				<Section className="tutorial-latest" aria-label="latest post">
-					<h2>Latest Posts</h2>
+				<Section isFullWidth={true} className="tutorial-latest" aria-label="latest post">
+					<h2>Latest Tutorials</h2>
+					<p>Read the latest tutorials.</p>
 					<div className="flex flex-50x2-layout">
 						<Post
 							isFeature={true}
@@ -72,6 +73,56 @@ function IndexPage(props) {
 						/>
 					</div>
 					<Link to="tutorials" className="btn-link btn-primary btn-centered">Read More</Link>
+				</Section>
+				<Section className="related-projects" aria-label="related projects">
+					<h2>Related Projects</h2>
+					<p>Take a look at other projects that I'm currently working on.</p>
+					<div className="flex flex-50x2-layout">
+						<Post
+							isFeature={true}
+							className="flex-child"
+							title="Accessible Shiny"
+							link="https://github.com/davidruvolo51/accessibleshiny"
+							linkLabel="View"
+							abstract="An R package for building web accessible UI components in shiny apps."
+							date="2020-01-22"
+							keywords={["pkg"]}
+							id="project-r-accessibleshiny"
+						/>
+						<Post
+							isFeature={true}
+							className="flex-child"
+							title="shinytools"
+							link="https://github.com/davidruvolo51/shinytools"
+							linkLabel="View"
+							abstract="A collection of my commonly used session handlers wrapped in an R pkg."
+							date="2020-01-25"
+							keywords={["pkg"]}
+							id="project-r-shinytools"
+						/>
+						<Post
+							isFeature={true}
+							className="flex-child"
+							title="R, React, and Express Demo"
+							link="https://github.com/davidruvolo51/r-react-demo"
+							linkLabel="View"
+							abstract="Integrate R into React application using a Node and Express backend."
+							date="2019-11-01"
+							keywords={["react", "express"]}
+							id="project-r-react"
+						/>
+						<Post
+							isFeature={true}
+							className="flex-child"
+							title="R Plumber Demo"
+							link="https://github.com/davidruvolo51/r-plumber-app"
+							linkLabel="View"
+							abstract="Create an interactive application using R plumber as a backend."
+							date="2020-01-27"
+							keywords={["plumber"]}
+							id="project-r-plumber"
+						/>
+					</div>
 				</Section>
 			</Main>
 		</App>
