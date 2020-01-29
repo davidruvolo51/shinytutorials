@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2019-12-05
+// MODIFIED: 2020-01-29
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -45,7 +45,6 @@ function Tutorials(props){
 						<Reset />
 					</Sidebar>
 					<article className="flex-child tutorial-index-posts">
-						<h2>Tutorials</h2>
 						<Search />
 						{
 							// map nodes -> blog post lists

@@ -19,8 +19,7 @@
 		
 		&.welcome-section {
 			padding: 0;
-			margin-top: 87px;
-			margin-bottom: 24px;
+			margin: 48px auto;
 		}
 	}
 
@@ -152,6 +151,26 @@
 			}
 		}
 	}
+
+	// about page
+	&.about-page {
+		
+		#repos {
+			thead {
+				th {
+					&:nth-child(n+4) {
+						text-align: left;
+					}
+				}
+			}
+
+			.column-4,
+			.column-5,
+			.column-6 {
+				text-align: left;
+			}
+		}
+	}
 }
 
 @media screen and (min-width: 972px) {
@@ -165,7 +184,7 @@
 			.post.post-feature {
 				max-width: 40%;
 
-				&:nth-child(1) {
+				&:nth-child(odd) {
 					margin-right: 32px;
 				}
 			}
@@ -212,6 +231,23 @@
 					.post-desc {
 						width: 90%;
 					}
+				}
+			}
+		}
+		&.about-page {
+			#repos {
+				thead {
+					th {
+						&:nth-child(n+4) {
+							text-align: right;
+						}
+					}
+				}
+	
+				.column-4,
+				.column-5,
+				.column-6 {
+					text-align: right;
 				}
 			}
 		}

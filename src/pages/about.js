@@ -85,7 +85,7 @@ class About extends Component {
     render() {
         return (
             <App title="about" description="A collection of methods and techniques for building shiny apps" author="dcruvolo" keywords={["shiny", "shiny tutorials", "r", "shiny examples"]} >
-                <Main style={{ padding: "72px 0" }}>
+                <Main className="about-page" style={{ padding: "72px 0" }}>
                     <Section aria-labelledby="about-section-title">
                         <h2 id="about-section-title">About</h2>
                         <p>In my early days of learning shiny, I kept all of my notes on shiny in a single document. It worked nicely at the time, but it soon became too disorganized. I decided to structure my notes into a series of practical examples and make them available for the wider R community. This led to the development of the shiny tutorials site.</p>
@@ -97,7 +97,7 @@ class About extends Component {
                         <p>The following table provides a summary of both repositories.</p>
                         {
                             this.state.status
-                            ? datatable(this.state.data, "Repository Status")
+                            ? datatable(this.state.data, "repos", "Repository Status")
                             : <span>There was a problem retrieving the data. Please try again later.</span>
                         }
                     </Section>

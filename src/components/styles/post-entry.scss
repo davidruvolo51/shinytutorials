@@ -66,22 +66,6 @@
 		-webkit-box-shadow: 0 0 4px 2px $shadow;
 		box-shadow: 0 0 4px 2px $shadow;
 		border-radius: 4px;
-
-		&:nth-child(odd) {
-			border-top: 6px solid $primary;
-
-			.post-link {
-				color: $primary;
-			}
-		}
-
-		&:nth-child(even) {
-			border-top: 6px solid $secondary;
-
-			.post-link {
-				color: $secondary;
-			}
-		}
 	}
 
 	&.post-plain {

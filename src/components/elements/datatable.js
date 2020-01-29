@@ -2,7 +2,7 @@
 // FILE: datatable.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-12-05
-// MODIFIED: 2020-01-07
+// MODIFIED: 2020-01-29
 // PURPOSE: render an html datatable from an object
 // DEPENDENCIES: NA
 // STATUS: working
@@ -12,7 +12,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import "../styles/datatable.scss"
-function datatable(data, caption) {
+function datatable(data, id, caption) {
 
     // <thead>
     let th = [];
@@ -21,12 +21,32 @@ function datatable(data, caption) {
         return th.push(<th scope="col" key={index}>{colname}</th>)
     });
 
+    // function for evaluating classnames for td elements
+    function set_classname(value, col) {
+        let css;
+        const datatype = typeof value; 
+        if(datatype === "number") {
+          if(value > 0) {
+              css = "datatype-number value-positive";
+          } else if(value < 0){
+            css = "datatype-number value-negative";
+          } else if(value === 0){
+            css = "datatype-number value-zero"
+          }
+        } else {
+            css = `datatype-${typeof value}`;
+        }
+        css = css + " column-" + (col + 1);
+        return(css)
+    }
+
     // <tbody>
     let tbody = [], row, cell;
     data.map((d, dIndex) => {
         row = [];
         colnames.map((colname, cIndex) => {
-            cell = <td role="cell" key={cIndex} className={typeof d[colname] === "number" ? "data-type-number" : null}>
+            let css = set_classname(d[colname], cIndex);
+            cell = <td role="cell" key={cIndex} className={css}>
                 {cIndex > 0
                     ? (<>
                         <span className="hidden-colname">
@@ -45,7 +65,7 @@ function datatable(data, caption) {
 
     // <table>
     return (
-        <table className="datatable">
+        <table id={id ? id : null} className="datatable">
             {
                 caption
                 ? (
@@ -69,6 +89,7 @@ function datatable(data, caption) {
 // set props
 datatable.propTypes = {
     data: PropTypes.object.isRequired,
+    id: PropTypes.string,
     caption: PropTypes.string
 }
 
