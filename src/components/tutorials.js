@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-19
+// MODIFIED: 2020-01-29
 // PURPOSE: layout component for tutorials
 // DEPENDENCIES: see below
 // STATUS: in.progress
@@ -28,7 +28,7 @@ function BlogPost(props) {
           post={post.html}
           title={post.frontmatter.title}
           subtitle={post.frontmatter.subtitle}
-          abstract={post.frontmatter.abstract}
+          // abstract={post.frontmatter.abstract}
           date={post.frontmatter.date}
           updated={post.frontmatter.updated}
           keywords={keywords}

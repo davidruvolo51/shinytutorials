@@ -3,7 +3,7 @@
 // FILE: searchForm.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-06
-// MODIFIED: 2019-11-14
+// MODIFIED: 2020-01-29
 // PURPOSE: react component for search
 // DEPENDENCIES: react
 // STATUS: working
@@ -59,8 +59,8 @@ class Search extends Component {
     render(){
         return(
         <form className="form" aria-label="search for tutorials" onSubmit={this.handleSubmit}>
-            <label className="input-label" htmlFor="search">Search for a tutorial</label>
-            <p className="input-example">Search by tag, keyword, title, date. Example: css, 2018, editing</p>
+            <label className="input-label" htmlFor="search">Search for a Tutorial</label>
+            <p className="input-example">Search by tag, keyword, title, date. Ex: css, 2018, editing.</p>
             <input className="input input-select" type="search" name="search" id="search" value={this.state.query} onChange={this.search}/>
         </form>
         )

@@ -3,7 +3,7 @@ title: "Responsive Datatables"
 subtitle: "Creating a custom datatable function to reorgranize content for mobile devices"
 abstract: "Data tables are a good method for displaying data on the web. However, this can lead to issues of content overflows on mobile devices or if the browser is resized. In this tutorial, we will learn how to create a responsive table for use in shiny."
 date: "2019-12-12"
-updated: "2020-01-20"
+updated: "2020-01-29"
 keywords: ["html","css"]
 ---
 
@@ -633,6 +633,8 @@ There are additional stylings in the css file. I will not discuss them here as t
 As of January 14th, the above concern has been largely addressed. Although, I'm still testing and making adjustments. I'm not quite ready to remove this item yet as it may be useful for future readers.
 
 This approach provides a simple method for converting data to HTML tables. However, it is fairly basic in features. There is no support for more advanced layouts (i.e., nested tables, grouped columns or rows) as complex layouts are a difficult to make accessible. As this function was originally intended to address an issue for a work project, I did not have a need for complex layouts and other rendering options. Although, it is likely that I will need this in the near future. Stay tuned for future updates! 
+
+> This example has led to the begining of an accessible components library for shinyapps. There have been a number of updates to the function (performance and features) that may be useful for developing and customizing tables in shiny apps. Check it out the [accessibleshiny](https://github.com/davidruvolo51/accessibleshiny) package. 
 
 ## How do I run the example application?
 
