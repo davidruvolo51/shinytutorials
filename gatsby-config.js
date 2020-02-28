@@ -4,6 +4,7 @@ module.exports = {
 		title: `shinyTutorials`,
 		description: `a collection of how-to guides and demonstrations for building shiny apps`,
 		author: `@dcruvolo`,
+		siteUrl: "https://davidruvolo51.github.io/shinytutorials/"
 	},
 	plugins: [
 		`gatsby-plugin-react-helmet`,
@@ -51,8 +52,62 @@ module.exports = {
 				exclude: ["/preview/**", "/do-not-track/me/too/"],
 			},
 		},
-		// this (optional) plugin enables Progressive Web App + Offline functionality
-		// To learn more, visit: https://gatsby.dev/offline
-		// `gatsby-plugin-offline`,
+		{
+			resolve: `gatsby-plugin-feed`,
+			options: {
+				query: `	
+				{
+					site {
+						siteMetadata {
+							title
+							siteUrl
+							author
+							description
+						}
+					}
+				}
+				`,
+				feeds: [
+					{
+						serialize: ({ query: { site, allMarkdownRemark } }) => {
+							return allMarkdownRemark.edges.map(edge => {
+								return Object.assign({}, edge.node.frontmatter, {
+									date: edge.node.frontmatter.date,
+									lastBuildDate: edge.node.frontmatter.updated,
+									title: edge.node.frontmatter.title,
+									subtitle: edge.node.frontmatter.subtitle,
+									description: edge.node.frontmatter.abstract,
+									guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+									url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+									custom_elements:[{ 'content:encoded' : edge.node.frontmatter.keywords }]
+								})
+							})
+						},
+						query: `
+						{
+							allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] },limit: 3) {
+								edges {
+									node {
+										fields { 
+											slug 
+										}
+										frontmatter {
+											title
+											subtitle
+											abstract
+											date
+											updated
+											keywords
+										}
+									}
+								}
+							}
+						}`,
+						output: "/rss.xml",
+						title: "shinytutorials latest posts",
+					}
+				]
+			}
+		}
 	],
 }
