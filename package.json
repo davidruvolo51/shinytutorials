@@ -33,11 +33,11 @@
   "keywords": ["gatsby", "shiny"],
   "license": "MIT",
   "scripts": {
-    "start": "gatsby develop",
+    "dev": "gatsby develop",
     "build": "gatsby build --prefix-paths",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "serve": "gatsby serve --prefix-paths -o",
-    "clean": "rm -rf .cache/ public/ docs/"
+    "prep" : "mv public docs",
+    "clean": "gatsby clean && rm -rf .cache/ public/ docs/"
   },
   "repository": {
     "type": "git",
