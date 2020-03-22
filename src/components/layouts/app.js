@@ -13,7 +13,7 @@ import React from "react"
 import SEO from "../seo"
 import Header from "../primary/header"
 import Footer from "../primary/footer"
-import "../styles/master.scss"
+import "../styles/index.scss"
 function App(props){
     return (
         <>
