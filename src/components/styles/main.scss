@@ -175,6 +175,12 @@
 
 @media screen and (min-width: 972px) {
 	.main {
+
+		.full-section {
+			.full-section-content {
+				max-width: 972px;
+			}
+		}
 		.main-section {
 			max-width: 972px;
 		}
