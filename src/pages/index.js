@@ -92,13 +92,13 @@ function IndexPage(props) {
 						<Post
 							isFeature={true}
 							className="flex-child"
-							title="shinytools"
-							link="https://github.com/davidruvolo51/shinytools"
+							title="browsertools"
+							link="https://github.com/davidruvolo51/browsertools"
 							linkLabel="View"
 							abstract="A collection of my commonly used session handlers wrapped in an R pkg."
 							date="2020-01-25"
 							keywords={["pkg"]}
-							id="project-r-shinytools"
+							id="project-r-browsertools"
 						/>
 						<Post
 							isFeature={true}
