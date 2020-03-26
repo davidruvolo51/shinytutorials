@@ -2,7 +2,7 @@
 // FILE: post-entry.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2020-01-16
+// MODIFIED: 2020-03-26
 // PURPOSE: react component for post entries
 // DEPENDENCIES: react
 // STATUS: working
@@ -55,10 +55,10 @@ function Post(props) {
             {
                 // should an image by rendered
                 props.img
-                ? (
-                    <div className="post-image" style={{ backgroundImage: `url(${props.img})`, height: `${ props.imgHeight ? props.imgHeight : "250px"}` }} />
-                )
-                : null
+                    ? (
+                        <div className="post-image" style={{ backgroundImage: `url(${props.img})`, height: `${props.imgHeight ? props.imgHeight : "250px"}` }} />
+                    )
+                    : null
             }
             {
                 // should a link be rendered
@@ -73,22 +73,40 @@ function Post(props) {
                     )
             }
             <p className="post-desc">{props.abstract}</p>
-            <ul className="post-meta" aria-label="post details">
-                <li className="post-meta-item">
-                    <span className="post-date">{props.date}</span>
-                </li>
-                <li className="post-meta-item">
-                    <ul className="post-meta-tags" aria-label="post tags">
-                        {
-                            props.keywords.map( (tag, i) => (
-                                <li key={i}>
-                                    <code className={`tag tag-${tag}`}>{tag}</code>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </li>
-            </ul>
+            {
+                props.data || props.keywords
+                    ? (
+                        <ul className="post-meta" aria-label="post details">
+                            {
+                                props.date
+                                    ? (
+                                        <li className="post-meta-item">
+                                            <span className="post-date">{props.date}</span>
+                                        </li>
+                                    )
+                                    : null
+                            }
+                            {
+                                props.keywords
+                                    ? (
+                                        <li className="post-meta-item">
+                                            <ul className="post-meta-tags" aria-label="post tags">
+                                                {
+                                                    props.keywords.map((tag, i) => (
+                                                        <li key={i}>
+                                                            <code className={`tag tag-${tag}`}>{tag}</code>
+                                                        </li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        </li>
+                                    )
+                                    : null
+                            }
+                        </ul>
+                    )
+                    : null
+            }
             {
                 // some logic to determine if the input link is internal or external
                 props.link

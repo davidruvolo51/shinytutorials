@@ -82,10 +82,9 @@ function IndexPage(props) {
 							isFeature={true}
 							className="flex-child"
 							title="Accessible Shiny"
+							titleIsLink={true}
 							link="https://github.com/davidruvolo51/accessibleshiny"
-							linkLabel="View"
 							abstract="An R package for building web accessible UI components in shiny apps."
-							date="2020-01-22"
 							keywords={["pkg"]}
 							id="project-r-accessibleshiny"
 						/>
@@ -93,10 +92,9 @@ function IndexPage(props) {
 							isFeature={true}
 							className="flex-child"
 							title="browsertools"
+							titleIsLink={true}
 							link="https://github.com/davidruvolo51/browsertools"
-							linkLabel="View"
 							abstract="A collection of my commonly used session handlers wrapped in an R pkg."
-							date="2020-01-25"
 							keywords={["pkg"]}
 							id="project-r-browsertools"
 						/>
@@ -104,10 +102,9 @@ function IndexPage(props) {
 							isFeature={true}
 							className="flex-child"
 							title="R, React, and Express Demo"
+							titleIsLink={true}
 							link="https://github.com/davidruvolo51/r-react-demo"
-							linkLabel="View"
 							abstract="Integrate R into React application using a Node and Express backend."
-							date="2019-11-01"
 							keywords={["react", "express"]}
 							id="project-r-react"
 						/>
@@ -115,10 +112,9 @@ function IndexPage(props) {
 							isFeature={true}
 							className="flex-child"
 							title="R Plumber Demo"
+							titleIsLink={true}
 							link="https://github.com/davidruvolo51/r-plumber-app"
-							linkLabel="View"
 							abstract="Create an interactive application using R plumber as a backend."
-							date="2020-01-27"
 							keywords={["plumber"]}
 							id="project-r-plumber"
 						/>

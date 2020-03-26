@@ -188,32 +188,6 @@ img {
 	height: 20px;
 }
 
-.post-meta-tags {
-	display: inline-block;
-	padding: 0;
-	margin: 0;
-	margin-left: 18px;
-	list-style: none;
-	color: $semi-dark;
-
-	li {
-		display: inline;
-		margin-left: 12px;
-
-		.tag {
-			border-radius: 6px;
-			font-size: 11pt;
-			padding: 5px 10px;
-			background-color: $ultra-light;
-			font-family: consolas, courier, sans-serif;
-
-			&::before {
-				content: "#";
-			}
-		}
-	}
-}
-
 .gatsby-highlight {
 	font-size: 12pt;
 	overflow: auto;
