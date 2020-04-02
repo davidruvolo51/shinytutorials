@@ -52,21 +52,31 @@
 				margin-left: 4px;
 			}
 		}
-		.post-meta-tags {
+		.article-tags {
+			display: inline-block;
+			padding: 0;
 			margin: 0;
-			margin-left: 0;
+			list-style: none;
+			color: $semi-dark;
 
 			li {
-				margin-left: 0;
-				margin-right: 8px;
+				display: inline-block;
+				margin-right: 12px;
 
-				code {
-					background-color: $primary;
-					color: $ultra-light;
+				.tag {
+					border-radius: 6px;
+					font-size: 11pt;
+					padding: 5px 10px;
+					background-color: $ultra-light;
+					font-family: consolas, courier, sans-serif;
+
+					&::before {
+						content: "#";
+					}
 				}
 
-				&:last-child {
-					margin-right: 0;
+				&:first-child {
+					margin-left: 0;
 				}
 			}
 		}

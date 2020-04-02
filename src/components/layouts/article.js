@@ -2,7 +2,7 @@
 // FILE: article.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-12-15
+// MODIFIED: 2020-04-02
 // PURPOSE: react component for tutorials, i.e. as articles
 // DEPENDENCIES: see below
 // STATUS: working
@@ -39,7 +39,7 @@ function Article(props) {
                 {
                     props.keywords
                         ? (
-                            <ul className="post-meta-tags" aria-label="post tags">
+                            <ul className="post-meta-tags article-tags" aria-label="post tags">
                                 {
                                     props.keywords.map(tag => (
                                         <li key={tag}>
