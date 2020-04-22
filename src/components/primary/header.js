@@ -12,7 +12,6 @@
 import React, { Component } from "react"
 import { Link } from "gatsby"
 import Nav from "./nav"
-import "../styles/nav.scss"
 import MenuBtn from "../elements/menuBtn"
 class Header extends Component {
 
