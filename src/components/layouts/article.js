@@ -2,7 +2,7 @@
 // FILE: article.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2020-04-02
+// MODIFIED: 2020-04-22
 // PURPOSE: react component for tutorials, i.e. as articles
 // DEPENDENCIES: see below
 // STATUS: working
@@ -15,7 +15,6 @@
 // BEGIN
 import React from "react"
 import PropTypes from "prop-types"
-import "../styles/article.scss"
 function Article(props) {
     return (
         <article className={props.className ? `article ${props.className}` : "article"}>
@@ -29,13 +28,16 @@ function Article(props) {
                         ? (
                             props.updated !== props.date
                             ? (
-                                // console.log(props.updated, props.data)
-                            <p className="article-dates">Updated:<time>{props.updated}</time></p>
+                                <p className="article-dates">Updated:<time>{props.updated}</time></p>
                             )
                             : null
                         )
                         : null
                 }
+            </header>
+            <section className="article-body" dangerouslySetInnerHTML={{ __html: props.post }} />
+            <div className="article-footer">
+                <p>Tutorial Keywords</p>
                 {
                     props.keywords
                         ? (
@@ -51,8 +53,7 @@ function Article(props) {
                         )
                         : null
                 }
-            </header>
-            <section className="article-body" dangerouslySetInnerHTML={{ __html: props.post }} />
+            </div>
         </article>
     )
 }

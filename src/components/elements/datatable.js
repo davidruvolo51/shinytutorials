@@ -11,7 +11,6 @@
 // BEGIN
 import React from "react"
 import PropTypes from "prop-types"
-import "../styles/datatable.scss"
 function datatable(data, id, caption) {
 
     // <thead>

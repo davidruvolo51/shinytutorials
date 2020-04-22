@@ -2,7 +2,7 @@
 // FILE: footer.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2020-03-22
+// MODIFIED: 2020-04-22
 // PURPOSE: footer component
 // DEPENDENCIES: react, footer.scss, nav, twitter icon, github icon
 // STATUS: working 
@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
-import "../styles/footer.scss"
 import Nav from "./nav"
 import Twitter from "../images/twitter"
 import Github from "../images/github"

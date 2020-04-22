@@ -1,0 +1,120 @@
+.sidebar-layout {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    .sidebar-panel {
+        position: static;
+        padding-top: 50px;
+
+        .sidebar-content {
+            background-color: white;
+            margin: 0 auto;
+            padding: 32px;
+            border-radius: 6px;
+
+            // h2
+            .sidebar-title {
+                display: block;
+                width: 100%;
+                
+                // button
+                .sidebar-toggle {
+                    position: relative;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 18pt;
+
+                    // svg
+                    .sidebar-toggle-icon {
+                        position: absolute;
+                        top: 4px;
+                        margin-left: 12px;
+                        transform: rotate(-45deg);
+                        transform-origin: center center;
+                        transition: all 0.3s ease-in-out;
+
+                        circle {
+                            fill: #f6f6f6;
+                        }
+                        
+                        line {
+                            stroke: $primary;
+                        }
+
+                        &.rotated {
+                            transform: rotate(0);
+                        }
+                    }
+                }
+            }
+
+            .sidebar-caption {
+                margin: 0;
+                margin-bottom: 12px;
+                line-height: 1.3;
+                font-size: 14pt;
+            }
+
+            .taglist {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                margin-bottom: 16px;
+                margin-left: -6px;
+    
+                .taglist-item {
+                    width: 200px;
+                    padding: 0 24px;
+                    padding-left: 0;
+                    margin-bottom: 12px;
+                    cursor: pointer;
+                }
+            }
+
+            &.expanded {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                clip: rect(1px 1px 1px 1px);
+                clip: rect(1px, 1px, 1px, 1px);
+                overflow: hidden;
+            }
+        }
+    }
+
+    .main-panel {
+        padding-top: 50px;
+    }
+
+    .main-panel,
+    .sidebar-panel {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: $breakpoint) {
+    .sidebar-layout {
+        .sidebar-panel {
+            width: 30%;
+            margin: 0 auto;
+            padding-top: 82px;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            height: 100%;
+
+            .sidebar-content {
+                width: 70%;
+            }
+        }
+
+        .main-panel {
+            width: 70%;
+        }
+    }
+}

@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React, { Component } from "react"
-import "../styles/menuBtn.scss"
 class Menubtn extends Component {
 
     constructor(props) {

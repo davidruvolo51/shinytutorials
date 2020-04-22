@@ -12,7 +12,6 @@
 import React, { Component } from "react"
 import { Link } from "gatsby"
 import { links } from "./nav.json"
-import "../styles/navigation-links.scss"
 import HomeIcon from "../images/home"
 class Nav extends Component {
 
