@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2020-01-29
+// MODIFIED: 2020-04-22
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -16,35 +16,33 @@ import { graphql } from "gatsby"
 import App from "../../components/layouts/app"
 import Hero from "../../components/layouts/hero-alt"
 import Main from "../../components/layouts/main"
-import Sidebar from "../../components/layouts/sidebar"
 import Search from "../../components/elements/searchForm"
 import Reset from "../../components/elements/resetBtn"
-import TagsList from "../../components/elements/tagsList"
 import Post from "../../components/layouts/post-entry"
+import KeywordList from "../../components/elements/keywords"
+import { SideBarLayout, SideBarPanel, MainPanel } from "../../components/layouts/sidebar"
 
-function Tutorials(props){
+function Tutorials(props) {
 
-    // get posts data
+	// get posts data
 	const postList = props.data.allMarkdownRemark;
 	const keywords = Array.from([...new Set(postList.edges.map(n => n.node.frontmatter.keywords).flat().sort())])
 
-    return (
-        <App
+	return (
+		<App
 			title="tutorials"
 			description="A collection of methods and techniques for building shiny apps"
 			author="dcruvolo"
 			keywords={["shiny", "shiny tutorials", "r", "shiny examples"]}
 		>
-			<Hero title="Available Tutorials" text="Below you can find all of the available tutorials. Search for a tutorial by name, topic, date, or keyword."/>
+			<Hero title="Available Tutorials" text="Below you can find all of the available tutorials. Search for a tutorial by name, topic, date, or keyword." />
 			<Main>
-				<div className="flex flex-30x70-layout tutorial-index">
-					<Sidebar className="flex-child tutorial-index-sidebar">
-						<h2 className="menu-title">Filter Tutorials</h2>
-						<p className="menu-caption">Select a keyword</p>
-						<TagsList keywords={ keywords } />
+				<SideBarLayout className="tutorial-index">
+					<SideBarPanel className="flex-child" title="Filter Tutorials" caption="Select a keyword">
+						<KeywordList keywords={keywords} />
 						<Reset />
-					</Sidebar>
-					<article className="flex-child tutorial-index-posts">
+					</SideBarPanel>
+					<MainPanel>
 						<Search />
 						{
 							// map nodes -> blog post lists
@@ -62,11 +60,11 @@ function Tutorials(props){
 								/>
 							))
 						}
-					</article>
-				</div>
+					</MainPanel>
+				</SideBarLayout>
 			</Main>
 		</App>
-    )
+	)
 }
 
 export default Tutorials

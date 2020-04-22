@@ -2,7 +2,7 @@
 // FILE: index.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-11-19
+// MODIFIED: 2020-04-22
 // PURPOSE: react component for home page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -41,11 +41,11 @@ function IndexPage(props) {
 				className="hero-style-1"
 			/>
 			<Main>
-				<Section className="welcome-section" aria-label="introduction">
-					<h2>Welcome!</h2>
-					<p>This site was developed to provide a series of practical examples for developing shiny applications. All of the tutorials can be found in the <Link to="/tutorials">Tutorials</Link> index and you can read more about this project on the <Link to="/about">About</Link> page. I also have some example applications in the <Link to="/gallery">Gallery</Link>. If you have any questions, checkout the github repository <a href="https://github.com/davidruvolo51/shinyAppTutorials">Shiny Tutorials</a> or tweet me <a href="https://twitter.com/dcruvolo">@dcruvolo</a>.</p>
+				<Section className="welcome-section filled-section" aria-label="introduction">
+					<h2>Welcome</h2>
+					<p>The <strong>shinyTutorials</strong> site is collection of examples and tips for developing shiny applications. These tutorials provide methods for moving beyond basic shiny apps to developing your own features. All of the tutorials can be found in the <Link to="/tutorials">Tutorials</Link> page. If you are interested contributing to this project, checkout the github repository <a href="https://github.com/davidruvolo51/shinyAppTutorials">Shiny Tutorials</a>.</p>
 				</Section>
-				<Section isFullWidth={true} className="tutorial-latest" aria-label="latest post">
+				<Section isFullWidth={true} className="tutorial-latest filled-section" aria-label="latest post">
 					<h2>Latest Tutorials</h2>
 					<p>Read the latest tutorials.</p>
 					<div className="flex flex-50x2-layout">
@@ -72,9 +72,9 @@ function IndexPage(props) {
 							id={latestPost1.frontmatter.title}
 						/>
 					</div>
-					<Link to="tutorials" className="btn-link btn-primary btn-centered">Find More</Link>
+					<Link to="tutorials" className="btn btn-secondary btn-centered">More</Link>
 				</Section>
-				<Section className="related-projects" aria-label="related projects">
+				<Section isFullWidth={true} className="related-projects filled-section" aria-label="related projects">
 					<h2>Related Projects</h2>
 					<p>Take a look at other projects that I'm currently working on.</p>
 					<div className="flex flex-50x2-layout">
@@ -82,9 +82,10 @@ function IndexPage(props) {
 							isFeature={true}
 							className="flex-child"
 							title="Accessible Shiny"
-							titleIsLink={true}
+							isExternalLink={true}
 							link="https://github.com/davidruvolo51/accessibleshiny"
-							abstract="An R package for building web accessible UI components in shiny apps."
+							linkLabel="View"
+							abstract="I'm developing an R package for building web accessible shiny applications."
 							keywords={["pkg"]}
 							id="project-r-accessibleshiny"
 						/>
@@ -92,31 +93,12 @@ function IndexPage(props) {
 							isFeature={true}
 							className="flex-child"
 							title="browsertools"
-							titleIsLink={true}
+							isExternalLink={true}
 							link="https://github.com/davidruvolo51/browsertools"
-							abstract="A collection of my commonly used session handlers wrapped in an R pkg."
+							linkLabel="View"
+							abstract="I am working on bundling JavaScript handlers into a package for use in shiny apps."
 							keywords={["pkg"]}
 							id="project-r-browsertools"
-						/>
-						<Post
-							isFeature={true}
-							className="flex-child"
-							title="R, React, and Express Demo"
-							titleIsLink={true}
-							link="https://github.com/davidruvolo51/r-react-demo"
-							abstract="Integrate R into React application using a Node and Express backend."
-							keywords={["react", "express"]}
-							id="project-r-react"
-						/>
-						<Post
-							isFeature={true}
-							className="flex-child"
-							title="R Plumber Demo"
-							titleIsLink={true}
-							link="https://github.com/davidruvolo51/r-plumber-app"
-							abstract="Create an interactive application using R plumber as a backend."
-							keywords={["plumber"]}
-							id="project-r-plumber"
 						/>
 					</div>
 				</Section>
