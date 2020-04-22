@@ -1,0 +1,123 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: "Open Sans", Helvetica, sans-serif;
+	cursor: default;
+	font-size: 16pt;
+}
+
+header,
+main,
+footer,
+article,
+aside,
+nav {
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	display: block;
+	color: $dark;
+	line-height: $heading-line-height;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 6px;
+}
+
+p {
+	color: $semi-dark;
+	line-height: $body-line-height;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 12px;
+}
+
+ol, li {
+    li {
+        margin: 0;
+        padding: 0;
+        line-height: 1.7;
+
+        p {
+            padding: 0;
+            margin: 0;
+            line-height: 1;
+        }
+
+        a {
+            padding: 0;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        ol {
+            list-style-type: lower-alpha;
+        }
+    }
+}
+
+li {
+	color: $semi-dark;
+	line-height: $heading-line-height;
+}
+
+a {
+	color: $primary;
+	text-decoration: none;
+	box-shadow: 0 1px 0 $primary;
+}
+
+blockquote {
+	line-height: $heading-line-height;
+}
+
+input {
+	-webkit-appearance: none;
+	appearance: none;
+	display: block;
+	width: 90%;
+	font-size: 12pt;
+	padding: 8px;
+	padding-left: 12px;
+	border-radius: 0px;
+	border: none;
+	background-color: $ultra-light;
+	-webkit-box-shadow: inset 0 2px 2px $light;
+	box-shadow: inset 0 2px 2px $light;
+}
+
+img {
+	display: block;
+	width: 100%;
+}
+
+:not(pre) > code {
+	font-size: 14pt;
+}
+
+.icon {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+
+.gatsby-highlight {
+	font-size: 12pt;
+	overflow: auto;
+}
+
+.gatsby-highlight pre {
+	border-radius: 4px;
+}
+
+.gatsby-resp-image-link {
+	box-shadow: none;
+}

@@ -2,7 +2,7 @@
 // FILE: post-entry.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2020-03-26
+// MODIFIED: 2020-04-22
 // PURPOSE: react component for post entries
 // DEPENDENCIES: react
 // STATUS: working
@@ -25,29 +25,19 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import "../styles/post-entry.scss"
-
-// process link: is it an internal or external link?
-function isExternalLink(props) {
-
-    // match for external pattern - http will catch https
-    const pattern = new RegExp("http");
-    if (props.link.match(pattern)) {
-        return <a href={props.link} className="post-link">{props.linkLabel}</a>;
-    }
-    // match for internal pattern
-    if (props.link[0] === "/") {
-        return <Link to={props.link} className="post-link">{props.linkLabel}</Link>
-    }
-
-}
 
 // render post component
 function Post(props) {
 
+    // define post themes
+    const post_types = ["default", "feature"]
+
     // process css
     const css_init = props.className ? `post ${props.className}` : `post`
     const css_type = props.isFeature ? `${css_init} post-feature` : `${css_init} post-plain`;
+
+    // process card type
+
 
     // return component
     return (
@@ -72,36 +62,26 @@ function Post(props) {
                         <h3 id={props.title} className="post-title">{props.title}</h3>
                     )
             }
+            {
+                // publication date
+                props.date
+                    ? (
+                        <time className="post-date">{props.date}</time>
+                    )
+                    : null
+            }
             <p className="post-desc">{props.abstract}</p>
             {
-                props.data || props.keywords
+                // keywords
+                props.keywords
                     ? (
-                        <ul className="post-meta" aria-label="post details">
+                        <ul className="post-tags" aria-label="post tags">
                             {
-                                props.date
-                                    ? (
-                                        <li className="post-meta-item">
-                                            <span className="post-date">{props.date}</span>
-                                        </li>
-                                    )
-                                    : null
-                            }
-                            {
-                                props.keywords
-                                    ? (
-                                        <li className="post-meta-item">
-                                            <ul className="post-meta-tags" aria-label="post tags">
-                                                {
-                                                    props.keywords.map((tag, i) => (
-                                                        <li key={i}>
-                                                            <code className={`tag tag-${tag}`}>{tag}</code>
-                                                        </li>
-                                                    ))
-                                                }
-                                            </ul>
-                                        </li>
-                                    )
-                                    : null
+                                props.keywords.map((tag, i) => (
+                                    <li key={i}>
+                                        <code className={`tag tag-${tag}`}>{tag}</code>
+                                    </li>
+                                ))
                             }
                         </ul>
                     )
@@ -109,9 +89,9 @@ function Post(props) {
             }
             {
                 // some logic to determine if the input link is internal or external
-                props.link
-                    ? isExternalLink(props)
-                    : null
+                props.isExternalLink
+                    ? <a href={props.link} className="post-link">{props.linkLabel}</a>
+                    : <Link to={props.link} className="post-link">{props.linkLabel}</Link>
             }
         </div>
     )

@@ -1,208 +1,89 @@
-@import "_variables";
+@import "_variables", "_fonts", "_base";
+@import "_buttons", "_nav","_menu_links", "_footer", "_post", "_hero", "_flex", "_article", "_main", "_sidebar", "_menuBtn", "_datatable";
 
-html,
-body {
+// tutorial index page (/tutorials/)
+.tutorial-index {
 	padding: 0;
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-		Helvetica Neue, sans-serif;
-	cursor: default;
-	font-size: 16pt;
-}
-
-header,
-main,
-footer,
-article,
-aside,
-nav {
-	padding: 0;
-	margin: 0;
-	display: block;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	display: block;
-	color: $dark;
-	line-height: $heading-line-height;
-	margin: 0;
-	padding: 0;
-	margin-bottom: 6px;
-}
-
-p {
-	color: $semi-dark;
-	line-height: $body-line-height;
-	padding: 0;
-	margin: 0;
-	margin-bottom: 12px;
-}
-
-li {
-	color: $semi-dark;
-	line-height: $heading-line-height;
-}
-
-a {
-	color: $primary;
-	text-decoration: none;
-	box-shadow: 0 1px 0 $primary;
-}
-
-blockquote {
-	line-height: $body-line-height;
-}
-
-.form {
-	display: block;
-	padding: 32px 0;
-	background-color: $pure-light;
-	border-bottom: 1px solid $light;
-
-	.input-label {
-		display: block;
-		padding: 0;
-		margin: 0;
-		font-size: 18pt;
-		color: $semi-dark;
-		font-weight: 600;
-	}
-
-	.input-example {
-		line-height: 1.5;
-		padding: 0;
-		margin: 0;
-		font-size: 12pt;
-		color: $semi-dark;
-		margin-bottom: 12px;
-	}
-}
-
-input {
-	-webkit-appearance: none;
-	appearance: none;
-	display: block;
-	width: 90%;
-	font-size: 12pt;
-	padding: 8px;
-	padding-left: 12px;
-	border-radius: 0px;
-	border: none;
+	padding-bottom: 66px;
 	background-color: $ultra-light;
-	-webkit-box-shadow: inset 0 2px 2px $light;
-	box-shadow: inset 0 2px 2px $light;
+
+	// styling for index.js - list of posts
+	.tutorial-index-posts {
+		padding: 32px 0;
+
+		h2 {
+			padding-left: 32px;
+			margin-bottom: 32px;
+		}
+	}
 }
 
-button {
-	-webkit-appearance: none;
-	appearance: none;
-	display: block;
-	border: none;
-	cursor: pointer;
+// styling for posts
+.tutorial {
+	padding: 50px 0;
+	background-color: $ultra-light;
 }
 
-.btn,
-.btn-link {
-	padding: 4px;
-	margin: 8px 0;
-	font-size: 14px;
-	background-color: transparent;
-	border-left: 3px solid transparent;
-	-webkit-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+// about page
+.about-page {
+	#repos {
+		thead {
+			th {
+				&:nth-child(n + 4) {
+					text-align: left;
+				}
+			}
+		}
+
+		.column-4,
+		.column-5,
+		.column-6 {
+			text-align: left;
+		}
+	}
 }
 
-.btn-primary,
-.btn-secondary {
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	font-weight: 600;
-	border-radius: 3px;
-	padding: 6px 12px;
-}
+@media (min-width: $breakpoint) {
+	// index page styles
+	.related-projects,
+	.tutorial-latest {
+		.post.post-feature {
+			max-width: 40%;
 
-.btn-primary {
-	background-color: $primary;
-	border: 2px solid $primary;
-	color: white;
-	padding: 8px 12px;
-}
+			&:nth-child(odd) {
+				margin-right: 32px;
+			}
+		}
+	}
+	.tutorial-index {
+		.tutorial-index-posts {
+			padding-top: 82px;
+		}
+	}
+	&.about-page {
+		#repos {
+			thead {
+				th {
+					&:nth-child(n + 4) {
+						text-align: right;
+					}
+				}
+			}
 
-.btn-primary:hover,
-.btn-primary:focus {
-	background-color: transparent;
-	border-color: $primary;
-	color: $primary;
-}
+			.column-4,
+			.column-5,
+			.column-6 {
+				text-align: right;
+			}
+		}
+	}
 
-.btn-secondary {
-	background-color: transparent;
-	border: 2px solid $primary;
-	color: $primary;
+	// set the width of the gallery page link
+	.gallery-page {
+		.post {
+			.post-link {
+				width: 250px;
+			}
+		}
+	}
 }
-
-.btn-secondary:hover,
-.btn-secondary:focus {
-	background-color: $primary;
-	color: $ultra-light;
-	border-color: $primary;
-}
-
-.btn-keyword {
-	font-size: 12pt;
-}
-
-.btn-keyword:hover,
-.btn-keyword:focus,
-.btn-keyword.selected {
-	color: $primary;
-	font-weight: 600;
-	border-left-color: $primary;
-}
-
-.btn-link {
-	display: block;
-	width: 125px;
-	text-align: center;
-}
-
-.btn-centered {
-	margin: 0 auto;
-	margin-top: 24px;
-}
-
-img {
-	display: block;
-	width: 100%;
-}
-
-.icon {
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-}
-
-.gatsby-highlight {
-	font-size: 12pt;
-	overflow: auto;
-}
-
-.gatsby-highlight pre {
-	border-radius: 4px;
-}
-
-.gatsby-resp-image-link {
-	box-shadow: none;
-}
-
-:not(pre) > code {
-	font-size: 14pt;
-}
-
-@import "flex";

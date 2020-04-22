@@ -2,7 +2,7 @@
 // FILE: hero.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2019-12-15
+// MODIFIED: 2020-04-22
 // PURPOSE: react component for page heros
 // DEPENDENCIES: see below
 // STATUS: working
@@ -11,7 +11,6 @@
 // BEGIN
 import React from "react"
 import PropTypes from "prop-types"
-import "../styles/hero.scss"
 import BarChart from "../images/barchart"
 import Dashboard from "../images/dashboard"
 import DashboardFail from "../images/dashboard-fail"
