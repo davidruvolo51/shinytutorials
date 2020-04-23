@@ -16,21 +16,16 @@
 			padding: 72px 0;
 			z-index: 2;
 
-			h1 {
+			.hero-title {
 				font-size: 21pt;
 				letter-spacing: 2.5px;
 			}
 
-			h2 {
+			.hero-subtitle {
 				font-weight: 600;
 				font-size: 32pt;
 				letter-spacing: 2px;
 				line-height: 1.2;
-			}
-
-			time {
-				font-size: 16px;
-				font-weight: 600;
 			}
 
 			.hero-image {

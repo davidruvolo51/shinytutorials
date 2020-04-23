@@ -17,6 +17,8 @@ keywords: ["contest"]
 - [Limitations](#limitations)
 - [Conclusion](#conclusion)
 
+<!-- endexcerpt -->
+
 <span id="introduction" />
 
 ## Introduction

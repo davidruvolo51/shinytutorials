@@ -10,15 +10,16 @@ updated: "2019-12-15"
 
 ## Contents
 
-1. [Why would I need this](#about)
-2. [How does this shiny app work?](#work)
-    1. [Build the input element](#work-build)
-    2. [Write the JavaScript function](#work-js)
-3. [What do I need to know before I implement this into my own project?](#further-thoughts)
-    1. [Semantic HTML and Web Accessibility](#further-thoughts-html)
-    1. [Processing Input Values In JavaScript](#further-thoughts-process)
-4. [How do I run the demo?](#run)
+- [Why would I need this](#about)
+- [How does this shiny app work?](#work)
+    - [Build the input element](#work-build)
+    - [Write the JavaScript function](#work-js)
+- [What do I need to know before I implement this into my own project?](#further-thoughts)
+    - [Semantic HTML and Web Accessibility](#further-thoughts-html)
+    - [Processing Input Values In JavaScript](#further-thoughts-process)
+- [How do I run the demo?](#run)
 
+<!-- endexcerpt -->
 
 <span id="about" />
 

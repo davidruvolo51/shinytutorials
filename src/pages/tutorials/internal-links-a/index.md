@@ -19,6 +19,7 @@ keywords: ["javascript"]
 4.  [How do I run the demo?](#run)
 5.  [What's next?](#next)
 
+<!-- endexcerpt -->
 
 <span id="about" />
 

@@ -1,6 +1,16 @@
 @import "_variables", "_fonts", "_base";
 @import "_buttons", "_nav","_menu_links", "_footer", "_post", "_hero", "_flex", "_article", "_main", "_sidebar", "_menuBtn", "_datatable";
 
+// screen reader only styles
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip: rect(0 0 0 0);
+	clip: rect(0, 0, 0, 0);
+	overflow: hidden;
+}
+
 // tutorial index page (/tutorials/)
 .tutorial-index {
 	padding: 0;
@@ -20,7 +30,8 @@
 
 // styling for posts
 .tutorial {
-	padding: 50px 0;
+	padding: 0;
+	padding-bottom: 50px;
 	background-color: $ultra-light;
 }
 

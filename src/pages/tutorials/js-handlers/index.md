@@ -20,6 +20,8 @@ keywords: ["javascript"]
 3. [What do I need to know before I intergrate this into my app?](#know) 
 4. [How do I run the demo?](#run)
 
+<!-- endexcerpt -->
+
 <span id="about" />
 
 ## Why would I need this?

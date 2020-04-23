@@ -13,6 +13,8 @@ keywords: ["css"]
 2.  [How does this work?](#work)
 3.  [How do I run the demo?](#run)
 
+<!-- endexcerpt -->
+
 <span id="about" />
 
 ## Why would I need this?

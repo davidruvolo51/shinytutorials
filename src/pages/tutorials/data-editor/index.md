@@ -20,6 +20,8 @@ keywords: ["rhandsontable"]
         5. [Saving data](#work-server-saving)
 3.  [How can I run the demo?](#data-editor-run)
 
+<!-- endexcerpt -->
+
 <span id="about"/>
 
 ## Why would I need this?

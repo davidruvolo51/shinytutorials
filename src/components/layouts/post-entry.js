@@ -29,9 +29,6 @@ import { Link } from "gatsby"
 // render post component
 function Post(props) {
 
-    // define post themes
-    const post_types = ["default", "feature"]
-
     // process css
     const css_init = props.className ? `post ${props.className}` : `post`
     const css_type = props.isFeature ? `${css_init} post-feature` : `${css_init} post-plain`;
