@@ -37,8 +37,12 @@ function Hero(props){
                     : null
                 }
                 <h1 className="hero-title">{ props.title }</h1>
-                <h2>{ props.subtitle }</h2>
-                <time className="hero-date">{props.date}</time>
+                <h2 className="hero-subtitle">{ props.subtitle }</h2>
+                {
+                    props.children
+                    ? props.children
+                    : null
+                }
             </div>
         </header>
     )

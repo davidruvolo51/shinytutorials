@@ -18,26 +18,19 @@ import PropTypes from "prop-types"
 function Article(props) {
     return (
         <article className={props.className ? `article ${props.className}` : "article"}>
-            <header className="article-header">
-                <h1>{props.title}</h1>
-                <h2>{props.subtitle}</h2>
-                <p>{props.abstract}</p>
-                <p className="article-dates">Published:<time>{props.date}</time></p>
-                {
-                    props.updated
-                        ? (
-                            props.updated !== props.date
-                            ? (
-                                <p className="article-dates">Updated:<time>{props.updated}</time></p>
-                            )
-                            : null
-                        )
-                        : null
-                }
-            </header>
+            {
+                props.abstract
+                    ? (
+                        <section className="article-abstract">
+                            <h2>Overview</h2>
+                            {props.abstract}
+                        </section>
+                    )
+                    : null
+            }
             <section className="article-body" dangerouslySetInnerHTML={{ __html: props.post }} />
             <div className="article-footer">
-                <p>Tutorial Keywords</p>
+                <p>Keywords</p>
                 {
                     props.keywords
                         ? (

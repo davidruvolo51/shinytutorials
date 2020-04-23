@@ -17,6 +17,12 @@ module.exports = {
 				ignore: process.env.NODE_ENV === `production` && [`**/draft-*`]
 			},
 		},
+		{
+			resolve: `gatsby-transformer-remark`,
+			options: {
+				excerpt_separator: `<!-- endexcerpt -->`
+			}
+		},
 		`gatsby-transformer-sharp`,
 		{
 			resolve: `gatsby-transformer-remark`,
@@ -79,7 +85,7 @@ module.exports = {
 									description: edge.node.frontmatter.abstract,
 									guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
 									url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-									custom_elements:[{ 'content:encoded' : edge.node.frontmatter.keywords }]
+									custom_elements: [{ 'content:encoded': edge.node.frontmatter.keywords }]
 								})
 							})
 						},

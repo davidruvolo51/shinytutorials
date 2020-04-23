@@ -1,57 +1,79 @@
+// article author profile: img + title
+.article-profile {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 12px;
+
+	.profile-img {
+		width: 40px;
+		border-radius: 50%;
+	}
+
+	.profile-name {
+		font-size: 12pt;
+		margin-left: 6px;
+		color: $semi-dark;
+	}
+}
+
+// article
+.article-hero {
+	padding-bottom: 0;
+
+	// heading
+	h1 {
+		font-size: 13pt;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+	}
+
+	h2 {
+		font-size: 28pt;
+	}
+	
+	.article-dates {
+		margin: 0;
+		line-height: 1.5;
+		font-size: 11pt;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		
+		time {
+			margin-left: 4px;
+			font-weight: normal;
+		}
+	}
+}
+
+// article
 .article {
 	width: 100%;
 	padding: 32px 0;
 	border-radius: 6px;
 	background-color: white;
-	-webkit-box-shadow: none;
-	box-shadow: none;
 
-	.article-header,
+	.article-title,
+	.article-abstract,
 	.article-body,
 	.article-footer {
 		display: block;
 		width: 90%;
 		margin: 0 auto;
-    }
-    
-    .article-header {
-		padding-top: 32px;
-		padding-bottom: 16px;
-		border-bottom: 1px solid $med;
-		
-        h1 {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 13pt;
-			color: $semi-dark;
-        }
-        
-        h2 {
-			font-size: 28pt;
-			line-height: 1.1;
-            color: $dark;
-        }
+	}
 
-        p {
-            margin: 0;
+	.article-title {
+		text-align: center;
+	}
+    
+	.article-abstract {
+		color: $semi-dark;
+		*:not(h2) {
 			color: $semi-dark;
-			margin-bottom: 12px;
-			line-height: 1.5;
 		}
-		
-        .article-dates {
-			margin: 0;
-			line-height: 1.5;
-			font-size: 11pt;
-			text-transform: uppercase;
-			letter-spacing: 2px;
-			color: $semi-dark;
-			
-			time {
-				margin-left: 4px;
-			}
-		}
-    }
+		line-height: $body-line-height;
+	}
+
 
 	.article-body {
 		h2 {
@@ -108,12 +130,47 @@
 	}
 }
 
+// article toc
+.article-toc {
+	h2 {
+		font-size: 21pt;
+	}
+
+	ul, ol {
+		font-size: 13pt;
+
+		li {
+			margin-bottom: 12px;
+
+			ul, ol {
+				margin-top: 12px;
+
+				li {
+					margin-bottom: 6px;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		a {
+			box-shadow: none;
+
+			&:hover, :focus {
+				box-shadow: 0 2px 0 0 $primary;
+			}
+		}
+	}
+}
+
 @media (min-width: $breakpoint) {
 	.article {
-		max-width: 912px;
-		margin: 0 auto;
-		margin-top: 55px;
-		-webkit-box-shadow: 0 3px 4px $light;
-		box-shadow: 0 3px 4px $light;
+		max-width: 812px;
 	}
 }

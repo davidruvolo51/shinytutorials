@@ -2,51 +2,39 @@
 // FILE: menuBtn.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-26
-// MODIFIED: 2019-10-26
+// MODIFIED: 2020-04-23
 // PURPOSE: react component for menu button
 // DEPENDENCIES: react
-// STATUS: in.progress
+// STATUS: working
 // COMMENTS: NA
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
-import React, { Component } from "react"
-class Menubtn extends Component {
+import React, { useState, useEffect } from "react"
 
-    constructor(props) {
-        super(props);
-        this.___openMenu = this.___openMenu.bind(this);
-    }
-    // function: open menu
-    ___openMenu() {
-
-        // toggle sidebar and toggle button classes
-        const toggle = document.getElementById("menuBtn");
+function MenuToggle() {
+    // set status
+    const [isOpen, setOpenStatus] = useState(false);
+    useEffect(() => {
+        // select elements
         const menu = document.querySelector(".navigation");
         menu.classList.toggle("expanded");
-        toggle.classList.toggle("open");
-
-        // update aria attributes
-        if (toggle.getAttribute("aria-expanded") === "false") {
-            toggle.setAttribute("aria-expanded", true);
-            menu.setAttribute("hidden", false);
+        if (isOpen) {
+            menu.removeAttribute("hidden");
         } else {
-            toggle.setAttribute("aria-expanded", false);
-            menu.setAttribute("hidden", true);
+            menu.setAttribute("hidden", "true");
         }
-    }
+    }, [isOpen])
 
     // render
-    render() {
-        return (
-            <button id="menuBtn" aria-label="open and close menu" aria-expanded="false" onClick={this.___openMenu}>
-                {/* <label className="menu-label">Menu</label> */}
-                <span className="menu-icon" aria-hidden="true">
-                    <span className="menu-bar"></span>
-                    <span className="menu-bar"></span>
-                    <span className="menu-bar"></span>
-                </span>
-            </button>
-        )
-    }
+    return (
+        <button id="menuBtn" className={isOpen ? "open" : ""} aria-expanded={isOpen} onClick={() => setOpenStatus(!isOpen)}>
+            <span className="menu-icon" aria-hidden="true">
+                <span className="menu-bar"></span>
+                <span className="menu-bar"></span>
+                <span className="menu-bar"></span>
+            </span>
+        </button>
+    )
 }
-export default Menubtn
+
+export default MenuToggle
