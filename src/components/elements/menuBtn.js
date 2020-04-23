@@ -17,11 +17,12 @@ function MenuToggle() {
     useEffect(() => {
         // select elements
         const menu = document.querySelector(".navigation");
-        menu.classList.toggle("expanded");
         if (isOpen) {
+            menu.classList.add("expanded");
             menu.removeAttribute("hidden");
         } else {
             menu.setAttribute("hidden", "true");
+            menu.classList.remove("expanded");
         }
     }, [isOpen])
 

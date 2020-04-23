@@ -5,6 +5,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
+	padding: 6px 0;
 	display: -ms-grid;
 	display: grid;
 	grid-template-columns: 65% 35%;
@@ -18,7 +19,7 @@
 
 	.nav-item {
 		display: flex;
-        align-items: center;
+		align-items: center;
 	}
 
 	.nav-item.brand-link {

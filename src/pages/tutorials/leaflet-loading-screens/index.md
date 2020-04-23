@@ -16,7 +16,7 @@ keywords: ["leaflet", "htmlwidgets"]
     - [Styling the loading UI](#work-ui-css)
     - [Writing javascript to control the loading UI](#work-ui-js)
 3. [What do I need to know before I integrate this into my app?](#know)
-4. [How do I run the demo](#run)
+4. [How do I run the example?](#run)
 
 <!-- endexcerpt -->
 
