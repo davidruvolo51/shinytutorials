@@ -20,6 +20,8 @@ keywords: ["html","css"]
 3. [What do I need to know before implementing this into my own application?](#further-considerations)
 4. [How do I run the example application?](#run)
 
+<!-- endexcerpt -->
+
 <span id="about" />
 
 ## Why would I need this?

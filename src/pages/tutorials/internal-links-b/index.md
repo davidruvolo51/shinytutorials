@@ -17,6 +17,7 @@ keywords: ["javascript","leaflet"]
 3.  [How do I run the demo?](#run)
 4.  [What's next?](#next)
 
+<!-- endexcerpt -->
 
 <span id="about" />
 

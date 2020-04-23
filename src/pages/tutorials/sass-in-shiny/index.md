@@ -22,6 +22,7 @@ keywords: ["css","scss"]
 3. [What do I need to know before implementing this into my app?](#further-considerations)
 4. [How do I run the example?](#run)
 
+<!-- endexcerpt -->
 
 <span id="about" />
 

@@ -17,6 +17,7 @@ keywords: ["rmarkdown"]
 3. [Further Thoughts](#further-thoughts)
 4. [How do I run the example?](#run)
 
+<!-- endexcerpt -->
 
 <span id="about"></span>
 

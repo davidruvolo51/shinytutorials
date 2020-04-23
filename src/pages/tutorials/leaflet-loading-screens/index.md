@@ -3,7 +3,7 @@ title: "Leaflet Busy Element"
 subtitle: "Create a custom loading element for leaflet maps"
 abstract: "The leaflet package in R is great package for creating interactive maps in shiny. However, if you are using larger datasets or running a lot of server-side jobs, it may take some time for the leaflet map to render and update. Displaying progress indicators can improve the user experience by reassuring the user when something is happening and how long it might last."
 date: "2020-04-02"
-updated: "2020-04-02"
+updated: "2020-04-23"
 keywords: ["leaflet", "htmlwidgets"]
 ---
 
@@ -17,6 +17,8 @@ keywords: ["leaflet", "htmlwidgets"]
     - [Writing javascript to control the loading UI](#work-ui-js)
 3. [What do I need to know before I integrate this into my app?](#know)
 4. [How do I run the demo](#run)
+
+<!-- endexcerpt -->
 
 <span id="about" />
 

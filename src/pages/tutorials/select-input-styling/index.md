@@ -3,7 +3,7 @@ title: "Custom Select Inputs"
 subtitle: "Creating your own select inputs with style"
 abstract: "For some apps, you may need to style the selectInput widget. Styling the element can be tricky. Learn how to use standard html elements and css to create your own input."
 date: "2019-11-04"
-updated: "2019-11-19"
+updated: "2020-04-23"
 keywords: ["css", "html"]
 ---
 
@@ -16,9 +16,7 @@ keywords: ["css", "html"]
 3. [Futher Thoughts](#further-thoughts)
 4. [How do I run the example](#run)
 
-> This tutorial uses a bit of html and css. Some knowledge will help, but it is not required. I'll try to explain things as I go and provide links to additional resources. As always, questions and suggestions are welcome!
-
-> Also, I'm the process of developing an new example that demonstrates how to build a completely custom input element. Stay tuned! 
+<!-- endexcerpt -->
 
 <span id="about"></span>
 
@@ -39,6 +37,10 @@ In the future, I plan on developing tutorials that provide more alternatives so 
 For now, we will create an application with a custom select input. We will also display the selection in an output element just to demonstrate that the input is working with shiny. Here is what the final app will look like.
 
 ![select input shiny application](./select_input_preview.png)
+
+> This tutorial uses a bit of html and css. Some knowledge will help, but it is not required. I'll try to explain things as I go and provide links to additional resources. As always, questions and suggestions are welcome!
+
+> Also, I'm the process of developing an new example that demonstrates how to build a completely custom input element. Stay tuned! 
 
 <span id="work"></span>
 

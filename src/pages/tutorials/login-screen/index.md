@@ -22,6 +22,8 @@ keywords: ["access-control"]
 3.  [Further Thoughts](#further-thoughts)
 4.  [How do I run the app?](#run)
 
+<!-- endexcerpt -->
+
 <span id="about" />
 
 ## Why would I need this?
