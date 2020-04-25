@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2020-04-23
+// MODIFIED: 2020-04-25
 // PURPOSE: layout component for tutorials
 // DEPENDENCIES: see below
 // STATUS: in.progress
@@ -44,18 +44,19 @@ function BlogPost(props) {
 			<Hero className="article-hero">
 				<h1>{post.frontmatter.title}</h1>
 				<h2>{post.frontmatter.subtitle}</h2>
-				<p className="article-dates">Published:<time>{post.frontmatter.date}</time></p>
+				<p className="article-dates">Published: <time>{post.frontmatter.date}</time></p>
 				{
 					post.frontmatter.updated
 						? (
 							post.frontmatter.updated !== post.frontmatter.date
 								? (
-									<p className="article-dates">Updated:<time>{post.frontmatter.updated}</time></p>
+									<p className="article-dates">Updated: <time>{post.frontmatter.updated}</time></p>
 								)
 								: null
 						)
 						: null
 				}
+				<p className="article-readtime"><time>{Math.ceil(post.fields.readingTime.minutes)}</time> minute read</p>
 				<ProfileImage src={dcruvoloImage} author="@dcruvolo" />
 			</Hero>
 			<Main className="tutorial">
@@ -91,7 +92,12 @@ export const query = graphql`
         date
         updated
         keywords
-      }
+	  }
+	  fields {
+		readingTime {
+			minutes
+		}
+	  }
     }
   }
 `

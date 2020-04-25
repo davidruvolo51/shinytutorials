@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2020-04-22
+// MODIFIED: 2020-04-25
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -57,6 +57,7 @@ function Tutorials(props) {
 									date={node.frontmatter.date}
 									keywords={node.frontmatter.keywords}
 									id={`${node.frontmatter.title}-${i}`}
+									key={i}
 								/>
 							))
 						}
