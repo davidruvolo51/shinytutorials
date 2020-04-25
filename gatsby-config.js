@@ -7,6 +7,7 @@ module.exports = {
 		siteUrl: "https://davidruvolo51.github.io/shinytutorials/"
 	},
 	plugins: [
+		`gatsby-remark-reading-time`,
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-sass`,
 		{

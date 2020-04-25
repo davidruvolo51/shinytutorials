@@ -32,17 +32,22 @@
 		font-size: 28pt;
 	}
 	
+	.article-readtime,
 	.article-dates {
 		margin: 0;
 		line-height: 1.5;
 		font-size: 11pt;
 		text-transform: uppercase;
 		letter-spacing: 2px;
+		padding: 0;
 		
 		time {
-			margin-left: 4px;
 			font-weight: normal;
 		}
+	}
+
+	.article-readtime {
+		color: $primary;
 	}
 }
 
