@@ -141,17 +141,22 @@
 		font-size: 21pt;
 	}
 
-	ul, ol {
+	ol {
 		font-size: 13pt;
 
 		li {
 			margin-bottom: 12px;
 
-			ul, ol {
+			ol {
 				margin-top: 12px;
+				list-style: upper-alpha;
 
 				li {
 					margin-bottom: 6px;
+
+					ol {
+						list-style: lower-roman;
+					}
 
 					&:last-child {
 						margin-bottom: 0;

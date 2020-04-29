@@ -51,7 +51,6 @@
 
 
 @media (max-width: 892px) {
-
     .datatable {
 
         // table header
@@ -107,5 +106,11 @@
                 }
             }
         }
+    }
+
+    .datatable-container {
+        display: block;
+        width: 100%;
+        overflow-x: scroll;
     }
 }

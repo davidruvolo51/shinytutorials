@@ -11,9 +11,9 @@ keywords: ["javascript","leaflet"]
 
 1.  [Why would I need this?](#about)
 2.  [How does this app work?](#work)
-    - [Define the tabPanels](#work-panels)
-    - [Create a dataset](#work-dataset)
-    - [Build the map and create popups](#work-map)
+    1. [Define the tabPanels](#work-panels)
+    2. [Create a dataset](#work-dataset)
+    3. [Build the map and create popups](#work-map)
 3.  [How do I run the demo?](#run)
 4.  [What's next?](#next)
 

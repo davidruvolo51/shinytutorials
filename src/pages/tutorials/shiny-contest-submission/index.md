@@ -9,13 +9,13 @@ keywords: ["contest"]
 
 ## Contents
 
-- [Introduction](#introduction)
-- [Methodology](#methodology)
-    - [Data](#methodology-data)
-    - [User Preferences](#methodology-userprefs)
-    - [Application Development](#methodology-application-development)
-- [Limitations](#limitations)
-- [Conclusion](#conclusion)
+1. [Introduction](#introduction)
+2. [Methodology](#methodology)
+    1. [Data](#methodology-data)
+    2. [User Preferences](#methodology-userprefs)
+    3. [Application Development](#methodology-application-development)
+2. [Limitations](#limitations)
+3. [Conclusion](#conclusion)
 
 <!-- endexcerpt -->
 
@@ -141,6 +141,8 @@ The master dataset was used to generate a series of summary objects, including t
 
 In total, eight datasets were created. Three of them are used in the final application and located in the `data/` directory. The filenames and descriptions can be found in the following table. See the file `data/data_1_prep.R` to see how these files were generated.
 
+<div class="datatable-container">
+
 | Name | Used in Production | Description
 | :--- | :----: | :--- 
 | `all_european_breweries.RDS` | no | the cleaned dataset containing the breweries by city
@@ -151,6 +153,8 @@ In total, eight datasets were created. Three of them are used in the final appli
 | `travel_summary_userprefs.RDS` | yes | a summary of locations by city for use in the user preferences function
 | `travel_summary_general.RDS` | yes | a summary of locations for use in the visualizations
 | `travel.geojson` | yes | a list of places by city in geojson format for use in the Mapbox map
+
+</div>
 
 <span id="methodology-userprefs" />
 
@@ -212,6 +216,9 @@ travel_preferences <- function(weights, data) {
 
 This app demonstrates how to create a custom shiny app by incorporating non-R/non-shiny tools into the development process.  I wanted to show how to optimize apps for all browsers and devices, as well as design a custom UI that follows recommended web accessibility practices. To build this app, I incorporated a few of my favorite frontend development tools, JavaScript libraries, and some command line tools. These are listed below.
 
+
+<div class="datatable-container">
+
 Category | Name | Purpose
 | :--- | :--- | :------
 | ide | [vscode](https://code.visualstudio.com) | primary IDE for R, CSS, JavaScript; for R, I used [radian](https://github.com/randy3k/radian) with the RLanguageServer and R LSP Client extensions
@@ -227,6 +234,8 @@ Category | Name | Purpose
 | viz | [topojson](https://github.com/topojson/topojson) | javascript modules for processing geodata for d3-based maps
 | viz | [eu.topojson](https://gist.githubusercontent.com/milafrerichs/69035da4707ea51886eb/raw/4cb1783c2904f52cbb8a258ee96031f9054d155b/eu.topojson) | a topjson dataset containing all EU country boundaries
 | viz | [mapbox](http://mapbox.com) | a WebGL API for developing vectorized maps in JavaScript
+
+</div>
 
 See the [README](https://github.com/davidruvolo51/travel-app/blob/master/README.md) for how to install these tools and run the development servers.
 

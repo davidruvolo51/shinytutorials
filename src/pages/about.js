@@ -2,7 +2,7 @@
 // FILE: about.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2020-04-22
+// MODIFIED: 2020-04-29
 // PURPOSE: about page
 // DEPENDENCIES: see below
 // STATUS: in.progress
@@ -84,13 +84,24 @@ function About(props) {
                 </Section>
                 <Section aria-labelledby="involved-section-title">
                     <h2 id="involved-section-title">Get Involved</h2>
-                    <p>All of the available tutorials can be found on the tutorials page. Not all tutorials have demos available on github as some are more discussion focused. There are two repositories for this project. The <a href="https://github.com/davidruvolo51/shinytutorials">shinytutorials</a> repository is for the development of the static site (uses GatsbyJS) where all tutorials are drafted (in markdown). The <a href="https://github.com/davidruvolo51/shinyAppTutorials">shinyAppTutorials</a> repository is for developing and maintaining the example applications. Ideas for new tutorials can be found on the <a href="https://github.com/davidruvolo51/shinyAppTutorials/issues">shinyAppTutorials issues</a> page by filtering the labels for <em>Tutorial Ideas</em>.</p>
+                    <p>All of the available tutorials can be found on the tutorials page. Not all tutorials have demos available on github as some are more discussion focused. There are two repositories for this project.</p>
+                    <ul>
+                        <li><a href="https://github.com/davidruvolo51/shinytutorials">shinytutorials</a>: repository is for the development of this site. The site uses <a href="https://www.gatsbyjs.org">Gatsbyjs</a> and all tutorials are written using markdown. See the README for information on how to structure posts.</li>
+                        <li><a href="https://github.com/davidruvolo51/shinyAppTutorials">shinyAppTutorials</a>: repository is for developing and maintaining the example applications. Ideas for new tutorials can be found on the <a href="https://github.com/davidruvolo51/shinyAppTutorials/issues">shinyAppTutorials issues</a> page by filtering the labels for <em>Tutorial Ideas</em>.</li>
+                    </ul>
                     <p>The following table provides a summary of both repositories.</p>
                     {
                         status
                             ? datatable(data, "repos", "Repository Status")
                             : <span>There was a problem retrieving the data. Please try again later.</span>
                     }
+                </Section>
+                <Section aria-labelledby="notes-section-title">
+                    <h2 id="notes-section-title">Notes</h2>
+                    <p>This section provides a running list of information about the development of the site.</p>
+                    <ul>
+                        <li><strong>Read Time</strong>: Read time calculations are generated using the <a href="https://www.gatsbyjs.org/packages/gatsby-remark-reading-time/">gastby-remark-reading-time</a> plugin which uses 200 words per minute as the default. Time estimations also account for code blocks.</li>
+                    </ul>
                 </Section>
             </Main>
         </App>
