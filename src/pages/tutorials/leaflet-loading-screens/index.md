@@ -11,10 +11,10 @@ keywords: ["leaflet", "htmlwidgets"]
 
 1. [Why would I need this?](#about)
 2. [How does this app work?](#work)
-    - [Creating the structure of the shiny app](#work-new-app)
-    - [Writing the HTML markup for the loading UI](#work-ui-html)
-    - [Styling the loading UI](#work-ui-css)
-    - [Writing javascript to control the loading UI](#work-ui-js)
+    1. [Creating the structure of the shiny app](#work-new-app)
+    2. [Writing the HTML markup for the loading UI](#work-ui-html)
+    3. [Styling the loading UI](#work-ui-css)
+    4. [Writing javascript to control the loading UI](#work-ui-js)
 3. [What do I need to know before I integrate this into my app?](#know)
 4. [How do I run the example?](#run)
 
