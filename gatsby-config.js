@@ -7,6 +7,17 @@ module.exports = {
 		siteUrl: "https://davidruvolo51.github.io/shinytutorials/"
 	},
 	plugins: [
+		{
+			resolve: `gatsby-plugin-manifest`,
+			options: {
+				name: "shinyTutorials",
+				short_name: "shinyTutorials",
+				start_url: `/`,
+				display: `standalone`,
+				crossOrigin: `use-credentials`,
+				icon: `src/favicons/icon-512x512.png`
+			}
+		},
 		`gatsby-remark-reading-time`,
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-sass`,
