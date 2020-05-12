@@ -2,9 +2,9 @@
 title: "Drag and Drop Example"
 subtitle: "Learn how to create movable elements in shiny apps."
 abstract: "Drag and drop elements may be useful for advanced user interactivity. You can use draggable elements in many situations, such as allowing users to personalize the UI. In this tutorial, learn how to create a draggable element and the required javscript events."
-date: "2020-05-05"
-updated: "2020-05-05"
-keywords: ["javascript"]
+date: "2020-05-12"
+updated: "2020-05-12"
+keywords: ["javascript", "interactivity"]
 ---
 
 ## Contents
@@ -13,7 +13,7 @@ keywords: ["javascript"]
 2. [How does this app work?](#work)
     1. [Creating a draggable functional component](#work-component)
     2. [Developing the UI and integrating the draggable component](#work-ui)
-    3. [Defining styles for drag events](#work-css)
+    3. [Defining styles for drag events](#work-CSS)
     4. [Writing the drag and drop events](#work-events)
         1. [Defining variables and a helper function](#work-events-vars)
         2. [Event for dragstart](#work-events-dragstart)
@@ -23,7 +23,7 @@ keywords: ["javascript"]
         6. [Event for dragleave](#work-events-dragleave)
         6. [Event for drop](#work-events-drop)
 3. [What do I need to know before I integrate this into my app?](#know)
-4. [How do I run the demo](#run)
+4. [How do I run the demo?](#run)
 
 <!-- endexcerpt -->
 
@@ -31,21 +31,21 @@ keywords: ["javascript"]
 
 ## Why would I need this?
 
-I am currently working on an interactive task list using shiny, and I want to be able reorder items by dragging and droping them. There are many packages (e.g., [shinyDND](https://github.com/ayayron/shinydnd), Rstudio's [sortable](https://github.com/rstudio/sortable)) and js libraries available, however I wanted to learn how to build my own. A [drag and drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) is native in every browser so it is fairly straightforward to create your own events. 
+I am currently working on a shiny app that is an interactive to-do list. In the app, want to reorder items by dragging and dropping them. There are many packages (e.g., [shinyDND](https://github.com/ayayron/shinydnd), RStudio's [sortable](https://github.com/rstudio/sortable)) and JavaScript libraries available, however I wanted to learn how to build my own. Since there is a browser ready [drag and drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API), it is fairly straightforward to create your own events. 
 
-In this tutorial, I will cover the basic elements for creating draggable elements in shiny. I will focus on creating a draggable elment and the corresponding js events. I will also cover a little bit of css, specifically the classes are added when an element is dragged. I will try to keep the concepts simple and provide links for further reading where applicable. If you have any questions or if something is not clear, feel free to open a new issue.
+In this tutorial, I will cover the basic elements for creating draggable elements in shiny. I will focus on creating a draggable element and the corresponding JavaScript events, as well as the CSS classes that are added when an element is dragged. I will try to keep the concepts simple and provide links for further reading where applicable. If you have any questions or if something is not clear, feel free to open a new issue.
 
-For more information, please see the [drag and drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) documentation. Also, see the section [What do I need to know before I integrate this into my app?](#know) for implementation notes.
+For more information, please see the [drag and drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) documentation, as well as the section [What do I need to know before I integrate this into my app?](#know) for implementation notes.
 
 <span id="work" />
 
 ## How does this app work?
 
-We will build an app that allows users to reorder a series cards in any order (see the following gif).
+We will build an app that allows users to reorder a series cards in any order.
 
-<!-- ![drag and drop demonstration](drag_and_drop_demo.gif) -->
+![drag and drop demonstration](drag_and_drop_demo.gif)
 
-In this example, users can reorder a series of cards. Each card a group assignment (i.e., letters A through E) and a random value (i.e., 1 through 50). Users can reorder the cards by name, by value or any method they choose. Cards can be moved by clicking and then dragging the card up or down the page. When the user drops the card, the card will be inserted into that space (either before or after).
+In the GIF, users can reorder a series of cards. Each card a group assignment (i.e., letters A through E) and a random value (i.e., 1 through 50). Users can reorder the cards by name, by value or any method they choose. Cards can be moved by clicking and then dragging the card up or down the page. When the user drops the card, the card will be inserted into that space (either before or after).
 
 In this tutorial, I will cover the following items.
 
@@ -54,14 +54,14 @@ In this tutorial, I will cover the following items.
 3. Defining styles for drag events
 4. Writing the drag and drop events
 
-Before we get started, start by creating a new shiny app. I am using the `app.R` format and have created the js and css files. Your project directory should look like this. I also saved the draggable component in a separate file.
+I am using the `app.R` format and have created the JavaScript and CSS files. Your project directory should look like this. I also saved the draggable component in a separate file.
 
 ```text
 > drag-and-drop/
     + app.R
     + draggable_card.R
     + www/
-       - styles.css
+       - styles.CSS
        - index.js
 ```
 
@@ -69,19 +69,37 @@ Before we get started, start by creating a new shiny app. I am using the `app.R`
 
 ### Creating a draggable functional component
 
-The most important aspect to creating a draggable component is the attribute [draggable](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable). When this attribute is set to `true`, the element can be dragged. If you do not want it to be dragged, than use `draggable="false"` or remove the attribute altogether. The events and data transfer properties will be discussed in a later section.
+The most important aspect to creating a draggable component is the attribute [draggable](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable). When this attribute is set to `true`, the element can be dragged. If you do not want it to be dragged, then use `draggable="false"` or remove the attribute altogether.
 
-Before I begin developing the app, I will start off by developing a draggable functional component. This component will display a title, some text, and a icon that indicates that a card can be dragged. I will also add a logical argument that disables drag-ability for a card. I will call this component `draggable_card`.
+In HTML, the draggable attribute is added to an element like so.
+
+```HTML
+<div draggable="true">
+    <p>Hello, world!</p>
+</div>
+```
+
+In shiny, it would like this.
+
+```r
+# ui.R
+tags$div(
+    draggable = "true",
+    tags$p("Hello, world!")
+)
+```
+
+Before I begin developing the app, I will start off by developing a draggable functional component. This component will display a title, some text, and an icon that indicates that a card can be dragged. I will also add a logical argument that disables drag-ability for a card. I will call this component `draggable_card`.
 
 The function runs in the following order.
 
 1. Validate input arguments (by default, all items are draggable)
-2. Create the svg icon: The icon is a "plus sign" with a filled circular background.
+2. Create the SVG icon: The icon is a plus sign with a filled circular background.
 3. Create the card element with all elements (title, text, and icon)
-4. If `!draggable`, then remove the svg icon.
+4. If `!draggable`, then remove the SVG icon.
 5. Return the element.
 
-Here's the whole function as it appears in the file `draggable_card.R`.
+Here is the whole function as it appears in the file `draggable_card.R`.
 
 ```r
 draggable_card <- function(id, title, text, draggable = TRUE) {
@@ -160,7 +178,7 @@ draggable_card <- function(id, title, text, draggable = TRUE) {
 }
 ```
 
-The function returns the html markup for the draggable component which is rendered in browser. Here is a sample output.
+The function returns the HTML markup for the draggable component which is rendered in browser. Here is a sample output.
 
 ```r
 draggable_card(id = "example", title = "Test", text = "This is a test")            
@@ -194,9 +212,9 @@ Now that the component is working, it can be integrated into a shiny app. In the
 ```r
 ui <- tagList(
 
-    # <head>: link css
+    # <head>: link CSS
     tags$head(
-        tags$link(rel = "stylesheet", href = "styles.css")
+        tags$link(rel = "stylesheet", href = "styles.CSS")
     ),
 
     # <main>: main content
@@ -246,13 +264,13 @@ server <- function(input, output, session) { }
 shinyApp(ui, server)
 ```
 
-<span id="work-css" />
+<span id="work-CSS" />
 
 ### Defining styles for drag events
 
-There are a number of styles in the css file, but I would like focus on a few of them: highlighting, drag, and focus. The classes highlighting and focus are used for highlighting a potential drop area by adding a bright green border to the target element. Focus is only used for the blank drop zone. The class drag is used for adding a shadow to the element when it is dragged.
+There are a number of styles in the CSS file, but I would like focus on a few of them: highlighting, drag, and focus. The classes highlighting and focus are used for highlighting a potential drop area by adding a bright green border to the target element. Focus is only used for the blank drop zone. The class drag is used for adding a shadow to the element when it is dragged.
 
-```css
+```CSS
 /* for highlighting potential drop */
 .highlighting {
     border-color: #09BC8A;
@@ -279,23 +297,23 @@ These classes will be added and removed in the following js events.
 
 There are a number of drag related events that you can choose from. At a minimum, you should use `dragstart` and `drop`. In this example, I will cover `dragstart`, `dragend`, `dragover`, `dragenter`, `dragleave`, and `drop`. The list below provides a summary of the events that I used in the example app and what each event does.
 
-1. `dagstart`/`dragend`: When an element is dragged, I would like to add a css class that makes the dragged element visually noticeable. I also want to remove the class when dragging is stopped.
-2. `dragover`: When the element is hovered over a potential drop area, I would like to add a css class to the drop area.
-3. `dragenter`/`dragleave`: If the dragged element is hovered over the extra dropzone, I would like to add a css class that focuses the dropzone. I also want to remove this class if the dropzone is no longer focused.
-4. `drop`: I would also like add some logic that determines where the element should be added. If I drag an element down the page, I am assuming that I want the element to be further down the page. Therefore, I would like the element to be placed **after** the droparea. If I drag an element up the page, I am assuming that I want the element to appear higher on the page. Therefore, I would like the element to be placed **before** the droparea. (This last item will make sense in a little bit.)
+1. `dagstart`/`dragend`: When an element is dragged, I would like to add a CSS class that makes the dragged element visually noticeable. I also want to remove the class when dragging is stopped.
+2. `dragover`: When the element is hovered over a potential drop area, I would like to add a CSS class to the drop area.
+3. `dragenter`/`dragleave`: If the dragged element is hovered over the extra dropzone, I would like to add a CSS class that focuses the dropzone. I also want to remove this class if the dropzone is no longer focused.
+4. `drop`: I would also like add some logic that determines where the element should be added. If I drag an element down the page, I am assuming that I want the element to be further down the page. Therefore, I would like the element to be placed **after** the droparea. If I drag an element up the page, I am assuming that I want the element to appear higher on the page. Therefore, I would like the element to be placed **before** the droparea.
 
 
 <span id="work-events-vars" />
 
 #### Defining variables and a helper function
 
-First, I will create a few variables that will be used across all events. The element `dragged` will receive the html element that I dragged. The variable `startingY` saves the starting `y` position of the dragged element. This will be used to determine if the element is moved up or down the page. The last variable I have defined is used to select the blank drop element.
+First, I will create a few variables that will be used across all events. The element `dragged` will receive the HTML element that I dragged. The variable `startingY` saves the starting `y` position of the dragged element. This will be used to determine if the element is moved up or down the page. The last variable I have defined is used to select the blank drop element.
 
 ```js
 let dragged, startingY, dropzone = document.querySelector(".droparea");
 ```
 
-In some of the events that I will write, I will be adding the css class `.highlighting` a potential droparea. However, I will need a function that removes all this class when events are finished.
+In some events that I will write, I will be adding the CSS class `.highlighting` a potential droparea. However, I will need a function that removes all this class when events are finished.
 
 ```js
 function remove_highlighting() {
@@ -307,10 +325,10 @@ function remove_highlighting() {
 
 #### Event for dragstart
 
-The first event is `dragstart`. This event runs as soon as an element is dragged. In this example, I will initialized a few things.
+The first event is `dragstart`. This event runs as soon as an element is dragged. In this example, I initialized a few things.
 
-1. `dataTransfer`: this property manages the type of drag (i.e., copy or move), the content that is being dragged (i.e., html, images, text, etc.), and other data that you want to use
-2. `classList.add`: Add the `.drag` css class to the element is, at the moment, being dragged
+1. `dataTransfer`: this property manages the type of drag (i.e., copy or move), the content that is being dragged (i.e., HTML, images, text, etc.), and other data that you want to use
+2. `classList.add`: Add the `.drag` CSS class to the element is, at the moment, being dragged
 3. update variables: Update the `dragged` and `startingY` variables (defined in the previous section).
 
 ```js
@@ -318,7 +336,7 @@ document.addEventListener("dragstart", function (event) {
 
     // set event data transfer
     event.dataTransfer.dropEffect = "move";
-    event.dataTransfer.setData("text/html", event.target.outerHTML);
+    event.dataTransfer.setData("text/HTML", event.target.outerHTML);
 
     // add class to dragged item
     event.target.classList.add("drag");
@@ -334,7 +352,7 @@ document.addEventListener("dragstart", function (event) {
 
 #### Event for dragend
 
-The `dragend` event is used for running a function when dragging stops. In this example, when the user stops dragging an element, I want to remove the css class `drag`&mdash;that was added in the `dragstart` event&mdash;from the dragged element.  
+The `dragend` event is used for running a function when dragging stops. In this example, when the user stops dragging an element, I want to remove the CSS class `drag`&mdash;that was added in the `dragstart` event&mdash;from the dragged element.  
 
 ```js
 document.addEventListener("dragend", function (event) {
@@ -346,7 +364,7 @@ document.addEventListener("dragend", function (event) {
 
 #### Event for dragover
 
-The event `dragover` is run when an element is dragged over a potiential drop area. In this example, this would be another card (i.e., `<div class="card">...</div>`) and the extra dropzone (which I will explain in next event). When the user drags an element over another draggable card, I want to add the `.highlighting` css class to the other card. The value of event target is tied to the location of the cursor, which would return other elements besides the card element. Therefore, we need to find the nearest draggable card (i.e., div with the css class `card`).
+The event `dragover` is run when an element is dragged over a potential drop area. In this example, this would be another card (i.e., `<div class="card">...</div>`) and the extra dropzone (which I will explain in next section). When the user drags an element over another draggable card, I want to add the `.highlighting` CSS class to the other card. The value of event target is tied to the location of the cursor, which would return other elements besides the card element. Therefore, we need to find the nearest draggable card (i.e., div with the CSS class `card`).
 
 ```js
 document.addEventListener("dragover", function (event) {
@@ -369,7 +387,7 @@ document.addEventListener("dragover", function (event) {
 
 #### Event for dragenter
 
-The event `dragenter` is similar to `dragover` as they both can be used for highlighting potiential drop areas. In this example, I am using `dragenter` for highlighting the extra dropzone. The variable `dropzone` was defined in the section [Defining variables and a helper function](#work-events-vars).
+The event `dragenter` is similar to `dragover` as they both can be used for highlighting potential drop areas. In this example, I am using `dragenter` for highlighting the extra dropzone. The variable `dropzone` was defined in the section [Defining variables and a helper function](#work-events-vars).
 
 ```js
 document.addEventListener("dragenter", function (event) {
@@ -408,7 +426,7 @@ The last event is the drop event. This event will run when the dragged element i
 
 If the element is dropped on top of another card I want to add it before or after the element. Using the variable `startingY`, we can determine if the element is dragged up or down the page. I will use the event property `event.pageY` and compare it with `startingY`. If the value of `pageY`&mdash;at the time of drop&dash;is less than `startingY`, then the element has been moved up the page. If the `pageY` value is greater than `startingY`, then the element has been moved down the page. 
 
-Depending on the comparison of these values, the dragged element will either be added before or after the target element (i.e., drop area). Using the function `insertAdjacentHTML`, you can specifying the insert position (i.e., `beforebegin`, `afterbegin`, `beforeend`, `afterend`). In this example, I am using `beforebegin` and `afterend` as I want the dragged card to appear before or after another card.
+Depending on the comparison of these values, the dragged element will either be added before or after the target element (i.e., drop area). Using the function `insertAdjacentHTML`, you can specify the insert position (i.e., `beforebegin`, `afterbegin`, `beforeend`, `afterend`). In this example, I am using `beforebegin` and `afterend` as I want the dragged card to appear before or after another card.
 
 ```js
 document.addEventListener("drop", function (event) {
@@ -452,7 +470,7 @@ document.addEventListener("drop", function (event) {
 
 That is it! 
 
-**NOTE:** In this `index.js` file, the final event runs when the button "done" is clicked. This event triggers an alert that displays the new order of the cards. 
+**NOTE:** In this `index.js` file, the final event runs when the button *done* is clicked. This event triggers an alert that displays the new order of the cards. 
 
 <span id="know" />
 
@@ -461,7 +479,7 @@ That is it!
 To summarize this tutorial, here are the basic elements that you need.
 
 1. An element with the attribute `draggable="true"` (e.g., `<div draggable="true">...</div>`)
-2. An event that initializes the data transfer when an element is dragged, as well as saves the html element for re-adding the dragged element into the document.
+2. An event that initializes the data transfer when an element is dragged, as well as saves the HTML element for re-adding the dragged element into the document.
 
 ```js
 // "save" dragged element
@@ -470,7 +488,7 @@ let dragged;
 // listener
 document.addEventListener("dragstart", function(event) {
     event.dataTransfer.dropEffect = "move";
-    event.dataTransfer.setData("text/html", event.target.outerHTML);
+    event.dataTransfer.setData("text/HTML", event.target.outerHTML);
     dragged = event.target;
 })
 ```
@@ -490,7 +508,7 @@ document.addEventListener("drop", function(event) {
 
 There are other drag events that may be useful for your app that I did not cover in this tutorial. See the [drag and drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) documentation for more information and examples.
 
-In this example, I wanted to insert the dragged element before or after an element depending on if the element was dragged up or down the page. Therefore, I used the function [insertAdjacentHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML). You may want to use another html insert function depending on purpose of your app (e.g., appendChild, etc.).
+In this example, I wanted to insert the dragged element before or after an element depending on if the element was dragged up or down the page. Therefore, I used the function [insertAdjacentHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML). You may want to use another HTML insert function depending on purpose of your app (e.g., `appendChild`, etc.).
 
 More reading and testing is needed to ensure the draggable elements are web accessible. I will be investigating this and will update the tutorial. Stay tuned!
 
