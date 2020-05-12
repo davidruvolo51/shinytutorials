@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2020-04-25
+// MODIFIED: 2020-05-12
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -38,7 +38,7 @@ function Tutorials(props) {
 			<Hero title="Available Tutorials" text="Below you can find all of the available tutorials. Search for a tutorial by name, topic, date, or keyword." />
 			<Main>
 				<SideBarLayout className="tutorial-index">
-					<SideBarPanel className="flex-child" title="Filter Tutorials" caption="Select a keyword">
+					<SideBarPanel className="flex-child" title="Filter Tutorials">
 						<KeywordList keywords={keywords} />
 						<Reset />
 					</SideBarPanel>

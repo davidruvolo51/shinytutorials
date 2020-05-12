@@ -106,9 +106,11 @@
             position: sticky;
             top: 62px;
             height: 100%;
-
+            
             .sidebar-content {
                 width: 70%;
+                max-height: 565px;
+                overflow-y: scroll;
             }
         }
 
