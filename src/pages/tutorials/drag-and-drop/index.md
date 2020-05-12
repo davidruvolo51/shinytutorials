@@ -1,10 +1,10 @@
 ---
 title: "Drag and Drop Example"
 subtitle: "Learn how to create movable elements in shiny apps."
-abstract: ""
+abstract: "Drag and drop elements may be useful for advanced user interactivity. You can use draggable elements in many situations, such as allowing users to personalize the UI. In this tutorial, learn how to create a draggable element and the required javscript events."
 date: "2020-05-05"
 updated: "2020-05-05"
-keywords: ["js"]
+keywords: ["javascript"]
 ---
 
 ## Contents
@@ -31,11 +31,11 @@ keywords: ["js"]
 
 ## Why would I need this?
 
-[tbd]
+I am currently working on an interactive task list using shiny, and I want to be able reorder items by dragging and droping them. There are many packages (e.g., [shinyDND](https://github.com/ayayron/shinydnd), Rstudio's [sortable](https://github.com/rstudio/sortable)) and js libraries available, however I wanted to learn how to build my own. A [drag and drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) is native in every browser so it is fairly straightforward to create your own events. 
 
 In this tutorial, I will cover the basic elements for creating draggable elements in shiny. I will focus on creating a draggable elment and the corresponding js events. I will also cover a little bit of css, specifically the classes are added when an element is dragged. I will try to keep the concepts simple and provide links for further reading where applicable. If you have any questions or if something is not clear, feel free to open a new issue.
 
-For more information, please see the [drag and drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) documentation.
+For more information, please see the [drag and drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) documentation. Also, see the section [What do I need to know before I integrate this into my app?](#know) for implementation notes.
 
 <span id="work" />
 
@@ -491,6 +491,8 @@ document.addEventListener("drop", function(event) {
 There are other drag events that may be useful for your app that I did not cover in this tutorial. See the [drag and drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) documentation for more information and examples.
 
 In this example, I wanted to insert the dragged element before or after an element depending on if the element was dragged up or down the page. Therefore, I used the function [insertAdjacentHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML). You may want to use another html insert function depending on purpose of your app (e.g., appendChild, etc.).
+
+More reading and testing is needed to ensure the draggable elements are web accessible. I will be investigating this and will update the tutorial. Stay tuned!
 
 <span id="run" />
 
