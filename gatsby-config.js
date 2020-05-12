@@ -29,17 +29,13 @@ module.exports = {
 				ignore: process.env.NODE_ENV === `production` && [`**/draft-*`]
 			},
 		},
-		{
-			resolve: `gatsby-transformer-remark`,
-			options: {
-				excerpt_separator: `<!-- endexcerpt -->`
-			}
-		},
 		`gatsby-transformer-sharp`,
 		{
 			resolve: `gatsby-transformer-remark`,
 			options: {
+				excerpt_separator: `<!-- endexcerpt -->`,
 				plugins: [
+					`gatsby-remark-copy-linked-files`,
 					{
 						resolve: `gatsby-remark-images`,
 						options: {
