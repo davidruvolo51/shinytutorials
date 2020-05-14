@@ -2,7 +2,7 @@
 // FILE: article.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2020-04-22
+// MODIFIED: 2020-05-14
 // PURPOSE: react component for tutorials, i.e. as articles
 // DEPENDENCIES: see below
 // STATUS: working
@@ -23,7 +23,7 @@ function Article(props) {
                     ? (
                         <section className="article-abstract">
                             <h2>Overview</h2>
-                            {props.abstract}
+                            <p dangerouslySetInnerHTML={{__html: props.abstract}}></p>
                         </section>
                     )
                     : null

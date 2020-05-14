@@ -1,0 +1,253 @@
+// dark theme styling
+
+body[data-theme="dark"] {
+    color: $ultra-light;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: $ultra-light;
+    }
+
+    p {
+        color: $light;
+    }
+
+    a {
+        color: $light;
+        text-decoration: none;
+        box-shadow: 0 2px 0 $ultra-light;
+    }
+
+    a.btn {
+        box-shadow: none;
+    }
+
+    ul,
+    ol {
+        li {
+            color: $light;
+        }
+    }
+
+    // hero image
+    .hero-image {
+        #dashboard {
+            rect#background {
+                fill: $semi-dark;
+            }
+            // #menubar {
+            //     path#background {
+            //         fill: $semi-dark;
+            //     }
+            // }
+        }
+    }
+
+    // menu list
+    .menu {
+        .menu-item {
+            .menu-link {
+                &:hover {
+                    border-bottom-color: $ultra-light;
+                }
+            }
+        }
+    }
+
+    // nav
+    .nav {
+        background-color: $dark;
+
+        // blank styling for all child elements
+        .nav-item {
+            background-color: $dark;
+            color: $ultra-light;
+        }
+
+        // navigation links
+        .navigation {
+            .menu-item {
+                .menu-link {
+                    color: $ultra-light;
+
+                    .menu-link-icon {
+                        path {
+                            fill: $ultra-light;
+                        }
+                    }
+                }
+            }
+        }
+
+        // menu buttons
+        .menu-btns {
+            // theme button
+            #themeToggle {
+                path {
+                    fill: $ultra-light;
+                }
+            }
+
+            // menu button
+            #menuBtn {
+                .menu-icon {
+                    .menu-bar {
+                        background-color: $ultra-light;
+                    }
+                }
+            }
+        }
+    }
+
+    // heros
+    .hero {
+        background-color: $dark;
+        &.article-hero {
+            background-color: $super-dark;
+
+            .hero-content {
+                .article-readtime {
+                    color: $light;
+                }
+                .profile-name {
+                    color: $light;
+                }
+            }
+        }
+    }
+
+    // main section
+    .main {
+        background-color: $dark;
+
+        .main-section,
+        .full-section,
+        .filled-section {
+            background-color: $dark;
+        }
+    }
+
+    .post {
+        background-color: $semi-dark;
+
+        h3 a {
+            color: $light;
+        }
+
+        .post-tags {
+            .tag {
+                color: $semi-dark;
+            }
+        }
+    }
+
+    .tutorial-index {
+        background-color: $dark;
+
+        #reset,
+        .post.post-plain .post-link {
+            background-color: $primary;
+            color: $ultra-light;
+        }
+    }
+
+    .sidebar-layout {
+        background-color: $dark;
+        .sidebar-panel {
+            .sidebar-content {
+                background-color: $semi-dark;
+            }
+        }
+    }
+
+    .form {
+        background-color: $semi-dark;
+        p,
+        label {
+            color: $light;
+        }
+    }
+
+    .btn-keyword {
+        color: $ultra-light;
+    }
+    .btn-keyword:hover,
+    .btn-keyword.selected {
+        border-left-color: $ultra-light;
+    }
+
+    // posts
+    .tutorial {
+        .sidebar-layout {
+            .sidebar-panel {
+                .sidebar-content {
+                    background-color: $semi-dark;
+                    a {
+                        box-shadow: none;
+                        &:hover {
+                            box-shadow: 0 2px 0 $light;
+                        }
+                    }
+                }
+            }
+        }
+
+        .article {
+            background-color: $dark;
+
+            .article-abstract p {
+                color: $light;
+            }
+
+            a {
+                color: $light;
+            }
+            blockquote {
+                background-color: $semi-dark;
+
+                p {
+                    color: $ultra-light;
+                }
+            }
+            .article-tags {
+                li {
+                    code {
+                        background-color: $semi-dark;
+                    }
+                }
+            }
+        }
+    }
+
+    // datatables
+    .article table,
+    .datatable {
+        thead {
+            tr {
+                th {
+                    color: $ultra-light;
+                    border-bottom-color: $ultra-light;
+                }
+            }
+        }
+        tbody {
+            tr {
+                background-color: transparent;
+                td {
+                    border-bottom: 1px dotted $ultra-light;
+                }
+                &:nth-child(even) {
+                    background-color: transparent;
+                }
+
+                &:last-child {
+                    td {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+}

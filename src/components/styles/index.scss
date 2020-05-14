@@ -1,5 +1,6 @@
 @import "_variables", "_fonts", "_base";
-@import "_buttons", "_nav","_menu_links", "_footer", "_post", "_hero", "_flex", "_article", "_main", "_sidebar", "_menuBtn", "_datatable";
+@import "_buttons", "_nav", "_menu_links", "_footer", "_post", "_hero", "_flex", "_article", "_main", "_sidebar",
+	"_menuBtn", "_datatable";
 
 // screen reader only styles
 .visually-hidden {
@@ -9,6 +10,13 @@
 	clip: rect(0 0 0 0);
 	clip: rect(0, 0, 0, 0);
 	overflow: hidden;
+}
+
+// theme toggle icon color
+#theme-toggle-icon {
+	path {
+		fill: $primary;
+	}
 }
 
 // tutorial index page (/tutorials/)
@@ -98,3 +106,5 @@
 		}
 	}
 }
+
+@import "_dark";
