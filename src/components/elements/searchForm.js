@@ -2,7 +2,7 @@
 // FILE: searchForm.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-06
-// MODIFIED: 2020-04-22
+// MODIFIED: 2020-05-22
 // PURPOSE: react component for search
 // DEPENDENCIES: react
 // STATUS: working
@@ -28,21 +28,36 @@ function Search(props) {
     useEffect(() => {
         let q = query.toLowerCase();
         let data = document.querySelectorAll(".searchable");
+        let msg = document.querySelector(".no-results-post");
+        let max = data.length;
+        let counter = 0;
 
         // search -- show/hide results
         if (q === "") {
             for (var e = 0; e < data.length; e++) {
-                data[e].style.display = "block";
+                data[e].setAttribute("aria-hidden", "false");
+                data[e].classList.remove("visually-hidden");
+                counter = 0;
+                msg.setAttribute("aria-hidden", "true");
+                msg.classList.add("visually-hidden");
             }
         } else {
 
             // run through all ".posts" and show/hide div based on the query
             for (var i = 0; i < data.length; i++) {
                 if (data[i].innerHTML.toLowerCase().indexOf(q) > 0) {
-                    data[i].style.display = "block";
+                    data[i].setAttribute("aria-hidden", "false");
+                    data[i].classList.remove("visually-hidden");
                 } else {
-                    data[i].style.display = "none";
+                    data[i].setAttribute("aria-hidden", "true");
+                    data[i].classList.add("visually-hidden");
+                    counter = counter + 1;
                 }
+            }
+
+            if (counter === max) {
+                msg.setAttribute("aria-hidden", "false");
+                msg.classList.remove("visually-hidden");
             }
         }
     }, [query])

@@ -26,6 +26,7 @@ function Tutorials(props) {
 
 	// get posts data
 	const postList = props.data.allMarkdownRemark;
+	const postTotal = postList.edges.length;
 	const keywords = Array.from([...new Set(postList.edges.map(n => n.node.frontmatter.keywords).flat().sort())])
 
 	return (
@@ -35,7 +36,10 @@ function Tutorials(props) {
 			author="dcruvolo"
 			keywords={["shiny", "shiny tutorials", "r", "shiny examples"]}
 		>
-			<Hero title="Available Tutorials" text="Below you can find all of the available tutorials. Search for a tutorial by name, topic, date, or keyword." />
+			<Hero 
+				title="Available Tutorials" 
+				text={`There are ${postTotal} tutorials available and there are more on the way. Search for a tutorial by name, topic, date or keyword.`} 
+			/>
 			<Main>
 				<SideBarLayout className="tutorial-index">
 					<SideBarPanel className="flex-child" title="Filter Tutorials">
@@ -61,6 +65,11 @@ function Tutorials(props) {
 								/>
 							))
 						}
+						<Post 
+							className = "no-results-post visually-hidden"
+							abstract = "No tutorials were found" 
+							id = "search-msg"
+						/>
 					</MainPanel>
 				</SideBarLayout>
 			</Main>

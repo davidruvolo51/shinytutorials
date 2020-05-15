@@ -29,6 +29,7 @@ function MenuToggle() {
     // render
     return (
         <button id="menuBtn" className={isOpen ? "open" : ""} aria-expanded={isOpen} onClick={() => setOpenStatus(!isOpen)}>
+            <span className="visually-hidden">open or close menu</span>
             <span className="menu-icon" aria-hidden="true">
                 <span className="menu-bar"></span>
                 <span className="menu-bar"></span>

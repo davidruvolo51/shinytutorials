@@ -2,7 +2,7 @@
 // FILE: post-entry.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2020-04-22
+// MODIFIED: 2020-05-15
 // PURPOSE: react component for post entries
 // DEPENDENCIES: react
 // STATUS: working
@@ -67,7 +67,11 @@ function Post(props) {
                     )
                     : null
             }
-            <p className="post-desc">{props.abstract}</p>
+            {
+                props.abstract
+                    ? <p className="post-desc">{props.abstract}</p>
+                    : null
+            }
             {
                 // keywords
                 props.keywords
@@ -85,10 +89,14 @@ function Post(props) {
                     : null
             }
             {
-                // some logic to determine if the input link is internal or external
-                props.isExternalLink
-                    ? <a href={props.link} className="post-link">{props.linkLabel}</a>
-                    : <Link to={props.link} className="post-link">{props.linkLabel}</Link>
+                props.link
+                ? (
+                    // some logic to determine if the input link is internal or external
+                    props.isExternalLink
+                        ? <a href={props.link} className="post-link">{props.linkLabel}</a>
+                        : <Link to={props.link} className="post-link">{props.linkLabel}</Link>
+                )
+                : null
             }
         </div>
     )

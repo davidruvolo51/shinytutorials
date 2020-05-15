@@ -44,6 +44,11 @@ function Hero(props){
                     : null
                 }
             </div>
+            {
+                props.altHTML
+                ? props.altHTML
+                : null
+            }
         </header>
     )
 }
