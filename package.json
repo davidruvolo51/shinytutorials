@@ -42,7 +42,7 @@
     "build": "gatsby build --prefix-paths",
     "serve": "gatsby serve --prefix-paths -o",
     "prep": "mv public docs",
-    "clean": "rm -rf .cache/ public/ docs/"
+    "clean": "gatsby clean && rm -rf docs/"
   },
   "repository": {
     "type": "git",
