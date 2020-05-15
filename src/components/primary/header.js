@@ -21,28 +21,28 @@ import Lightbulb from "../images/lightbulb"
 // define header component
 function Header(props) {
 
-		// window size
-		const size = useWindowSize()
-		useEffect(() => {
-			if (size.width < 862) {
-				const toggle = document.getElementById("menuBtn");
-				const menu = document.querySelector(".navigation");
-				menu.classList.remove("expanded");
-				toggle.classList.remove("open");
-				toggle.setAttribute("aria-expanded", false);
-				menu.setAttribute("hidden", true);
-			}
-		}, [size])
+	// window size
+	const size = useWindowSize()
+	useEffect(() => {
+		if (size.width < 862) {
+			const toggle = document.getElementById("menuBtn");
+			const menu = document.querySelector(".navigation");
+			menu.classList.remove("expanded");
+			toggle.classList.remove("open");
+			toggle.setAttribute("aria-expanded", false);
+			menu.setAttribute("hidden", true);
+		}
+	}, [size])
 
-		// theme
-		const [isDark, setDark] = useLocalStorage("loadDarkTheme", false);
-		useEffect(() => {
-			if (isDark) {
-				document.getElementsByTagName("body")[0].setAttribute("data-theme", "dark")
-			} else {
-				document.getElementsByTagName("body")[0].setAttribute("data-theme", "light")
-			}
-		}, [isDark])
+	// theme
+	const [isDark, setDark] = useLocalStorage("loadDarkTheme", false);
+	useEffect(() => {
+		if (isDark) {
+			document.getElementsByTagName("body")[0].setAttribute("data-theme", "dark")
+		} else {
+			document.getElementsByTagName("body")[0].setAttribute("data-theme", "light")
+		}
+	}, [isDark])
 
 	return (
 		<nav className="nav" role="navigation">

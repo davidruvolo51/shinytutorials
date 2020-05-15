@@ -21,6 +21,7 @@
 	.post-desc {
 		padding: 0;
 		margin: 0;
+		margin-bottom: 6px;
 		width: 100%;
 	}
 
@@ -104,11 +105,15 @@
 			}
 		}
 	}
+
+	&.no-results-post {
+		text-align: center;
+	}
 }
 
 .post-form {
 	padding: 32px;
-	border-radius: 0 0 6px;
+	border-radius: 0 0 6px 6px;
 	background-color: white;
 	border-top: 4px solid $primary;
 	margin-bottom: 16px;

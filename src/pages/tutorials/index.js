@@ -65,6 +65,11 @@ function Tutorials(props) {
 								/>
 							))
 						}
+						<Post 
+							className = "no-results-post visually-hidden"
+							abstract = "No tutorials were found" 
+							id = "search-msg"
+						/>
 					</MainPanel>
 				</SideBarLayout>
 			</Main>
