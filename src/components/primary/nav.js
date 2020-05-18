@@ -31,10 +31,21 @@ function Nav(props) {
                         data.map((parent, i) => {
                             return (
                                 <li className={`menu-item ${parent.name.toLowerCase()}-item`} key={i}>
-                                    <Link className="menu-link" to={parent.path} data-live-page={parent.name.toLowerCase()}>
-                                        {parent.name.toLowerCase() === "home" ? <HomeIcon className="menu-link-icon" /> : null}
-                                        {parent.name}
-                                    </Link>
+                                    {
+                                        parent.path === "/" || parent.path === ""
+                                        ? (
+                                            <Link className="menu-link" to="/">
+                                                {parent.name}
+                                            </Link>
+                                        )
+                                        : (
+                                            <Link className="menu-link" to={`/${parent.path}/`}>
+                                                {parent.name.toLowerCase() === "home" ? <HomeIcon className="menu-link-icon" /> : null}
+                                                {parent.name}
+                                            </Link>
+                                        )
+
+                                    }
                                 </li>
                             )
                         })
