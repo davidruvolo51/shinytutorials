@@ -248,11 +248,40 @@ body[data-theme="dark"] {
                     }
                 }
             }
+
+            // article tables
+            table {
+                background-color: $primary-light;
+                padding: 6px;
+                thead {
+                    tr {
+                        th {
+                            color: $ultra-light;
+                            border-bottom-color: $ultra-light;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        background-color: transparent;
+                        td {
+                            border-bottom: 1px solid $med;
+                        }
+                        &:nth-child(even) {
+                            background-color: transparent;
+                        }
+                        &:last-child {
+                            td {
+                                border-bottom: none;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
     // datatables
-    .article table,
     .datatable {
         background-color: $primary-light;
         padding: 6px;
@@ -269,14 +298,32 @@ body[data-theme="dark"] {
                 background-color: transparent;
                 td {
                     border-bottom: 1px solid $med;
+                    color: $ultra-light;
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
                 }
                 &:nth-child(even) {
                     background-color: transparent;
                 }
+            }
+        }
+    }
 
-                &:last-child {
+    @media (min-width: $breakpoint) {
+        .datatable {
+            tbody {
+                tr {
                     td {
-                        border-bottom: none;
+                        &:last-child {
+                            border-bottom: 1px solid $med;
+                        }
+                    }
+                    &:last-child {
+                        td {
+                            border-bottom: none;
+                        }
                     }
                 }
             }

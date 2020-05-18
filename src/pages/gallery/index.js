@@ -2,7 +2,7 @@
 // FILE: gallery.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-08
-// MODIFIED: 2019-11-27
+// MODIFIED: 2020-05-18
 // PURPOSE: react component for gallery page
 // DEPENDENCIES: react
 // STATUS: in.progress
@@ -10,8 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
-
-// import components
 import App from "../../components/layouts/app"
 import Hero from "../../components/layouts/hero-alt"
 import Main from "../../components/layouts/main"
@@ -38,6 +36,7 @@ function Gallery(){
                         link="https://davidruvolo.shinyapps.io/travel-app/"
                         linkLabel="View App"
                         isFeature={true}
+                        isExternalLink = {true}
                         keywords={["shiny-contest", "d3", "mapbox", "user-preferences"]}
                         date="2020-03-11"
                         className="shinyapp-entry"
@@ -49,6 +48,7 @@ function Gallery(){
                         link="https://github.com/davidruvolo51/shinyAppGallery/tree/master/runneR"
                         linkLabel="View Code"
                         isFeature={true}
+                        isExternalLink = {true}
                         keywords={["js","css", "ui-modules"]}
                         date="2019-11-15"
                         className="shinyapp-entry"
@@ -61,6 +61,7 @@ function Gallery(){
                         link="https://github.com/davidruvolo51/shinyAppGallery/tree/master/grid_id_finder"
                         linkLabel="View Code"
                         isFeature={true}
+                        isExternalLink = {true}
                         keywords={["js","css"]}
                         date="2019-11-11"
                         className="shinyapp-entry"

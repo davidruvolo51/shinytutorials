@@ -23,9 +23,8 @@ import Post from "../components/layouts/post-entry"
 function IndexPage(props) {
 
 	// isolate first and second posts for ease
-	const latestPost1 = props.data.allMarkdownRemark.edges[0].node
-	const latestPost2 = props.data.allMarkdownRemark.edges[1].node
-
+	const latestPost1 = props.data.allMarkdownRemark.edges[0].node;
+	const latestPost2 = props.data.allMarkdownRemark.edges[1].node;
 	// render  
 	return (
 		<App
@@ -72,7 +71,7 @@ function IndexPage(props) {
 							id={latestPost1.frontmatter.title}
 						/>
 					</div>
-					<Link to="tutorials" className="btn btn-secondary btn-centered">More</Link>
+					<Link to="/tutorials" className="btn btn-secondary btn-centered">More</Link>
 				</Section>
 				<Section isFullWidth={true} className="related-projects filled-section" aria-label="related projects">
 					<h2>Related Projects</h2>
