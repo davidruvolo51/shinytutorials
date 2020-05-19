@@ -152,9 +152,24 @@ body[data-theme="dark"] {
             color: $light;
         }
 
+        .post-date {
+            color: $ultra-light;
+        }
+
         .post-tags {
             .tag {
+                color: $dark;
+                background-color: $light;
+            }
+        }
+
+        .post-status {
+            &[data-value="New"] {
                 background-color: $dark;
+                color: $light;
+            }
+            &[data-value="Popular"] {
+                background-color: $secondary;
                 color: $ultra-light;
             }
         }

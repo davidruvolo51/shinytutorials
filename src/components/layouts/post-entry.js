@@ -2,7 +2,7 @@
 // FILE: post-entry.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-27
-// MODIFIED: 2020-05-15
+// MODIFIED: 2020-05-18
 // PURPOSE: react component for post entries
 // DEPENDENCIES: react
 // STATUS: working
@@ -20,6 +20,7 @@
 //          - abstract: summary of the post
 //          - date: date the post was released
 //          - keywords: an array of keywords
+//          - postStatus: add a pill indicating if post is new
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
 import React from "react"
@@ -53,10 +54,22 @@ function Post(props) {
                     ? (
                         <h3 id={props.title} className="post-title-link">
                             <Link to={props.link}>{props.title}</Link>
+                            {
+                                props.postStatus
+                                    ? <span className="post-status" data-value={props.postStatus}>{props.postStatus}</span>
+                                    : null
+                            }
                         </h3>
                     )
                     : (
-                        <h3 id={props.title} className="post-title">{props.title}</h3>
+                        <h3 id={props.title} className="post-title">
+                            {props.title}
+                            {
+                                props.postStatus
+                                    ? <span className="post-status" data-value={props.postStatus}>{props.postStatus}</span>
+                                    : null
+                            }
+                        </h3>
                     )
             }
             {
@@ -90,13 +103,13 @@ function Post(props) {
             }
             {
                 props.link
-                ? (
-                    // some logic to determine if the input link is internal or external
-                    props.isExternalLink
-                        ? <a href={props.link} className="post-link">{props.linkLabel}</a>
-                        : <Link to={props.link} className="post-link">{props.linkLabel}</Link>
-                )
-                : null
+                    ? (
+                        // some logic to determine if the input link is internal or external
+                        props.isExternalLink
+                            ? <a href={props.link} className="post-link">{props.linkLabel}</a>
+                            : <Link to={props.link} className="post-link">{props.linkLabel}</Link>
+                    )
+                    : null
             }
         </div>
     )
@@ -112,7 +125,8 @@ Post.propTypes = {
     title: PropTypes.string,
     link: PropTypes.string,
     date: PropTypes.string,
-    keywords: PropTypes.array
+    keywords: PropTypes.array,
+    postStatus: PropTypes.string
 }
 
 // EXPORT 

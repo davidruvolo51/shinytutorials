@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2020-05-12
+// MODIFIED: 2020-05-18
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -36,9 +36,9 @@ function Tutorials(props) {
 			author="dcruvolo"
 			keywords={["shiny", "shiny tutorials", "r", "shiny examples"]}
 		>
-			<Hero 
-				title="Available Tutorials" 
-				text={`There are ${postTotal} tutorials available and there are more on the way. Search for a tutorial by name, topic, date or keyword.`} 
+			<Hero
+				title="Available Tutorials"
+				text={`There are ${postTotal} tutorials available and there are more on the way. Search for a tutorial by name, topic, date or keyword.`}
 			/>
 			<Main>
 				<SideBarLayout className="tutorial-index">
@@ -50,25 +50,28 @@ function Tutorials(props) {
 						<Search />
 						{
 							// map nodes -> blog post lists
-							postList.edges.map(({ node }, i) => (
-								<Post
-									className="searchable"
-									title={node.frontmatter.title}
-									titleIsLink={true}
-									link={node.fields.slug}
-									linkLabel="Read"
-									abstract={node.frontmatter.abstract}
-									date={node.frontmatter.date}
-									keywords={node.frontmatter.keywords}
-									id={`${node.frontmatter.title}-${i}`}
-									key={i}
-								/>
-							))
+							postList.edges.map(({ node }, i) => {
+								return (
+									<Post
+										className={i === 0 ? "searchable latest-post" : "searchable"}
+										title={node.frontmatter.title}
+										titleIsLink={true}
+										link={node.fields.slug}
+										linkLabel="Read"
+										abstract={node.frontmatter.abstract}
+										date={node.frontmatter.date}
+										keywords={node.frontmatter.keywords}
+										id={`${node.frontmatter.title}-${i}`}
+										key={i}
+										postStatus={i === 0 ? "New" : node.frontmatter.title === "Drag and Drop Example" ? "Popular" : ""}
+									/>
+								)
+							})
 						}
-						<Post 
-							className = "no-results-post visually-hidden"
-							abstract = "No tutorials were found" 
-							id = "search-msg"
+						<Post
+							className="no-results-post visually-hidden"
+							abstract="No tutorials were found"
+							id="search-msg"
 						/>
 					</MainPanel>
 				</SideBarLayout>

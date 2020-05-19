@@ -52,6 +52,11 @@ function Nav(props) {
                     )
                     : null
             }
+            {
+                props.children
+                ? props.children
+                : null
+            }
         </ul>
     )
 }

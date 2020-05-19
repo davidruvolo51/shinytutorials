@@ -14,11 +14,16 @@ import Nav from "./nav"
 import Twitter from "../images/twitter"
 import Github from "../images/github"
 import User from "../images/user"
+import { Link } from "gatsby"
 function Footer() {
 	return (
 		<footer className="footer">
 			<h2>shinyTutorials</h2>
-			<Nav className="footer-menu"></Nav>
+			<Nav className="footer-menu">
+				<li className="menu-item">
+					<Link to="/privacy/" className="menu-link">Privacy</Link>
+				</li>
+			</Nav>
 			<ul className="menu footer-menu">
 				<li className="menu-item">
 					<a className="menu-link" href="https://www.twitter.com/dcruvolo">
