@@ -59,13 +59,13 @@
 	}
 }
 
-@media screen and (min-width: 972px) {
+@media (min-width: $breakpoint) {
 	.hero {
 		&.hero-index,
 		&.hero-text {
 			.hero-content {
 				width: 100%;
-				max-width: 912px;
+				max-width: $breakpoint;
 
 				.hero-image {
 					-webkit-transform: scale(1.25);

@@ -2,7 +2,7 @@
 // FILE: searchForm.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-06
-// MODIFIED: 2020-05-22
+// MODIFIED: 2020-05-19
 // PURPOSE: react component for search
 // DEPENDENCIES: react
 // STATUS: working
@@ -66,7 +66,7 @@ function Search(props) {
     return (
         <form className="form post-form" aria-label="search for tutorials" onSubmit={onSubmit}>
             <label className="input-label" htmlFor="search">Search for a Tutorial</label>
-            <p className="input-example">Search by tag, keyword, title, date. Ex: css, 2018, editing.</p>
+            <p className="input-example">Search by tag, keyword, title, date, or anything else. For example: "css", "2018", or "drag and drop".</p>
             <input className="input input-select" type="search" name="search" id="search" onChange={onChange} />
         </form>
     )

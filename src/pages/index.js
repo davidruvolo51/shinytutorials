@@ -57,7 +57,8 @@ function IndexPage(props) {
 							abstract={latestPost1.frontmatter.abstract}
 							date={latestPost1.frontmatter.date}
 							keywords={latestPost1.frontmatter.keywords}
-							id={latestPost1.frontmatter.title}
+							id="recent-post-a"
+							postStatus="New"
 						/>
 						<Post
 							isFeature={true}
@@ -68,7 +69,7 @@ function IndexPage(props) {
 							abstract={latestPost2.frontmatter.abstract}
 							date={latestPost2.frontmatter.date}
 							keywords={latestPost2.frontmatter.keywords}
-							id={latestPost1.frontmatter.title}
+							id="recent-post-b"
 						/>
 					</div>
 					<Link to="/tutorials" className="btn btn-secondary btn-centered">More</Link>

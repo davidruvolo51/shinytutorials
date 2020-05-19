@@ -8,6 +8,10 @@
 		margin-bottom: 12px;
 	}
 
+	.post-title, .post-title-link {
+		position: relative;
+	}
+
 	.post-title {
 		margin: 0;
 		padding: 0;
@@ -16,6 +20,31 @@
 	.post-title-link a {
 		color: $dark;
 		box-shadow: 0 1px 0 $semi-dark;
+	}
+
+	.post-status {
+		position: relative;
+		left: 24px;
+		top: -2px;
+		font-size: 11pt;
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: 2px;
+		padding: 3px 6px;
+		border-radius: 6px;
+		background-color: $ultra-light;
+
+		&[data-value="New"]{
+			background-color: $primary-light;
+			color: $primary;
+		}
+
+		&[data-value="Popular"] {
+			background-color: $secondary-light;
+			color: $secondary;
+		}
+
+		
 	}
 
 	.post-desc {
