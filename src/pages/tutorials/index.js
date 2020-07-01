@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2020-05-18
+// MODIFIED: 2020-07-01
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -28,6 +28,11 @@ function Tutorials(props) {
 	const postList = props.data.allMarkdownRemark;
 	const postTotal = postList.edges.length;
 	const keywords = Array.from([...new Set(postList.edges.map(n => n.node.frontmatter.keywords).flat().sort())])
+
+	// define posts arrays for creating entry pills
+	const latestPost = postList.edges[0].node.frontmatter.title;
+	const favoritePosts = ["shinyTravel", "Drag and Drop Example"];
+	const popularPosts = ["Using Rmarkdown files in Shiny", "Linking Tabs - Part 3"];
 
 	return (
 		<App
@@ -63,7 +68,15 @@ function Tutorials(props) {
 										keywords={node.frontmatter.keywords}
 										id={`${node.frontmatter.title}-${i}`}
 										key={i}
-										postStatus={i === 0 ? "New" : node.frontmatter.title === "Drag and Drop Example" ? "Popular" : ""}
+										postStatus={
+											latestPost.indexOf(node.frontmatter.title) > -1 
+											? "New"
+											: popularPosts.indexOf(node.frontmatter.title) > -1
+												? "Popular" 
+												: favoritePosts.indexOf(node.frontmatter.title) > -1
+													? "Favorite"
+													: null
+										}
 									/>
 								)
 							})

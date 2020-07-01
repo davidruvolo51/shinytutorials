@@ -2,10 +2,10 @@
 // FILE: nav.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2020-04-23
+// MODIFIED: 2020-07-01
 // PURPOSE: primary navigation
 // DEPENDENCIES: see below
-// STATUS: in.progress
+// STATUS: working
 // COMMENTS: if there are children links to be added, you must add them as a 
 // submenu. See rrads-site-react project for code and implementation
 ////////////////////////////////////////////////////////////////////////////////
@@ -32,15 +32,15 @@ function Nav(props) {
                             return (
                                 <li className={`menu-item ${parent.name.toLowerCase()}-item`} key={i}>
                                     {
-                                        parent.path === "/" || parent.path === ""
+                                        parent.path === "/" || parent.path === "" || parent.name === "Home"
                                         ? (
                                             <Link className="menu-link" to="/">
+                                                <HomeIcon className="menu-link-icon" />
                                                 {parent.name}
                                             </Link>
                                         )
                                         : (
                                             <Link className="menu-link" to={`/${parent.path}/`}>
-                                                {parent.name.toLowerCase() === "home" ? <HomeIcon className="menu-link-icon" /> : null}
                                                 {parent.name}
                                             </Link>
                                         )

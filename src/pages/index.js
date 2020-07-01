@@ -2,7 +2,7 @@
 // FILE: index.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2020-04-22
+// MODIFIED: 2020-07-01
 // PURPOSE: react component for home page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -85,7 +85,7 @@ function IndexPage(props) {
 							isExternalLink={true}
 							link="https://github.com/davidruvolo51/accessibleshiny"
 							linkLabel="View"
-							abstract="I'm developing an R package for building web accessible shiny applications."
+							abstract="I'm developing an R package for building web accessible shiny applications (this project is ongoing)."
 							keywords={["pkg"]}
 							id="project-r-accessibleshiny"
 						/>
@@ -99,6 +99,28 @@ function IndexPage(props) {
 							abstract="I am working on bundling JavaScript handlers into a package for use in shiny apps."
 							keywords={["pkg"]}
 							id="project-r-browsertools"
+						/>
+						<Post
+							isFeature={true}
+							className="flex-child"
+							title="rheroicons"
+							isExternalLink={true}
+							link="https://github.com/davidruvolo51/rheroicons"
+							linkLabel="View"
+							abstract="The rheroicons provides access to heroicons for use your web-based R projects."
+							keywords={["pkg"]}
+							id="project-r-rheroicons"
+						/>
+						<Post
+							isFeature={true}
+							className="flex-child"
+							title="Shiny App Template"
+							isExternalLink={true}
+							link="https://github.com/davidruvolo51/shiny-app-template"
+							linkLabel="View"
+							abstract="My template for building shiny apps using parcel, scss, babel and other plugins."
+							keywords={["template"]}
+							id="project-r-shinyapptemplate"
 						/>
 					</div>
 				</Section>
