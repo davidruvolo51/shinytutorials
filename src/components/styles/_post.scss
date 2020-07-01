@@ -44,6 +44,11 @@
 			color: $secondary;
 		}
 
+		&[data-value="Favorite"] {
+			background-color: $tertiary;
+			color: $light;
+		}
+
 		
 	}
 
