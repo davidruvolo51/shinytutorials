@@ -11,6 +11,9 @@ keywords: ["js", "a11y"]
 
 1. [Why would I need this?](#about)
 2. [How does this app work?](#work)
+    1. [Define a R function to generate the required HTML](#work-r-func)
+    2. [Write a JavaScript function that updates the document's attributes](#work-js-func)
+    3. [Integrate the R and JS functions into the app](#work-shiny-app)
 3. [What do I need to know before I integrate this into my app?](#know)
 4. [How do I run the demo](#run)
 5. [Further Reading](#further-reading)
@@ -21,24 +24,54 @@ keywords: ["js", "a11y"]
 
 ## Why would I need this?
 
+Recently, I have been focusing on improving the accessibilty of shiny applications. When developing shiny apps, I use the [Web Accessiblity Evaluation Tool (or WAVE)](https://wave.webaim.org) to make sure the content is accessible. When running the WAVE extension evaluation on shiny apps, it always flags "Document language missing". To describe this error, let's look a the basic structure of a web document.
+
+All websites, including shiny apps, have a HTML basic structure: the document declaration, the root element `<html>`, a `<head>` element, and the `<body>` of the document.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>...</head>
+<body>...</body>
+</html>
+```
+
+By default, the language of the document is unknown. Shiny does not set the document language nor does it provide a way for specifying the document language. Specifying the language is not only good practice, but it is important for individuals who use screen readers as "Identifying the language of a page allows screen readers to read the content in the appropriate language" (WAVE FireFox extension, accessed July 2020). To specify the language of the document, add the property `lang` to the `<html>` element. It is also important to specify the language of the document if you have content that is written in one or more lanaguages.
+
+In addition to language, it is important to specify the direction in which the content should be read (either "left to right" or "right to left"). Content direction can be defined by adding the attribute `dir` to the `<html>` element and using "ltr" for left-to-right content or "rtl" for right-to-left content.
+
+```html
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>...</head>
+<body>...</body>
+</html>
+```
+
+Adding this attributes in shiny apps isn't as easy as writting HTML. Wrapping your UI in `tags$html` will render a second html element, which goes against the basic structure of web documents. Shiny UI layout components do not have an option for setting document options either. However, it is possible set these values using JavaScript.
+
+In this tutorial, we will develop a simple shiny app that allows use to set and modify the document's HTML attributes using JavaScript. 
 
 
 <span id="work" />
 
 ## How does this app work?
 
-In this tutorial, I will develop a simple shiny app that demonstrates how to set and modify the document's HTML attributes.
+To build the app, here is what we will need to do.
 
-1. Create a function that generates a hidden HTML element
-2. Write a JavaScript function that processes the attributes of the hidden element
+1. Define a R Function to generate the required HTML
+2. Write a JavaScript function that updates the document's attributes
+3. Integrate the R and JS functions into the app
 
 In this example, I will be using the single file setup and using the `tags` object to create the ui. 
 
-### Creating the R Function
+<span id="work-r-func" />
+
+### Define a R function to generate the required HTML
 
 First, I will write a function that renders the desired attribute values into an HTML element, which can be added to the document using JavaScript. This will make the process of modifying attribute values easier and allow you to add or remove attributes depending on the needs of your shiny app. In this example, I would like to set the HTML attributes `lang` (for language) and `dir` (for direction). The [lang attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) allows you to specify the language of the content. The [dir attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dir) is the direction the document should be read, which can be left to right, right to left, or auto.
 
-I will give this function a simple name `set_html_attribs` and define arguments for language and direction. The output of this function is a hidden `<span>` element that has the html attributes defined as custom data attributes (visit [Mozilla's guide on data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) for more information). The span element will receive a unique ID which will be used in the JavaScript function.
+I will give this function a simple name `set_html_attribs` and define arguments for language and direction. The output of this function is a hidden span element that has the html attributes defined as custom data attributes (visit [Mozilla's guide on data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) for more information). The span element will receive a unique ID which will be used in the JavaScript function.
 
 ```r
 set_html_attribs <- function(lang = "en", dir = "ltr") {
@@ -60,13 +93,23 @@ set_html_attribs <- function(lang = "en", dir = "ltr") {
 }
 ```
 
-The function will return the following html markup in the app.
+This function will return the following html markup in the app.
 
 ```html
-<span id = "shiny__html_attribs" data-html-lang="en" data-html-dir="ltr" style="display: none;"/>
+<!DOCTYPE html>
+<html>
+<head>...</head>
+<body>
+    <span id="shiny__html_attribs" data-html-lang="en" data-html-dir="ltr" style="display: none;"></span>
+</body>
+</html>
 ```
 
-### Processing values in JavaScript
+
+
+<span id="work-js-func" />
+
+### Write a JavaScript function that updates the document's attributes
 
 In the js function `set_html_attribs`, I will find the span element and extract the values of the data attributes using [getAttribute](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute), and then apply these values to the corresponding language and direction attributes of the `<html>` element.
 
@@ -87,8 +130,9 @@ window.addEventListener("DOMContentLoaded", function(e) {
 }, { once: true });
 ```
 
+<span id="work-shiny-app" />
 
-### Integrating the functions into an app
+### Integrate the R and JS functions into the app
 
 Finally, we can build a demo app. Load the R script and call the function `set_html_attribs` at the start of the shiny UI (you may need to wrap your app in `tagList` if using other layouts.), and then call the JS file.
 
@@ -187,7 +231,11 @@ set_html_attribs <- function(title = "", lang = "en", dir = "ltr") {
 You can run this demo by cloning the [github repository](https://github.com/davidruvolo51/shinyAppTutorials) and opening the Rproject file in `setting-html-attributes` directory. Alternatively, you can run the app through the R console using:
 
 ```r
-shiny::runGithub(repo="shinyAppTutorials", username="davidruvolo51", subdir="setting-html-attributes")
+shiny::runGithub(
+    repo="shinyAppTutorials",
+    username="davidruvolo51",
+    subdir="setting-html-attributes"
+)
 ```
 
 <span id="further-reading" />
