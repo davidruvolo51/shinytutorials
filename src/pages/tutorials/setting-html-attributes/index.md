@@ -1,9 +1,9 @@
 ---
 title: "Setting Document Attributes"
 subtitle: "Improving the accessibility of Shiny apps"
-abstract: ""
-date: "2020-07-09"
-updated: "2020-07-09"
+abstract: "When evaluating Shiny applications in terms of web accessibility, assessment tools will always throw an error: 'Document language missing'. Shiny does not set this attribute and others like it by default. In this tutorial, we will learn how to fix this."
+date: "2020-07-28"
+updated: "2020-07-28"
 keywords: ["js", "a11y"]
 ---
 
@@ -11,12 +11,12 @@ keywords: ["js", "a11y"]
 
 1. [Why would I need this?](#about)
 2. [How does this app work?](#work)
-    1. [Define a R function to generate the required HTML](#work-r-func)
+    1. [Define an R function to generate the required HTML](#work-r-func)
     2. [Write a JavaScript function that updates the document's attributes](#work-js-func)
     3. [Integrate the R and JS functions into the app](#work-shiny-app)
 3. [What do I need to know before I integrate this into my app?](#know)
 4. [How do I run the demo](#run)
-5. [Further Reading](#further-reading)
+5. [Further reading](#further-reading)
 
 <!-- endexcerpt -->
 
@@ -24,9 +24,9 @@ keywords: ["js", "a11y"]
 
 ## Why would I need this?
 
-Recently, I have been focusing on improving the accessibilty of shiny applications. When developing shiny apps, I use the [Web Accessiblity Evaluation Tool (or WAVE)](https://wave.webaim.org) to make sure the content is accessible. This helps identify errors in the page strcuture and appearance, which is especially helpful when building custom components and applications. Running the WAVE extension on shiny apps will always return the error: "Document language missing". To describe this error and how it can be fixed, let's take a look at the basic structure of a web document.
+Recently, I have been focusing on improving the accessibility of shiny applications. When developing web-based projects, I use the [Web Accessibility Evaluation Tool (or WAVE)](https://wave.webaim.org) to make sure the content is accessible. This helps identify errors in the page structure and appearance. For building custom Shiny applications, using WAVE or other similar tool is essential. However, running the WAVE extension on shiny apps will always return the error: "Document language missing". To describe this error and how it can be fixed, let's take a look at the basic structure of a web document.
 
-All websites, including shiny apps, have a HTML basic structure: the document declaration, the root element `<html>`, a `<head>` element (for meta content), and the `<body>` of the document (where all content goes).
+All websites, including shiny apps, have the same basic HTML structure: the document declaration (or `<!DOCTYPE *>`), the root element `<html>`, a `<head>` element (for defining meta properties, loading external files, etc.), and the `<body>` of the document (where all content goes).
 
 ```html
 <!DOCTYPE html>
@@ -36,9 +36,9 @@ All websites, including shiny apps, have a HTML basic structure: the document de
 </html>
 ```
 
-By default, the document language is unknown. Specifying the language does not only follow good web development practices, but it is important for individuals who use screen readers as "Identifying the language of a page allows screen readers to read the content in the appropriate language" (WAVE FireFox extension, accessed 17 July 2020). Setting the document language is also important if you have content that is written in one or more lanaguages. To specify the language, add the property `lang` to the `<html>` element.
+By default, the document language is unknown. Specifying the language does not only follow good web development practices, but it is important for individuals who use screen readers as "Identifying the language of a page allows screen readers to read the content in the appropriate language" (WAVE FireFox extension, accessed 17 July 2020). Setting the document language is also important if you have content that is written in one or more languages. To specify the language, add the property `lang` to the `<html>` element.
 
-In addition to language, it is important to specify the direction in which the content should be read (either "left to right" or "right to left"). Content direction can be defined by adding the attribute `dir` to the `<html>` element and using "ltr" for left-to-right content or "rtl" for right-to-left content.
+In addition to language, it is important to specify the direction of the content (either "left to right" or "right to left"). The direction of the content can be defined by adding the attribute `dir` to the `<html>` element by using "ltr" for left-to-right content or "rtl" for right-to-left content.
 
 ```html
 <!DOCTYPE html>
@@ -48,30 +48,29 @@ In addition to language, it is important to specify the direction in which the c
 </html>
 ```
 
-Adding these attributes in shiny apps is not as easy as writting HTML. Shiny does not set the document language by default nor is there a straightforward way to do so. Therefore, we must set these values using JavaScript.
+Adding the `lang` and `dir` attributes in shiny applications is not as easy as editing an HTML document. Shiny does not set the document language or direction by default nor is there a straightforward way to do so. Therefore, we must set these values using JavaScript.
 
-In this tutorial, we will develop a simple shiny app that allows you to set and modify the document's HTML attributes using JavaScript. We will create an R function that will automate this process and link it with a couple of JavaScript functions.
+In this tutorial, we will develop a simple shiny app that allows you to set and modify the document's HTML attributes using JavaScript. We will create an R function that will automate this process and write a couple of JavaScript functions to help process these values.
 
 <span id="work" />
 
 ## How does this app work?
 
-To build the app, here is what you will need.
+To build the app, here is what we will go over.
 
-1. Define a R Function to generate the required HTML
+1. Define an R Function to generate the required HTML
 2. Write a JavaScript function that updates the document's attributes
-
-After the first two steps are complete, we will build a sample app that demonstrates how to set a Shiny app's language and the direction of the content
+3. Integrate the R and JS functions into the app
 
 <span id="work-r-func" />
 
-### Define a R function to generate the required HTML
+### Define an R function to generate the required HTML
 
-First, we will write a function that renders the desired attribute values into an HTML element, which can be added to the document using JavaScript. This will make the process of modifying attribute values easier and allow you to add or remove attributes depending on the needs of your shiny app. 
+First, we will write an R function that renders the desired attribute values into an HTML element, which can be added to the document using JavaScript. This will make the process of modifying attribute values easier and allow you to add or remove attributes depending on the needs of your shiny app. 
 
-In this example, we will be setting the HTML attributes `lang` (for language) and `dir` (for direction). The [lang attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) allows you to specify the language of the content. The [dir attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dir) is the direction the document should be read, which can be "ltr" (for left-to-right content), "rtl" (for right-to-left content), or "auto".
+In this example, we will be setting the HTML attributes `lang` and `dir`. The [lang attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) allows you to specify the language of the content. The [dir attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dir) is the direction of the content. Direction can be "ltr" (for left-to-right content), "rtl" (for right-to-left content), or "auto".
 
-I will give this function a simple name `set_html_attribs` and set default values for language and direction. The output of this function is a hidden span element that has the html attributes defined as custom data attributes (visit [Mozilla's guide on data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) for more information). The span element will be assigned a unique ID that will be used to select element in the JavaScript function.
+I will give this R function a simple name `set_html_attribs` and set default values for language (`en` for English) and direction (`ltr` for left-to-right). The output of this R function is a hidden span element that has the html attributes defined as custom data attributes (visit [Mozilla's guide on data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) for more information). The span element will be assigned a unique ID that will be used to select element in the JavaScript function.
 
 ```r
 set_html_attribs <- function(lang = "en", dir = "ltr") {
@@ -97,7 +96,7 @@ set_html_attribs <- function(lang = "en", dir = "ltr") {
 
 ### Write a JavaScript function that updates the document's attributes
 
-In the javascript file, we will create a function that finds the span element and extracts the values from the custom data attributes. Using these values, we can set the language and direction attributes to the `<html>` element.
+Now we will create a JavaScript function that finds the span element and extracts the values from the custom data attributes. Using these values, we can set the language and direction attributes to the `<html>` element.
 
 ```js
 function set_html_attribs() {
@@ -120,7 +119,7 @@ window.addEventListener("DOMContentLoaded", function(e) {
 
 ### Integrate the R and JS functions into the app
 
-Now we can build the demo app. Load the R function into the app and call the function `set_html_attribs` at the start of the shiny UI. At the end of the shinyUI, call the JS file. (You may need to wrap your app in `tagList` if using other Shiny layouts.) 
+Finally, let's build the demo app. Load the R function into the app and call the function `set_html_attribs` at the start of the shiny UI. At the end of the ShinyUI, call the JS file. (You may need to wrap your app in `tagList` if using other ShinyUI layouts.) 
 
 Run the app and view the page source to find the `<html>` tag (it will be at the top of the page). This tag will now have the attributes `lang` and `dir`.
 
@@ -210,13 +209,13 @@ set_html_attribs <- function(title = "", lang = "en", dir = "ltr") {
 }
 ```
 
-Depending on the language of the your application, you may need to specify language subtags for regional dialects. If this is the case, I would recommend using the [Language Tag and Subtag finder](https://r12a.github.io/app-subtags/) to determine the language code. 
+Depending on the language of your application, you may need to specify a language subtag for regional dialects. If this is the case, I would recommend using the [Language Tag and Subtag finder](https://r12a.github.io/app-subtags/) to determine the appropriate language code.
 
 <span id="run" />
 
 ## How do I run the example?
 
-You can run this demo by cloning the [github repository](https://github.com/davidruvolo51/shinyAppTutorials), opening the Rproject file in `setting-html-attributes` folder, and clicking "Run App". Alternatively, you can run the app through the R console using:
+You can run this demo by cloning the [GitHub repository](https://github.com/davidruvolo51/shinyAppTutorials), opening the R project in `setting-html-attributes` folder, and clicking "Run App". Alternatively, you can run the app through the R console using the following command.
 
 ```r
 shiny::runGithub(
