@@ -60,3 +60,7 @@ typings/
 
 # Mac files
 .DS_Store
+
+
+package-lock.json
+yark.lock
