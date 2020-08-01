@@ -1,10 +1,10 @@
 ---
-title: "Custom Time Input"
-subtitle: "Create a custom time input element"
-abstract: "There isn't a time input in the shiny framework. A time input element is useful for data entry shiny apps or if you need to filter data by hour or minute. Using a little bit of html and javascript, it is possible create a custom input."
+title: "Creating Custom Inputs"
+subtitle: "Getting started with Shiny Input Bindings: making a time input component"
+abstract: "There isn't a time input in the shiny framework. A time input element is useful for data entry shiny apps or if you need to filter data by hour or minute. In this example, learn how to create a custom time input component using Shiny input bindings."
 keywords: ["javascript"]
 date: "2019-11-25"
-updated: "2019-12-15"
+updated: "2020-08-01"
 ---
 
 
@@ -12,11 +12,9 @@ updated: "2019-12-15"
 
 1. [Why would I need this](#about)
 2. [How does this shiny app work?](#work)
-    1. [Build the input element](#work-build)
-    2. [Write the JavaScript function](#work-js)
+    1. [Building the time input component](#work-build)
+    2. [Writing the shiny input binding](#work-js)
 3. [What do I need to know before I implement this into my own project?](#further-thoughts)
-    1. [Semantic HTML and Web Accessibility](#further-thoughts-html)
-    2. [Processing Input Values In JavaScript](#further-thoughts-process)
 4. [How do I run the demo?](#run)
 
 <!-- endexcerpt -->
@@ -25,126 +23,149 @@ updated: "2019-12-15"
 
 ## Why would I need this?
 
-In the shiny framework, there are a lot of ui components that are easy to use and to fit with your data. If your data contains time values that may play a big role in the interactivity of your application, you would want a time input element that allows uses to filter data by a time or by a period of time. You may notice that a time input element does not exist in the shiny framework as a [shiny control widget](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/).
+In the shiny framework, there are a lot of UI components that are easy to use and to fit with your data. If your data contains time values that may play a big role in the interactivity of your application, you would want a time input element that allows uses to filter data by a time or by a period of time. You may notice that a time input element does not exist in the shiny framework as a [shiny control widget](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/).
 
-This is not a problem as it is possible to create your own using a little bit of html and javascript. In this tutorial, I will cover how to structure the html element, writing the javascript functions, and linking the time input with shiny.
+This is not a problem as it is possible to create your own using [Shiny Input Bindings](https://shiny.rstudio.com/articles/js-custom-input.html). In this tutorial, I will cover how to structure the HTML element and write the JavaScript input bindings.
+
+> It is important to note that not all browsers widely support input[type='time']. See [Can I Use: date and time inputs](https://caniuse.com/#feat=input-datetime) page for more information. The purpose of this example is to demonstrate how to create custom input components and Shiny input bindings.
 
 <span id="work" />
 
 ## How does this shiny app work?
 
-The [time input](https://github.com/davidruvolo51/shinyAppTutorials/tree/master/time-input) example illustrates the implementation of the custom input element in a shiny application. In this example app, the user is instructed to enter a time (e.g., 12:51 PM, 10:02 AM, etc.) and then click enter. Doing so will display the time entered in the box beneath the form. Behind the scenes, there is a javascript function that is updating the input value so it shiny can read it and make it available for use in the app.
+In this tutorial, I will focus on the following steps to get the component working.
 
-In this tutorial, I will focus on the key elements for getting the time input working.
+1. Building the time input component
+2. Writing the shiny input binding
 
-1. Build the input element
-2. Write the JavaScript function
+See the [GitHub repository](https://github.com/davidruvolo51/shinyAppTutorials/tree/master/time-input) for the complete code.
 
 <span id="work-build" />
 
-### Build the input element
+### Building the time input component
 
-To create the input element, we will use the html element [input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input). There are many input types available, but we are only interested in the type [time](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time).  We will stick with the basics attributes in the example: `id`, `name`, and `class`. We will also use the `value` attribute, but will set it in the js file as things got weird when it was set in the ui.
+To create the input element, we will use the HTML element [input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input). There are many input types available, but we are only interested in the type [time](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time).  We will stick with the basic attributes: `id`, `name`, `class`, `value`, `min`, and `max` attributes.
 
+In shiny, the `<input>` element can be accessed using `tags$input()`. All inputs must have an accompanying label (`<label>`; `tags$label`) that is linked with the input using the `for` attribute. The value of `for` should be the id of the input element. 
 
-In shiny, the `<input>` element can be accessed through `shiny::tagList()` using `tags$input()`. All inputs must have an accompanying label (`<label>`). In shiny, this can be created by using `tags$label`. The label must be linked with the input by using the `for` attribute. The value entered should be the id of the input element (which is `time`). It's also important to use the following css class `shiny-bound-input` when building custom inputs.
+In addition to the label element, you may need to a caption to provide addition notes about the time input. This argument will be optional. If it is used, then content should be placed inside the label element.
 
-Here is how the input element and label should be structured.
+Here is the time input component.
 
 ```r
-tags$label(`for`="time","Enter a time"),
-tags$input(type="time", id="time", name="time", class="shiny-bound-input")
+time_input <- function(inputId, label, value = "13:00", min = "07:00", max = "10:00", caption = NULL) {
+
+    # <label />
+    lab <- shiny::tags$label(
+        class = "time__label",
+        `for` = inputId,
+        label
+    )
+
+    # if present, append caption to <label>
+    if (!is.null(caption)) {
+        lab$children <- shiny::tagList(
+            lab$children,
+            shiny::tags$span(
+                class = "time__caption",
+                caption
+            ),
+        )
+    }
+
+    # <input type="time" />
+    input <- shiny::tags$input(
+        id = inputId,
+        name = inputId,
+        class = "time__input",
+        type = "time",
+        min = min,
+        max = max,
+        value = value
+    )
+
+    # return
+    shiny::tagList(lab, input)
+}
 ```
 
-**NOTE**: In shiny, you will need to use the backticks around `for`. Otherwise, it will interpret this as the start of a for loop.
-
-It is possible to set other attributes for that controls the input element. For example, we could use the attribute `min` and `max` to limit the range at which users can enter time. If you decide to implement this, make sure you also implement validation methods that inform users if there are any errors in the form.
-
-It is important to point out that the input, by default, returns time in the 24-hour format. In the section [What do I need to know before I implement this into my own project?](#further-thoughts), I will provide a method for converting the time to 12-hour format.
+The attributes `min` and `max` can be used to validate the input value. Some browsers may provide some errors natively, but this does not replace robust validation methods and client-side error messages. For more information, see Mozilla's [time input reference guide](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time).
 
 <span id="work-js" />
 
-### Write the JavaScript functions
+### Writing the Shiny Input Binding
 
-Now that the input is defined in the ui, we can now register the input element with shiny for use in the server. If you haven't already done so, create the www directory and a javascript file.
+Next, we will create shiny input binding for the time component. I will cover the methods required for this example. For a more detailed description of input bindings, see RStudio's [Shiny input bindings guide](https://shiny.rstudio.com/articles/js-custom-input.html).
 
-In the js file, we will write a function that registers the time input with shiny so we can access the value in the shiny server. We will select the input element (`time`) and add an [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) to it. Event listeners allow us to preform a function that is triggered by a specific event. For example, an event can be a mouse click or if a key is pressed. There are a [number of other events](https://developer.mozilla.org/en-US/docs/Web/Events) to choose from, but we will use the `input` event as we want run a function when the user has entered a value in the time input. 
-
-First, we will select the time input.
+New input bindings can be created using `new Shiny.InputBinding()`. Use JQuery's `extend` function to define the methods specific to the component. (It is not possible to write the binding using vanilla JS). Lastly, register input bindings using `Shiny.inputBindings.register(...)`. Here is the basic structure.
 
 ```js
-const time = document.getElementById("time");
-```
+// create new binding
+var myInput = new Shiny.InputBinding();
 
-Next, we will define the event listener.
-
-```js
-time.addEventListener("input", function(event){
+// extend: define methods
+$.extend(myInput, {
     ...
 });
+
+// register
+Shiny.inputBindings.register(myInput);
 ```
 
-Before we write the function, there are a couple of things we need. I'll go through each item one-by-one and then add it to the function. 
+There are several methods available for creating custom input bindings. In this example, we will use the following methods.
 
-The input for the function is `event`. This returns a lot of information about the event including the input value. The input value can be accessed by using the following code.
+- `find`: (required) this method is used to locate the time component within the web document
+- `initialize`: this method will run when the component is initialized (i.e., rendered). This is also useful for setting the initial value of the component (otherwise, the starting value will be `NULL`).
+- `getValue`: `getValue` returns the value of the time input component so it can be accessed in the Shiny server using `input$some_id`.
+- `subscribe`: this is used for attaching events to the time component (i.e., `click`, `change`, etc.). Depending on the event(s), you may want to use the `callback()` function. Doing so will run the `getValue` method.
 
-```js
-event.target.value
-```
-
-Using this value, we can register the time input with shiny. According to the [documentation](https://shiny.rstudio.com/articles/communicating-with-js.html), the function `Shiny.setInputValue` will handle this for us. This function takes two values: id and values. The id is the id of the input element (time) and the value is the user entered input value (event.target.value). 
-
-```js
-Shiny.setInputValue("time", event.target.value);
-```
-
-Now we can finish the function. Let's move the set input value function into the event listener.
+Here is the input binding for the time component.
 
 ```js
-time.addEventListener("input", function(event){
-    Shiny.setInputValue("time", event.target.value)
+// init new binding
+var timeInput = new Shiny.InputBinding();
+
+// extend class
+$.extend(timeInput, {
+
+    // locate all instances of input[type='time']
+    find: function(scope) {
+        return $(scope).find(".time__input");
+    },
+
+    // return default value defined by the attribute `value`
+    // this will also reset the input to it's default value
+    // on page refresh
+    initialize: function(el) {
+        return el.value = $(el).attr("value");
+    },
+
+    // callback function: when called, return the current input value
+    getValue: function(el) {
+        return el.value;
+    },
+
+    // events: when input is changed, return the value
+    subscribe: function(el, callback) {
+        $(el).on("change", function(e) {
+
+            // callback; i.e., run `getValue`
+            callback();
+        });
+    }
 });
+
+// register
+Shiny.inputBindings.register(timeInput)
 ```
-
-Lastly, we will set a default value for the input.
-
-```js
-time.value = "12:00";
-```
-
-That is all we need. Here is everything put together.
-
-```r
-# ui.R
-tags$label(`for`="time","Enter a time"),
-tags$input(type="time", id="time", name="time", class="shiny-bound-input")
-```
-
-```js
-// index.js
-const time = document.getElementById("time");
-time.value = "12:00";
-time.addEventListener("input", function(event){
-    Shiny.setInputValue("time", event.target.value)
-});
-
-```
-
-If you have more time inputs, you will need to repeat the js code for each input element.
-
-In the shiny server, the values can be accessed as normal i.e., `input$time`. In the example application, I've added a console log in the event listener to demonstrate when shiny is updating the value.
 
 <span id="further-thoughts" />
 
 ## What do I need to know before I implement this into my own project?
 
-Creating a time input is fairly simple to do. All you need is a label, time input, and 4 lines of javascript. There are a couple of things that you should consider before implementing this method into your application.
+Creating custom input components is fairly straightforward. There are a couple of things that you should consider before implementing this method into your application.
 
-<span id="further-thoughts-html" />
-
-### Semantic HTML and Web Accessibility
-
-To follow good semantic html and web accessibility practices, wrap the input in a `form` element: `tags$form(...)`. Include a title for that describes the form using the legend element: `tags$legend()`. For accessibility, make sure the legend is linked with the form element using `aria-labelledby` and reference the id of the legend.
+To follow good semantic HTML and web accessibility practices, input components should be wrapped in a `form` element: `tags$form(...)`. Include a title for that describes the form using the legend element: `tags$legend()`. For accessibility, make sure the legend is linked with the form element using `aria-labelledby` and reference the id of the legend.
 
 ```r
 tags$form(`aria-labelledby`="form-time-legend",
@@ -153,8 +174,7 @@ tags$form(`aria-labelledby`="form-time-legend",
     tags$legend(id="form-time-legend","My title for the form"),
 
     # time input
-    tags$label(`for`="time","Enter a time"),
-    tags$input(type="time", id="time", name="time", class="shiny-bound-input"),
+    time_input(...),
 
     # other inputs if applicable
     ...
@@ -162,45 +182,34 @@ tags$form(`aria-labelledby`="form-time-legend",
     # submit
     tags$button(type="submit", id="submit", class="action-button shiny-bound-input", "Enter")
 )
-```
+``` 
 
-I would recommend using `aria-labelledby` over `aria-label` as you will do not have to update the content in two places if you were to edit the legend text.
-
-<span id="further-thoughts-process" />
-
-### Processing Input Values In JavaScript
-
-Using the input with type time, will return the values in 24-hour format. This is not a major issue as we can expand a little bit more javascript or transform the values in R using the lubridate package. It makes no difference. It is a matter of what works with your project and what you are comfortable with.
-
-If you want to convert the time values in javascript, I would recommend using adjusting the event listener to return the date object instead of the value. Instead of selecting `event.target.value`, select `valueAsDate`.
+It is important to point out that the input, by default, returns time in the 24-hour format. If you would like the component to return 12-hour format, than you can restructure the `initialize` and `getValue` methods to the following. Alternately, you can use R to convert the times from 24-hour to 12-hour format.
 
 ```js
-event.target.valueAsDate
+
+// method now calls `getValue`
+intialize: function (el) {
+    el.value = $(el).attr("value");
+    this.getValue();
+},
+
+// method: returns time in 12-hour format
+getValue: function (el) {
+    var val = el.valueAsDate;
+    var time = val.toLocaleString("en-us", { hour: "numeric", minute: "numeric" });
+    return time;
+},
 ```
-
-This returns the input value as utc date object. If the time 8 pm was entered into the form, the time would be returned as a date object with the date set to 01 January 1970.
-
-```js
-Date Thu Jan 01 1970 20:00:00 GMT+0000 (Coordinated Universal Time)
-```
-
-We can use common js methods to work with date objects to format the date object. Using the function [toLocaleString](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString), we can reformat the time in 12-hour format. The locale we will use is `en-us`. We will name which values in the date object that we want to use i.e., hours and minutes.  
-
-```js
-time.addEventListener("input", function(event){
-    let input = event.target.valueAsDate;
-    let value = input.toLocaleString("en-us", { hour: "numeric", minute: "numeric"});
-    Shiny.setInputValue("time", value);
-});
-```
-
-If we entered `8:00 PM` in the form, the first method wil return `20:00`. With the second method, the return value is `8:00 PM`. In the example app, I have included both methods.
 
 ## How do I run the demo?
 
-The code for the shiny application can be found on [github](https://github.com/davidruvolo51/shinyAppTutorials/tree/master/time-input). Either clone the repository and run the app in locally or you can run the application by running the following code in the console. 
+The code for the shiny application can be found on [GitHub](https://github.com/davidruvolo51/shinyAppTutorials/tree/master/time-input). Either clone the repository and run the app in locally or you can run the application by running the following code in the console. 
 
 ```r
-install.packages(shiny)
-shiny::runApp(repo="shinyAppTutorials", username="davidruvolo51", subdir="time-input")
+shiny::runApp(
+    repo = "shinyAppTutorials",
+    username = "davidruvolo51",
+    subdir = "time-input"
+)
 ```
