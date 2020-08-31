@@ -1,10 +1,10 @@
 ---
-title: "Listbox Component"
-subtitle: ""
-abstract: ""
-date: "2020-08-27"
-updated: "2020-08-27"
-keywords: [""]
+title: "Listbox Widget"
+subtitle: "A customizeable UI widget to select inputs"
+abstract: "The select input element is commonly used in Shiny applications for creating dropdown menus. Select elements are easy to use, but they are not easily customizable using CSS. The ability to style select elements may be important for complying with organizational branding guidelines or if you would like to create a custom application. This post contains an updated approach for creating your own dropdown menus using listboxes."
+date: "2020-08-31"
+updated: "2020-08-31"
+keywords: ["html", "javascript"]
 ---
 
 ## Contents
@@ -30,8 +30,6 @@ keywords: [""]
 
 ## Why would I need this?
 
-The `<select>` input elements are commonly used in Shiny applications for creating dropdown menus. Select elements are easy to use, but they are not easily customizable using CSS. The ability to style select elements may be important for complying with organizational branding guidelines or if you would like to create a custom application. 
-
 An earlier post [Custom Select Inputs](./../select-input-styling/) demonstrated the use of the `appearance` CSS property, but this can cause the element to render and behave differently across browsers. Alternative solutions involve loading a large UI library into your app for a single component or using some creative markup. However, these methods may not be accessible for individuals who use assistive web devices. Using the [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices/) as a reference, the [listbox](https://www.w3.org/TR/wai-aria-practices/#Listbox) widget is a nice alternative.
 
 In this post, I will provide an overview for creating your own listbox component that follows the WAI-ARIA Authoring Practices. Specifically, this example reworks the [Collapsible Dropdown Listbox Example](https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html) for use in Shiny applications. This post will provide an overview on the creating the R component, JavaScript input bindings, and styling the component with CSS.
@@ -47,7 +45,7 @@ To develop and style your own listbox component, here are the elements you will 
 1. Building the R component
 2. Creating the JavaScript input binding
 
-**NOTE**: I won't go into detail about the CSS used to create the component. In the [listbox subrepo](https://github.com/davidruvolo51/shinyAppTutorials/tree/prod/shiny-listbox), I've included the SASS file and build scripts (using Parcel JS) for compiling the CSS file. I would recommend using SASS for larger projects and importing the `listbox.scss` accordingly. If you are using vanilla CSS, then load the `listbox.css` file directly into your app or copy the contents into your app's primary CSS file.
+**NOTE**: I won't go into detail about the CSS used to create the listbox widget. See the [listbox subrepo](https://github.com/davidruvolo51/shinyAppTutorials/tree/prod/shiny-listbox) for the source code. I've included the SASS file and build scripts (using Parcel JS) for compiling the CSS file. I would recommend using SASS for larger projects and importing the `listbox.scss` file as needed. If you are using vanilla CSS, load the `listbox.css` file directly into your app or copy the contents into your app's primary CSS file.
 
 Before we dive in, let's create the required files. Your Shiny project should have the following files.
 
@@ -75,9 +73,9 @@ The step for making a listbox component is to write the R component that renders
 - Title: It is important to include a text element that describes the listbox widget. Since we are already using the `<fieldset>` element, we can use the `<legend>` element.
 - Label: A label may also be useful as it provides additional context for the listbox widget. I will use a `<span>` element for this.
 - Toggle: The listbox widget requires a `<button>` that toggles the state of the widget. The toggle is used to open and close the list of options. The text inside the button will be used to display the selected option. An icon will be also be added inside the button to indicate that the button can be clicked and is expandable.
-- List of option: For the `<select>` element, options are added using the `<option>` element. This element is not applicable in this situation, but we can use an unorder list (`<ul>`) and define each option using the list item element (`<li>`).
+- List of option: For the `<select>` element, options are added using the `<option>` element. This element is not applicable in this situation, but we can use an unordered list (`<ul>`) and define each option using the list item element (`<li>`).
 
-Using the above list, here is the basic markup of the Shiny listbox component. I will talk about the required attributes as we start writing the R functions.
+Using the above list, here is the basic markup of the Shiny listbox component. I will talk about the required HTML and ARIA attributes as we start writing the R functions.
 
 ```html
 <fieldset>
@@ -100,7 +98,7 @@ Using the above list, here is the basic markup of the Shiny listbox component. I
 
 So how do we generate this markup from R? Since we will need to set and link HTML attributes across elements, as well as dynamically render options based on the number of input values, we will create a few R functions to generate the listbox widget. I will create a primary function and a few helper functions. 
 
-1. `list_toggle`: I will create one that renders the markup for the `<button>`. This includes the text element that will display the selected option and a SVG icon.
+1. `list_toggle`: I will create one that renders the markup for the `<button>`. This includes the text element that will display the selected option and an SVG icon.
 2. `input_list_item`: I will also write a function that generates a list item (i.e., option). Each list item has an icon that will be displayed when the option is selected and an inner text label that displays the name of the title. Several attributes will need to be added to for web accessibility and communication with the JavaScript input binding.
 3. `input_list`: This helper function generates the list (`<ul>`) based on the number of input values. Each option is generated using the `input_list_item` function.
 4. `listbox`: This the main function that will be used in your shiny app.
@@ -111,7 +109,7 @@ For isolating helper functions, I will nest them in list object.
 helpers <- list()
 ```
 
-I am using the [rheroicons](https://github.com/davidruvolo51/rheroicons) package for this component. This package is an R wrapper around the [heroicons](https://github.com/tailwindlabs/heroicons) library.
+I am using the [rheroicons](https://github.com/davidruvolo51/rheroicons) package for this component. This package is an R wrapper around the [heroicons](https://github.com/tailwindlabs/heroicons) library that I built specifically for Shiny components.
 
 <span id="work-r-listbox-toggle" />
 
@@ -156,7 +154,7 @@ The values for the arguments `inputId` and `titleId` will be defined in the prim
 
 #### Listbox options
 
-The `input_list_item` function is used to generate each list item. Each item will have a label the displays the option and an icon that will be used to indicate of the option is selected. To indicate that the element is a selectable option, I will add the attribute `role = "option"`. I will also added few custom `data-*` attributes that will be used in the input binding.
+The `input_list_item` function is used to generate each list item. Each item will have a label the displays the option and an icon that will be used to indicate of the option is selected. To indicate that the element is a selectable option, each item has the attribute `role = "option"`. I will also added few custom `data-*` attributes that will be used in the input binding.
 
 Here is the R code for this function.
 
@@ -195,7 +193,7 @@ The values for the arguments `inputId`, `option`, and `value` are passed down vi
 
 #### Listbox list
 
-Using the `input_list_item` function, we can create the `input_list` function. This helper function dynamically generates options based on user-defined input values. The parent element is an unordered list (`<ul>`). The attribute `role = "listbox"` is required and the attribute `tabindex` will make the element focusable in the input binding. The ARIA attribute `aria-labelledby` is added to link the listbox label and the list of options. The list of options is generated using `lapply`.
+Using the `input_list_item` function, we can create the `input_list` function. This helper function dynamically generates options based on user-defined input values. The parent element is an unordered list (`<ul>`), which has the attribute `role = "listbox"` and the attribute `tabindex = "0"` (this will make the element focusable via the input binding). The ARIA attribute `aria-labelledby` is used to link the label and the list of options. Each option is generated using the `lapply` function.
 
 Here is the R code this function. Input values are passed down from the main `listbox` function.
 
@@ -240,9 +238,7 @@ Now that the helper functions are defined, we can use them in the main function.
 listbox(inputId, title, label = NULL, options, values = NULL)
 ```
 
-By default, the `label` and `values` arguments are optional. If `values` is missing, the input for `options` is used instead. Input for the `options` and `values` should be a character array (i.e., `options = c(...)`)
-
-Here is the R code for the `listbox` function.
+By default, the `label` and `values` arguments are optional. If `values` is missing, the input for `options` is used instead. Inputs for `options` and `values` should be a character array (i.e., `options = c(...)`). Here is the R code for the `listbox` function.
 
 ```r
 listbox <- function(inputId, title, label = NULL, options, values = NULL) {
@@ -308,15 +304,17 @@ listbox <- function(inputId, title, label = NULL, options, values = NULL) {
 }
 ```
 
-That's it for the R function. If you use the component in an app along with the CSS file, it would return a simple button. However, nothing will happen as we haven't written the input binding yet.
+That's it for the R function. If you use the component in an app along with the CSS file, it would return a simple button that does nothing when it is clicked. We will use a custom input binding to define the behavior of the listbox widget.
 
 <span id="work-js" />
 
 ### Creating the JavaScript input binding
 
-Next, we will create Shiny input binding for the listbox component. The purpose of the input binding is to define what happens when the listbox widget is rendered and what happens when the widget is interacted using a mouse or keyboard. For a more detailed description of input bindings, see RStudio's [Shiny input bindings guide](https://shiny.rstudio.com/articles/js-custom-input.html). In this section, I will cover each method &mdash;`initialize`, `getValue`, and `subscribe`&mdash; individually. The complete input binding can be found in the [listbox.js](https://github.com/davidruvolo51/shinyAppTutorials/blob/prod/shiny-listbox/www/js/listbox.js) file on GitHub.
+In this section, we will be working in `www/js/listbox.js`.
 
-The initial structure for listbox component looks like this. I've pre-written the `find` and `unsubscribe` methods. The method `find` returns all instances of the listbox widget using the CSS class name (`listbox-group`) defined in the `listbox` function.
+Shiny input bindings consist of a series of methods that are used to define what happens when the listbox widget is rendered, when the user clicks the button or presses the down arrow key, or anything else that will help establish communication between the client and R. For the listbox widget, we will use the following methods: `initialize` (at render), `getValue` (how to set the value of widget), and `subscribe` (the events; buttons, key presses, etc.). For a detailed description of input bindings, see RStudio's [Shiny input bindings guide](https://shiny.rstudio.com/articles/js-custom-input.html).
+
+The structure of the listbox input binding is displayed below. I have already written the `find` and `unsubscribe` methods. `find` returns all instances of the listbox widget using the CSS class name (`listbox-group`) defined in the `listbox` function (as written in `R/listbox.R`).
 
 ```js
 // init binding
@@ -360,11 +358,11 @@ Shiny.inputBindings.register(listbox);
 
 #### initialize
 
-The purpose of the initialize method is to define what happens to the listbox component after it is rendered in the client. In this example, I would like to have the first choice set as the default value for the input element. To do this, this method should locate the first option of the list, return its value, and update the text display. In this method, the selected value is passed to the custom attribute `data-value` defined in the `<fieldset>` element. This isn't necessarily important, but could be useful for styling the listbox widget based on user selection.
+The purpose of the initialize method is to define what happens to the listbox widget as soon as it is rendered. In this example, the default behavior of the widget is to set the first option as the default value. To do this, the first element in the list of options should be selected. Its value will be used to update the text display of the widget and made available to the Shiny server. (In this example, I set the value of the selected option to the custom data attribute `data-value` (found in the `<fieldset>` element). This step is not really relevant, but it could be useful if you would like to customize the appearance of the widget based on its current value.)
 
-There are also a few ARIA attributes that need to be set. First, the list element (i.e., `<ul>`) needs to have the property `aria-activedescendant` where the value is the ID of the first option. Second, the first option needs to have `aria-selected` attribute added and it's value set to `true`.
+There are also a few ARIA attributes that need to be set. First, the list element (i.e., `<ul>`) needs to have the property `aria-activedescendant`. This attribute is updated when a new option is selected. The value is always the ID of the selected option. Second, the first option &mdash; and any selected option &mdash; must have the `aria-selected` attribute added. When this property is used, the value must be set to `true`. Remove this attribute entirely when an option is deselected rather than using `false`.
 
-Here is the input binding with just the initialize method defined. (You don't need to worry about an input value for `el` as this returned by the `find` method and automatically passed in by Shiny.)
+Here is the input binding with for the initialize method defined. (You don't need to worry about an input value for `el` as this returned by the `find` method and automatically passed in by Shiny.)
 
 ```js
 $.extend(listbox, {
@@ -396,7 +394,7 @@ $.extend(listbox, {
 
 #### getValue
 
-To make the value of the listbox component accessible in the Shiny server, the `getValue` will look for the list item that has the ARIA attribute `aria-selected` and return its value. 
+To make the value of the listbox component accessible in the Shiny server, the `getValue` method will return the value of select option. This is done by finding list item with the ARIA attribute `aria-selected` and return its value. This attribute is added by the function `updateInput`, which will be described shortly.
 
 
 ```js
@@ -415,9 +413,9 @@ $.extend(listbox, {
 
 #### subscribe
 
-The subscribe method is used to define the behaviors of the listbox component. For example, when the button is clicked we need to determine if the list should be opened or closed. For ensuring good web accessibility practices, the listbox component needs to respond to the keyboard events. In the [collapsible listbox example](https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html) guide, it is recommended to have events that are triggered when the following keys are pressed: enter, escape, up and down arrow, home, and end. Since we need to define the events based on mouse and keyboard clicks, I will write a few helper functions that will open, close, and toggle the menu (and update attributes accordingly), as well as a function that updates the component when a new option is selected.
+The subscribe method is used to define the behaviors of the listbox component in response to an event (i.e., when the button is clicked or when a key is pressed). For ensuring good web accessibility practices, the listbox widget must respond to keyboard events. The Web Accessibility Initiative (WAI) Authoring Practices recommends the following events for a [collapsible listbox widget](https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html): enter, escape, up and down arrow, home, and end. These keys will handle the opening and closing of the listbox, navigation within the list of options, and the selection of new items. Since we need to attach these behaviors based on mouse and keyboard clicks, I will write a few helper functions that will open, close, and toggle the listbox options, as well as a function that updates the component when a new option is selected.
 
-The functions that handle the opening and closing the list are fairly straightforward. These functions add or remove the CSS class `hidden` that displays or hides the list of options. Each function needs to update the ARIA attributes for the button (`aria-expanded`). For visual purposes, the icon will be rotated by adding the class `rotated`. The function `toggleMenu` is a wrapper around `closeMenu` and `openMenu`.
+The open and close functions are fairly straightforward. These functions work by adding or removing the CSS class `hidden`. The CSS class `hidden` contains the property `display: none`. Both functions will also update the ARIA attribute `aria-expanded` for the listbox toggle (true = open). For visual purposes, the CSS class `rotated` will be added to the SVG icon. This will rotate the toggle icon (downward pointing chevron) by 180 degrees. The `closeMenu` and `openMenu` is wrapped in the `toggleMenu` function.
 
 ```js
 // define function that closes menu
@@ -460,7 +458,7 @@ function toggleMenu() {
 }
 ```
 
-Next, we will need a function that updates the component and the current when a new element is selected. This function will update the `aria-selected` attribute of the selected item, the `aria-activedescendant` value defined in the parent container, and update the displayed text. The component's value is updated by running the callback function (i.e., `getValue`). 
+Next, we will need a function that updates the component when a new element is selected. This function will update the `aria-selected` attribute of the selected option, the attribute `aria-activedescendant` (defined in the parent container), and update the displayed text with the new value. The component's value is updated by running the callback function (i.e., `getValue`). 
 
 ```js
 // update component and selected item
@@ -484,7 +482,7 @@ function updateInput(elem) {
 }
 ```
 
-For the listbox component, we will define three events: `click` (on the toggle), `keydown` (list items), and `click` (list items). The click event is attached to the listbox toggle. When the element is clicked, the state of the list component will be changed to either open or closed using the function `toggleMenu`.
+These functions we will be used to define the events for the listbox component. The essential events are: an event that runs when the button is clicked, one for when an option is clicked, and an event for keyboard presses. The click event for the listbox button will either open or closed using the function `toggleMenu`.
 
 ```js
 // event: when menu toggle is clicked
@@ -493,21 +491,20 @@ $(el).on("click", "button.listbox-toggle", function(e) {
 });
 ```
 
-The `keydown` event is a bit more involved than the click event as each key triggers a different event. This event will be attached to the list element (`<ul>`). Key press codes can be accessed through `keyCode` data available from event (`e` for short) interface. The keys used in this component and their behaviors and corresponding codes listed in the following table.
+The `keydown` event is a bit more involved than the click event as each key triggers a different event. This event will be attached to the list element (`<ul>`). Key codes can be accessed through `keyCode` data available from event (`e` for short) interface. The keys used in this component and their behaviors and corresponding codes listed in the following table. ([keycode.info](https://keycode.info) is also a good resource for key codes.)
 
-| name       | behavior        | code 
-| :--------- | :-------------- | :---
-| up arrow   | previous option | 38
-| down arrow | next option     | 40
-| home       | first option    | 36
-| end        | last option     | 35
-| escape     | close menu      | 27
-| enter      | select option   | 13
+| name       | behavior              | code 
+| :--------- | :-------------------- | :---
+| up arrow   | focus previous option | 38
+| down arrow | focus next option     | 40
+| home       | focus first option    | 36
+| end        | focus last option     | 35
+| escape     | close menu            | 27
+| enter      | select current option | 13
 
-All key presses except escape will update the listbox's value automatically.
+All key presses &mdash;except escape&mdash; will update the component's value automatically.
 
-The key down event uses a switch state where each key code has its own behavior. The case for the escape key is the simplest case as it runs `closeMenu()`.  When the enter key is pressed, the selected element is passed to `updateInput` and the menu is closed. Behaviors for up/down arrow, home, and end are similar to enter, but these actions use jQuery's `prev()`, `next()`, `first()` and `last()` functions to determine if sibling elements exist. For example, nothing happens if the last option is focused and the down arrow is pressed.
-
+We will use switch statement to define the action for each key. The escape key is the simplest case as it is used to close the listbox (i.e., `closeMenu()`). The enter key is pressed will also close the listbox, but it is used to select the current option which is then passed on to `updateInput`. Behaviors for the up arrow, down arrow, home, and end are similar to enter, but these actions use jQuery's `prev()`, `next()`, `first()` and `last()` functions &mdash;along with `length`&mdash; to determine if there are any sibling elements. For example, if the first option is focused and the down arrow key is pressed, then the second option is focused. Nothing happens if the last option is focused and the down arrow is pressed as there are no more options to select.
 
 Here is the entire `keydown` event. 
 
@@ -567,7 +564,7 @@ $(el).on("keydown", "ul[role='listbox']", function(e) {
 });
 ```
 
-The last event is the click events for list items. When an item is clicked, it will update the component using the value of the selected item. It is important to use the `closest()` function to return the `<li>` element instead of the text or icon.
+The last event that we will create is the click event that will be attached to each list item. This event will update the component using the value of the clicked item. Like the previous events, the ARIA attribute of the previously select option will be removed.
 
 ```js
 // on event: when option clicked
@@ -582,6 +579,8 @@ $(el).on("click", "li[role='option']", function(e) {
     closeMenu();
 });
 ```
+
+JQuery's `closest()` function is used to return the desired element. The R function `input_list_item` is used to generate each option, which returns a list element (`<li>`) with a nested span and SVG element. Using `closest("li[role='option'])` function will return the list element `<li>` regardless if the icon or text element that is acutally clicked.
 
 That's it! Here is the complete input binding.
 
@@ -771,11 +770,7 @@ Shiny.inputBindings.register(listbox);
 
 ## What do I need to know before I integrate this into my app?
 
-At the moment, the listbox component is fairly basic and the responsiveness of the widget could be improved. Initial accessibility checks were run using the [Web Accessibility Evaluation Tool (WAVE)](https://wave.webaim.org), but I would recommend further testing and review before using in any production application.
-
-The code discussed in this post and that is available in the example app, provide the minimum requirements for creating the listbox component. Currently, only one option can be selected. You may want to expanded the component to allow for multi-selection along with a limit on the number of selected items. This would take a bit more thought and planning and I wanted to keep this example relatively simple.
-
-The listbox component will also be included in [accessibleshiny](https://github.com/davidruvolo51/accessibleshiny) package. Keep an eye out for improvements on the listbox components!
+At the moment, the listbox component is fairly basic and the responsiveness of the widget could be improved. Initial accessibility checks were run using the [Web Accessibility Evaluation Tool (WAVE)](https://wave.webaim.org), but I would recommend further testing and review before using in any production application. The code discussed in this post and available in the example Shiny application, provide a starting point for creating the listbox component. The functionality is fairly limited as only one option can be selected at a time. It is possible to add a multiple selection feature, but more key press events are required. This would take more thought and planning, and I wanted to keep this example relatively simple. The listbox component will also be included in [accessibleshiny](https://github.com/davidruvolo51/accessibleshiny) package, so keep an eye out for a new version!
 
 <span id="run" />
 
@@ -795,11 +790,12 @@ shiny::runGitHub(
 
 ## Further reading
 
-Here is a list of all resources linked in this tutorial.
+For more information about the concepts and resources mentioned in this post, please visit the following links.
 
-- Find key codes: [keycode.info](https://keycode.info)
-- [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices/)
-- [Listbox Widget](https://www.w3.org/TR/wai-aria-practices/#Listbox)
-- Listbox Example: [Collapsible Dropdown Listbox Example](https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html)
+- On Key event codes: [keycode.info](https://keycode.info)
 - RStudio's [Building Inputs Guide](https://shiny.rstudio.com/articles/building-inputs.html)
 - RStudio's [How to create custom input bindings](https://shiny.rstudio.com/articles/js-custom-input.html)
+- [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices/)
+- WAI-ARIA's [Listbox Widget](https://www.w3.org/TR/wai-aria-practices/#Listbox)
+- WAI-ARIA's [Collapsible Dropdown Listbox Example](https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html)
+- [Web Accessibility Evaluation Tool (WAVE)](https://wave.webaim.org)
