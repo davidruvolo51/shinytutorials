@@ -6,12 +6,16 @@
 	],
 	"settings": {
 		"languageToolLinter.languageTool.ignoredWordsInWorkspace": [
+			"&mdash;",
+			"accessibleshiny",
+			"heroicons",
+			"JQuery",
 			"listbox",
+			"Listbox",
+			"listboxes",
+			"rheroicons",
 			"RStudio",
 			"RStudio's",
-			"&mdash;",
-			"heroicons",
-			"rheroicons",
 			"WAI-ARIA"
 		]
 	}
