@@ -1,7 +1,7 @@
 ---
 title: "Listbox Widget"
-subtitle: "A customizeable UI widget to select inputs"
-abstract: "The select input element is commonly used in Shiny applications for creating dropdown menus. Select inputs are easy to use, but they are not easily customizable using CSS. This post contains an approach for creating your own dropdown menus using listboxes."
+subtitle: "Creating a customizable dropdown menu component for Shiny"
+abstract: "The select input element is commonly used in Shiny applications for creating dropdown menus. Select inputs are easy to use, but they are not easy to style using CSS. This post covers how to create a customizable listbox widget."
 date: "2020-09-01"
 updated: "2020-09-01"
 keywords: ["html", "javascript"]
@@ -30,9 +30,9 @@ keywords: ["html", "javascript"]
 
 ## Why would I need this?
 
-In the post [Custom Select Inputs](./../select-input-styling/), I demonstrated the use of the `appearance` CSS property for styling select inputs. However, that approach can cause the element to render differently across browsers making an inconsistent web experience. Using a well-designed component library will correct this, but it may involve loading a large library into your app just to use a single component. Other solutions involve some creative markup and CSS, but it is not guaranteed that these approaches are accessible for individuals who use assistive web devices. Instead, it is possible to create your own dropdown menu using the [listbox](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role) role.
+In the post [Custom Select Inputs](./../select-input-styling/), I demonstrated the use of the `appearance` CSS property for styling select inputs. However, that approach can cause the element to render differently across browsers making the web experience inconsistent. Using a well-designed component library will help with this, but it usually involves loading a large library into your app just to use a single component. Other solutions involve some creative markup and CSS, but it is not guaranteed that these approaches are accessible for individuals who use assistive web devices. Instead, it is possible to create your own dropdown menu by creating using the [listbox](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role) role.
 
-In this post, I will provide an overview for creating your own listbox widget using HTML, CSS, and JavaScript. The Web Accessibility Initiative's (WAI) Authoring Practices for creating a [listbox widget](https://www.w3.org/TR/wai-aria-practices/#Listbox) is used to ensure the widget follows recommended accessibility practices. The example discussed in the post reworks the [Collapsible Dropdown Listbox Example](https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html) for use in Shiny applications. This includes writing the R functions to generate the HTML markup and creating the custom JavaScript input binding that handles the communication between R and the browser.
+In this post, I will provide an overview for creating your own listbox widget using HTML, CSS, and JavaScript. The Web Accessibility Initiative's (WAI) Authoring Practices for creating a [listbox widget](https://www.w3.org/TR/wai-aria-practices/#Listbox) is used to ensure the widget follows recommended accessibility practices. The example discussed in the post reworks the [Collapsible Dropdown Listbox Example](https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html) for use in Shiny applications, including writing the R functions that generate the HTML and creating the custom JavaScript input binding that handles the communication between R and the listbox widget.
 
 > This tutorial focuses heavily on HTML and JavaScript. Some experience will definitely help, but it is not required. I have tried to keep concepts simple and reference outside sources where possible. If you notice any errors or have suggestions for improving this post, feel free to open a new [issue](https://github.com/davidruvolo51/shinytutorials/issues) on GitHub.
 
@@ -40,12 +40,10 @@ In this post, I will provide an overview for creating your own listbox widget us
 
 ## How does the listbox widget work?
 
-In this post, I will cover the basics for creating the listbox component.
+In this post, I will cover the basics for creating the listbox widget.
 
 1. Building the R component
 2. Creating the JavaScript input binding
-
-\***Note**: Checkout the [listbox sub-repository](https://github.com/davidruvolo51/shinyAppTutorials/tree/prod/shiny-listbox) on GitHub for CSS code. I used SASS to compile the CSS file. See the file [listbox.scss](https://github.com/davidruvolo51/shinyAppTutorials/blob/prod/shiny-listbox/src/listbox.scss) for the full code. Compile the SASS file using your favorite application bundler (I have used [Parcel](http://parceljs.org) in this example). If you are using vanilla CSS, load the `listbox.css` file directly into your app or copy the contents into your app's primary CSS file.
 
 Before we dive in, let's create the required files. Add the following files to your Shiny project.
 
@@ -62,6 +60,8 @@ my-project/
 ```
 
 You can place the CSS and JS files wherever you like as long as they are in the `www` folder. As of Shiny 1.5, files located in the `R/` folder are loaded automatically. 
+
+Checkout the [listbox sub-repository](https://github.com/davidruvolo51/shinyAppTutorials/tree/prod/shiny-listbox) on GitHub for CSS code. I wanted to keep this post short and focus mainly on the HTML and JavaScript code. All styles were written in SASS and compiled to CSS using the application bundler [Parcel](http://parceljs.org). The CSS file is located in the file [`src/listbox.scss`](https://github.com/davidruvolo51/shinyAppTutorials/blob/prod/shiny-listbox/src/listbox.scss) and the compiled CSS file can be found at [`www/css/listbox.css`](https://github.com/davidruvolo51/shinyAppTutorials/blob/prod/shiny-listbox/www/css/listbox.css). If you are using vanilla CSS, load the `listbox.css` file directly into your app or copy the contents into your app's primary CSS file.
 
 <span id="work-r" />
 
@@ -775,7 +775,9 @@ Shiny.inputBindings.register(listbox);
 
 At the moment, the listbox component is fairly basic and the responsiveness of the widget could be improved. Initial accessibility checks were run using the [Web Accessibility Evaluation Tool (WAVE)](https://wave.webaim.org), but I would recommend further testing and review before using the listbox widget in any production application. 
 
-The code discussed in this post and available in the example Shiny application, provide a starting point for creating the listbox component. The functionality is fairly limited as only one option can be selected at a time. It is possible to add a multiple selection feature, but more key press events are required. It is likely that better input elements (checkbox groups, radio groups, etc.) are a better option as some behaviors described in this post are handled natively in the browser. Expanding this example to include multiple selections would take more thought and planning, and I wanted to keep this post relatively simple. The listbox widget will also be included in [accessibleshiny](https://github.com/davidruvolo51/accessibleshiny) package, so keep an eye out for a new version!
+The code discussed in this post and available in the example Shiny application, provide a starting point for creating the listbox component. The functionality is fairly limited as only one option can be selected at a time. It is possible to add a multiple selection feature, but more key press events are required. It is likely that better input elements (checkbox groups, radio groups, etc.) are a better option as some behaviors described in this post are handled natively in the browser. Semantic HTML elements are always better than custom components. Expanding this example to include multiple selections would take more thought and planning, and I wanted to keep this post relatively simple. 
+
+The listbox widget will also be included in [accessibleshiny](https://github.com/davidruvolo51/accessibleshiny) package, so keep an eye out for a new version!
 
 <span id="run" />
 
