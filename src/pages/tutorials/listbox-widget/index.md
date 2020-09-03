@@ -1,7 +1,7 @@
 ---
 title: "Listbox Widget"
 subtitle: "Creating a customizable dropdown menu component for Shiny"
-abstract: "The select input element is commonly used in Shiny applications for creating dropdown menus. Select inputs are easy to use, but they are not easy to style using CSS. This post covers how to create a customizable listbox widget."
+abstract: "Select inputs are commonly used in Shiny for creating dropdown menus. Select inputs are easy to use, but they are not easy to style using CSS. An alternative solution is the listbox widget."
 date: "2020-09-03"
 updated: "2020-09-03"
 keywords: ["html", "javascript"]
