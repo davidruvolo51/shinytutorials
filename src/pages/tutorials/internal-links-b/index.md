@@ -3,7 +3,7 @@ title: "Linking Tabs - Part 2"
 subtitle: "Creating links to other pages within a leaflet map popup"
 abstract: "Now that I created custom links, what can I do with them? How about adding them in a leaflet popup?"
 date: "2018-08-01"
-updated: "2019-11-06"
+updated: "2020-09-03"
 keywords: ["javascript","leaflet"]
 ---
 
@@ -18,6 +18,8 @@ keywords: ["javascript","leaflet"]
 4.  [What's next?](#next)
 
 <!-- endexcerpt -->
+
+> This tutorial has been replaced by the [shinyLinks](../shiny-link/) tutorial. This post still works, but it will be archived. (03 September 2020)
 
 <span id="about" />
 

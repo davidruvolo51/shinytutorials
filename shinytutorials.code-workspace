@@ -5,6 +5,18 @@
 		}
 	],
 	"settings": {
-		"sassVariablesHelper.route": "src/components/styles/_variables.scss"
+		"languageToolLinter.languageTool.ignoredWordsInWorkspace": [
+			"&mdash;",
+			"accessibleshiny",
+			"heroicons",
+			"JQuery",
+			"listbox",
+			"Listbox",
+			"listboxes",
+			"rheroicons",
+			"RStudio",
+			"RStudio's",
+			"WAI-ARIA"
+		]
 	}
 }

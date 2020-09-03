@@ -3,7 +3,7 @@ title: "Linking Tabs - Part 1"
 subtitle: "Creating Links to Other Pages in a Shiny App" 
 abstract: "Creating links to other pages in your shiny app can be challenging as ids are overwritten each time a shiny app launches. Instead, we will learn how to create new links using javascript."
 date: "2018-03-05"
-updated: "2019-11-06"
+updated: "2020-09-03"
 keywords: ["javascript"]
 ---
 
@@ -20,6 +20,8 @@ keywords: ["javascript"]
 5.  [What's next?](#next)
 
 <!-- endexcerpt -->
+
+> This tutorial has been replaced by the [shinyLinks](../shiny-link/) tutorial. This post still works, but it will be archived. (03 September 2020)
 
 <span id="about" />
 

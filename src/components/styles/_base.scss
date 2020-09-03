@@ -106,12 +106,13 @@ img {
 }
 
 .gatsby-highlight {
+	margin: 24px 0;
 	font-size: 12pt;
 	overflow: auto;
-}
 
-.gatsby-highlight pre {
-	border-radius: 4px;
+	pre {
+		border-radius: 6px;
+	}
 }
 
 .gatsby-resp-image-link {
