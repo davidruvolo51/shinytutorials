@@ -101,6 +101,7 @@
     .sidebar-layout {
         .sidebar-panel {
             width: 30%;
+            max-width: 500px;
             margin: 0 auto;
             position: -webkit-sticky;
             position: sticky;
@@ -110,7 +111,7 @@
             .sidebar-content {
                 width: 70%;
                 max-height: 565px;
-                overflow-y: scroll;
+                overflow-y: auto;
             }
         }
 

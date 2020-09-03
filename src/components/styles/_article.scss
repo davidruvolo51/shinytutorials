@@ -93,10 +93,18 @@
 
 		blockquote {
 			background-color: $ultra-light;
-			padding: 2px 12px;
+			padding: 12px;
 			margin: 44px 0;
 			border-left: 10px solid $primary;
-        }
+
+			p {
+				margin: 0;
+			}
+		}
+		
+		table {
+			margin: 16px 0;
+		}
 	}
 
 	.article-footer {
