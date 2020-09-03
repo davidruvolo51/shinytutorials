@@ -3,7 +3,7 @@ title: "Linking Tabs - Part 3"
 subtitle: "Creating links to specific elements on other pages"
 abstract: "Okay. I have created custom navigation. What if my app has multiple pages with tabs. How do I go to a specific tab on another page?"
 date: "2018-08-15"
-updated: "2019-10-25"
+updated: "2020-09-03"
 keywords: ["javascript"]
 ---
 
@@ -14,6 +14,8 @@ keywords: ["javascript"]
 3.  [How do I run the demo?](#run)
 
 <!-- endexcerpt -->
+
+> This tutorial has been replaced by the [shinyLinks](../shiny-link/) tutorial. This post still works, but it will be archived. (03 September 2020)
 
 <span id="about" />
 
