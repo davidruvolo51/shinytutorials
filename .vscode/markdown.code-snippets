@@ -1,0 +1,42 @@
+{
+	"Blog Post YAML": {
+		"prefix": "blog",
+		"body": [
+			"---",
+			"title: \"\"",
+			"subtitle: \"\"",
+			"abstract: \"\"",
+			"date: \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\"",
+			"updated: \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\"",
+			"keywords: [\"\"]",
+			"---",
+			"",
+			"## Contents",
+			"",
+			"1. [Why would I need this?](#about)",
+			"2. [How does this app work?](#work)",
+			"3. [What do I need to know before I integrate this into my app?](#know)",
+			"4. [How do I run the demo](#run)",
+			"",
+			"<!-- endexcerpt -->",
+			"",
+			"<span id=\"about\" />",
+			"",
+			"## Why would I need this?",
+			"",
+			"<span id=\"work\" />",
+			"",
+			"## How does this app work?",
+			"",
+			"<span id=\"know\" />",
+			"",
+			"## What do I need to know before I integrate this into my app?",
+			"",
+			"<span id=\"run\" />",
+			"",
+			"## How do I run the example?",
+			""
+		],
+		"description": "YAML template for blog posts"
+	}
+}
