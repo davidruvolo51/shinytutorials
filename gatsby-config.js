@@ -26,7 +26,7 @@ module.exports = {
 			options: {
 				name: `pages`,
 				path: `${__dirname}/src/pages`,
-				ignore: process.env.NODE_ENV === `production` && [`**/draft-*`]
+				// ignore: `${process.env.NODE_ENV === `production` && [`**/draft-*`]}`
 			},
 		},
 		`gatsby-transformer-sharp`,
@@ -89,8 +89,8 @@ module.exports = {
 									date: edge.node.frontmatter.date,
 									lastBuildDate: edge.node.frontmatter.updated,
 									title: edge.node.frontmatter.title,
-									subtitle: edge.node.frontmatter.subtitle,
-									description: edge.node.frontmatter.abstract,
+									// subtitle: edge.node.frontmatter.subtitle,
+									description: edge.node.frontmatter.subtitle,
 									guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
 									url: site.siteMetadata.siteUrl + edge.node.fields.slug,
 									custom_elements: [{ 'content:encoded': edge.node.frontmatter.keywords }]
@@ -99,7 +99,7 @@ module.exports = {
 						},
 						query: `
 						{
-							allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] },limit: 3) {
+							allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] },limit: 5) {
 								edges {
 									node {
 										fields { 
