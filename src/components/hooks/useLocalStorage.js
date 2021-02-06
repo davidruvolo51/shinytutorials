@@ -2,7 +2,7 @@
 // FILE: useLocalStorage.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-05-12
-// MODIFIED: 2020-05-18
+// MODIFIED: 2021-02-06
 // PURPOSE: custom hook for using local storage
 // DEPENDENCIES: NA
 // STATUS: working

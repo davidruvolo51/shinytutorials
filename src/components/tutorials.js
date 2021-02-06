@@ -2,10 +2,10 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2020-04-25
+// MODIFIED: 2021-02-06
 // PURPOSE: layout component for tutorials
 // DEPENDENCIES: see below
-// STATUS: in.progress
+// STATUS: working
 // COMMENTS: NA
 ////////////////////////////////////////////////////////////////////////////////
 // BEGIN
@@ -36,6 +36,7 @@ function BlogPost(props) {
 	const post = props.data.markdownRemark;
 	const keywords = Array.from([post.frontmatter.keywords.sort()][0]);
 	const toc = post.html.split("<!-- endexcerpt -->")[0];
+	const toc2 = toc.split("<h2>Contents</h2>")[1];
 	const content = post.html.split("<!-- endexcerpt -->")[1];
 
 	// render
@@ -61,8 +62,11 @@ function BlogPost(props) {
 			</Hero>
 			<Main className="tutorial">
 				<SideBarLayout>
-					<SideBarPanel className="article-toc">
-						<div dangerouslySetInnerHTML={{ __html: toc }} />
+					<SideBarPanel className="article-toc" title="Contents">
+						<div
+							class="scroll-container"
+							dangerouslySetInnerHTML={{ __html: toc2 }}
+						/>
 					</SideBarPanel>
 					<MainPanel className="tutorial-body">
 						<Article

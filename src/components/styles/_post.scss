@@ -34,22 +34,17 @@
 		border-radius: 6px;
 		background-color: $ultra-light;
 
-		&[data-value="New"]{
+		&[data-value="New"] {
 			background-color: $primary-light;
 			color: $primary;
 		}
 
-		&[data-value="Popular"] {
+		&[data-value="Popular"],
+		&[data-value="Favorite"] {
 			background-color: $secondary-light;
 			color: $secondary;
 		}
 
-		&[data-value="Favorite"] {
-			background-color: $tertiary;
-			color: $light;
-		}
-
-		
 	}
 
 	.post-desc {
