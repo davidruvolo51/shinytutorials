@@ -2,7 +2,7 @@
 // FILE: useWindowSize.js
 // AUTHOR: David Ruvolo
 // CREATED: 2020-05-14
-// MODIFIED: 2021-01-15
+// MODIFIED: 2021-02-06
 // PURPOSE: fetches window dimensions on resize
 // DEPENDENCIES: NA
 // STATUS: working
