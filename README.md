@@ -107,6 +107,17 @@ keywords:
 - `updated`: the date the tutorial was updated (if it is a new post, make sure you write the same date as the publication date)
 - `keywords`: tags for the post in js array format `keywords: ["some", "word"]` (enter 3 max)
 
+### 4. Building the site
+
+This section is still in progress. It will change as I integrate GitHub Actions. For now, run the following steps.
+
+1. Cleanup: run `yarn clean`
+2. Build the site: run `yarn build`
+3. Prep for GitHub: run `yarn prep`
+4. Commit changes and push to the dev branch.
+5. You can view the dev deployment at: [https://modest-kowalevski-1a643c.netlify.app](https://modest-kowalevski-1a643c.netlify.app)
+6. Open a pull request
+
 ## Contributing
 
 Anyone is welcome to contribute to the site: edits, new posts, etc. Feel free to get in touch with me if you are interested. Use the `dev` branch to build the site and then open a pull request.
