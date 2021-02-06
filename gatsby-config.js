@@ -7,6 +7,7 @@ module.exports = {
 		siteUrl: "https://davidruvolo51.github.io/shinytutorials/"
 	},
 	plugins: [
+		`gatsby-plugin-pnpm`,
 		{
 			resolve: `gatsby-plugin-manifest`,
 			options: {
