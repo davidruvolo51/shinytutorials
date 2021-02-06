@@ -1,41 +1,95 @@
-
 # Shiny Tutorials
 
-Repository for the [shinytutorials](https://davidruvolo51.github.io/shinytutorials/) static site based on the [shinyAppTutorials](https://github.com/davidruvolo51/shinyAppTutorials) repository.
+The [shinytutorials](https://davidruvolo51.github.io/shinytutorials/) repository is used for creating the static site for the [shinyAppTutorials](https://github.com/davidruvolo51/shinyAppTutorials) project.
 
+## Getting Started
 
-## Development
+For working on the site, you will need to install a few tools and configure a few things. The following steps will help you get started.
 
-For working on the site, you will need to install a few tools. Checkout the [gatsbyJS](https://www.gatsbyjs.org) docs for the latest install instructions. You will also need to install [Node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/get-npm). Afterwards, install all plugins using the following command (this will install all plugins listed in `package.json`).
+### 1. Install Node and NPM
+
+Make sure [Node and NPM](https://nodejs.org/en/) are installed on your machine. You may also use [Yarn](https://yarnpkg.com/en/). To test the installation or to see if these tools are already installed on your machine, run the following commands in the terminal.
+
+```shell
+node -v
+npm -v
+```
+
+### 2. Clone the `shinytutorials` repository
+
+```shell
+git clone https://github.com/davidruvolo51/shinytutorials
+```
+
+### 3. Install dependencies
+
+Next, install the npm packages that are required to run the app locally. I have decided to use [pnpm](https://github.com/pnpm/pnpm) to manage packages on my machine and across projects. To install `pnpm`, run the following command.
+
+```shell
+npm install -g pnpm
+```
+
+Once install, install the dependencies locally.
 
 ```bash
+pnpm install
+```
+
+If you prefer to use `npm`, use the following.
+
+```shell
 npm install
 ```
 
-To start the developer server, run the following command. (make sure you are working from the `dev` branch).
+### 4. Start the development servers
+
+When everything is installed, run the following command. This will start the site at `locahost:8000`.
 
 ```bash
-gatsby develop
+yarn dev
 ```
 
-This will start the site at `locahost:8000`.
+*Note*: If you are using `npm` instead of `yarn`, run `npm dev`.
 
-All tutorials can be found in `src/pages/tutorials`. Create a new folder in `tutorials` and give it a name that resembles the tutorial you want to write (i.e., `data-editor`, `rmarkdown-shiny`, etc). In the new tutorial folder, create a new markdown file (it must be called `index.md`). If your post has images, include them in the same folder as the markdown file. (**NOTE**: the site does not support gifs or movie files at this point). Here's an example new tutorial folder.
+## Writing New Posts
 
+### 1. Create a new folder
+
+All tutorials are stored here: `src/pages/tutorials`. Create a new folder in `tutorials` and give it a name that resembles the tutorial you want to write. For example, `data-editor`, `rmarkdown-shiny`, `using-x-in-shiny`, and so on. Make sure the name of new folders is lowercased and any space should be replaced with a dash (`-`).
+
+```text
+shinytutorials /
+  -src /
+    - pages /
+      - tutorials /
+        - my-tutorial /
 ```
-src/
-    - pages/
-        - tutorials /
-            - my-tutorial/
-                index.md
-                some_image.png
-                ..
 
+### 2. Create a new markdown file
+
+In the new folder, create a markdown file. This must be named `index.md`. If your post has images, stored them in the same folder as the markdown file, and then define the image tag as normal (`![a description of an image](my-image.png)`)
+
+```text
+shinytutorials /
+  - src /
+    - pages /
+      - tutorials /
+        - my-tutorial /
+          index.md
+          my-image.png
 ```
 
-All tutorials must have the following YAML definitions.
+*Note*: this site does not support gifs or movie files at this point.
 
-```
+### 3. Writing new posts
+
+To make things simple, I've created added the new post template as a vscode snippet (see `.vscode/markdown.code-snippets`). If you are using vscode (recommended), the snippet will be automatically available when you open the vscode workspace. Open the `index.md` file. In the command palette, type `Snippet`, hit enter, and then type `blog`.
+
+#### Defining the YAML
+
+The blog post template will also produce the required YAML markup for a new post.
+
+```yaml
 ---
 title: ""
 subtitle: ""
@@ -50,120 +104,11 @@ keywords:
 - `subtitle`: One sentence that describes the tutorial
 - `abstract`: a three sentance description about the tutorial
 - `date`: the date the tutorial was published
-- `updated`: the date the tutorial was updated (initially put the publication date here)
-- `keywords`: tags for the post in js array format `keywords:["some", "word"] (enter 3 max)
-
-When you are finished drafting the post, build the site (make sure you pass in the option prefix paths). It's a good idea to remove the `.cache` and `public` folder before starting the development server or before building the site. Run the `npm run clean` to remove these folders. Before files are pushed to the repository, copy the `public` folder into the `docs` folder (for github pages).
-
-```bash
-npm run clean
-gatsby build --prefix-paths
-mv public docs
-```
-
-When ready, commit the changes and push to the dev branch and open a pull request.
-
-```bash
-git add .
-git commit -m "a meaningful message here"
-git push origin dev
-```
-
-## Sample Markdown Template
-
-Here is an example of the preferred structure of markdown files. 
-
-```md
-
----
-title: "shinyTravel"
-subtitle: "My submission for the 2020 Shiny Contest"
-abstract: "For the 2020 shiny apps contest, I developed an app that provides travel recommendations based on your preferences for coffee, breweries, and museums. This app demonstrates how to create a custom shiny framework and integrate non-R/non-shiny tools into the development process."
-date: "2020-03-11"
-updated: "2020-03-11"
-keywords: ["contest"]
----
-
-## Contents
-
-1. [Introduction](#introduction)
-2. [Methodology](#methodology)
-    1. [Data](#methodology-data)
-    2. [User Preferences](#methodology-userprefs)
-    3. [Application Development](#methodology-application-development)
-2. [Limitations](#limitations)
-3. [Conclusion](#conclusion)
-
-<!-- endexcerpt -->
-
-<span id="introduction" />
-
-## Introduction
-
-...
-
-```
-
-Make sure all YAML headings are updated. When creating a new markdown file, make sure `date` and `updated` are the same. Change the `updated` field when the content of the post has changed.
-
-A table of contents is required. Make sure items are clickable.
-
-The tag `<!-- endexcerpt -->` is vital and must be included. This tag is used to separate the table of contents and the body of the post, and then used to generate the sidebar layout.
-
-If you use vscode, here's the snippet that I use.
-
-### VS Code Post Snippet
-
-```json
-{
-	"Blog Post Template": {
-		"prefix": "blog",
-		"body": [
-			"---",
-			"title: \"\"",
-			"subtitle: \"\"",
-			"abstract: \"\"",
-			"date: \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\"",
-			"updated: \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\"",
-			"keywords: [\"\"]",
-			"---",
-			"",
-			"## Contents",
-			"",
-			"1. [Why would I need this?](#about)",
-			"2. [How does this app work?](#work)",
-			"3. [What do I need to know before I integrate this into my app?](#know)",
-			"4. [How do I run the demo](#run)",
-			"",
-			"<!-- endexcerpt -->",
-			"",
-			"<span id=\"about\" />",
-			"",
-			"## Why would I need this?",
-			"",
-			"<span id=\"work\" />",
-			"",
-			"## How does this app work?",
-			"",
-			"<span id=\"know\" />",
-			"",
-			"## What do I need to know before I integrate this into my app?",
-			"",
-			"<span id=\"run\" />",
-			"",
-			"## How do I run the example?",
-			""
-		],
-		"description": "YAML template for blog posts"
-	}
-}
-```
-
-
-
+- `updated`: the date the tutorial was updated (if it is a new post, make sure you write the same date as the publication date)
+- `keywords`: tags for the post in js array format `keywords: ["some", "word"]` (enter 3 max)
 
 ## Contributing
 
-Anyone is welcome to contribute to the site: edits, new posts, etc. Feel free to get in touch with me if you are interested. Use the `dev` branch to build the site and then open a pull request. 
+Anyone is welcome to contribute to the site: edits, new posts, etc. Feel free to get in touch with me if you are interested. Use the `dev` branch to build the site and then open a pull request.
 
 Please see the [shinyAppTutorials](https://github.com/davidruvolo51/shinyAppTutorials) repository for ideas and open issues as this repo is mainly for the development of the site.
