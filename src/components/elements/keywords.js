@@ -2,7 +2,7 @@
 // FILE: keywordButton.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2020-04-22
+// MODIFIED: 2021-02-06
 // PURPOSE: react component for taglist filters
 // DEPENDENCIES: see below
 // STATUS: working
@@ -16,7 +16,7 @@ function KeyWordButton(props) {
 
 	// function that filters all posts
 	function filter_posts(string) {
-		
+
 		// define vars and select elements
 		let query = string.toLowerCase();
 		let data = document.querySelectorAll(".searchable");
@@ -50,24 +50,24 @@ function KeyWordButton(props) {
 }
 
 // define keywords list
-function KeyWordList(props){
-    return (
-        <ul className={ props.className ? `taglist ${props.className}` : "taglist"}>
-            {
-              props.keywords.map((key, k) => (
-                <li key={k} className="taglist-item">
-                  <KeyWordButton key={k} keyword={key} />
-                </li>
-              ))
-            }
-        </ul>
-    )
+function KeyWordList(props) {
+	return (
+		<ul className={props.className ? `taglist ${props.className}` : "taglist"}>
+			{
+				props.keywords.map((key, k) => (
+					<li key={k} className="taglist-item">
+						<KeyWordButton key={k} keyword={key} />
+					</li>
+				))
+			}
+		</ul>
+	)
 }
 
 // define proptypes for list
 KeyWordList.propTypes = {
 	className: PropTypes.string,
 	keywords: PropTypes.array.isRequired
-  }
+}
 
 export default KeyWordList

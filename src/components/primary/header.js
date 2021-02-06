@@ -20,7 +20,7 @@ import Lightbulb from "../images/lightbulb"
 function Header() {
 
 	// set "is menu open" status
-    const [isOpen, setOpenStatus] = useState(false);
+	const [isOpen, setOpenStatus] = useState(false);
 	const winSize = useWindowSize();
 	useEffect(() => {
 		if (typeof winSize !== "undefined") {
@@ -34,17 +34,19 @@ function Header() {
 	// theme
 	const [isDark, setDark] = useLocalStorage("loadDarkTheme", false);
 	useEffect(() => {
-		if (isDark) {
-			document.getElementsByTagName("body")[0].setAttribute("data-theme", "dark")
-		} else {
-			document.getElementsByTagName("body")[0].setAttribute("data-theme", "light")
+		if (typeof isDark !== "undefined") {
+			if (isDark) {
+				document.getElementsByTagName("body")[0].setAttribute("data-theme", "dark")
+			} else {
+				document.getElementsByTagName("body")[0].setAttribute("data-theme", "light")
+			}
 		}
 	}, [isDark])
 
 	return (
 		<nav className="nav" role="navigation">
 			<Link to="/" className="nav-item brand-link">shinyTutorials</Link>
-			<Nav className={`nav-item navigation ${ isOpen ? "expanded" : ""}`} />
+			<Nav className={`nav-item navigation ${isOpen ? "expanded" : ""}`} />
 			<ul className="nav-item menu menu-btns">
 				<li className="menu-item menu-button visible">
 					<button id="themeToggle" className="menu-button" onClick={() => setDark(!isDark)}>

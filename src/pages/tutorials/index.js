@@ -2,7 +2,7 @@
 // FILE: tutorials.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-11-05
-// MODIFIED: 2020-07-01
+// MODIFIED: 2021-02-06
 // PURPOSE: tutorials index page
 // DEPENDENCIES: see below
 // STATUS: working
@@ -32,7 +32,7 @@ function Tutorials(props) {
 	// define posts arrays for creating entry pills
 	const latestPost = postList.edges[0].node.frontmatter.title;
 	const favoritePosts = ["shinyTravel", "Drag and Drop Example"];
-	const popularPosts = ["Using Rmarkdown files in Shiny", "Linking Tabs - Part 3"];
+	const popularPosts = ["Using Rmarkdown files in Shiny", "Creating Internal Links"];
 
 	return (
 		<App
@@ -48,7 +48,9 @@ function Tutorials(props) {
 			<Main>
 				<SideBarLayout className="tutorial-index">
 					<SideBarPanel className="flex-child" title="Filter Tutorials">
-						<KeywordList keywords={keywords} />
+						<div class="scroll-container">
+							<KeywordList keywords={keywords} />
+						</div>
 						<Reset />
 					</SideBarPanel>
 					<MainPanel>

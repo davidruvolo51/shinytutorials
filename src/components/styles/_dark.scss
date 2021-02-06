@@ -168,7 +168,8 @@ body[data-theme="dark"] {
                 background-color: $dark;
                 color: $light;
             }
-            &[data-value="Popular"] {
+            &[data-value="Popular"],
+            &[data-value="Favorite"] {
                 background-color: $secondary;
                 color: $ultra-light;
             }

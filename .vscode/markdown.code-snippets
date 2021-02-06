@@ -17,6 +17,7 @@
 			"2. [How does this app work?](#work)",
 			"3. [What do I need to know before I integrate this into my app?](#know)",
 			"4. [How do I run the demo](#run)",
+			"5. [Further Reading](#further-reading)",
 			"",
 			"<!-- endexcerpt -->",
 			"",
@@ -35,7 +36,12 @@
 			"<span id=\"run\" />",
 			"",
 			"## How do I run the example?",
-			""
+			"",
+			"<span id=\"futher-reading\" />",
+			"",
+			"## Further reading",
+			"",
+			"For more information about the concepts and resources mentioned in this post, please visit the following links."
 		],
 		"description": "YAML template for blog posts"
 	}

@@ -2,7 +2,7 @@
 // FILE: sidebar.js
 // AUTHOR: David Ruvolo
 // CREATED: 2019-10-25
-// MODIFIED: 2020-04-22
+// MODIFIED: 2021-02-06
 // PURPOSE: react component for sidebar layout with collapsible sidebar panel
 // DEPENDENCIES: react
 // STATUS: working

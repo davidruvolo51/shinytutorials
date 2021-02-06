@@ -20,7 +20,7 @@
             .sidebar-title {
                 display: block;
                 width: 100%;
-                
+
                 // button
                 .sidebar-toggle {
                     position: relative;
@@ -40,7 +40,7 @@
                         circle {
                             fill: #f6f6f6;
                         }
-                        
+
                         line {
                             stroke: $primary;
                         }
@@ -65,7 +65,7 @@
                 padding: 0;
                 margin-bottom: 16px;
                 margin-left: -6px;
-    
+
                 .taglist-item {
                     width: 200px;
                     padding: 0 24px;
@@ -107,11 +107,18 @@
             position: sticky;
             top: 62px;
             height: 100%;
-            
+
             .sidebar-content {
                 width: 70%;
                 max-height: 565px;
-                overflow-y: auto;
+                .scroll-container {
+                    box-sizing: content-box;
+                    padding: 0.7em 1em;
+                    margin: 1em 0;
+                    max-height: 430px;
+                    overflow-y: auto;
+                    box-shadow: inset 0 0 4px 1px $shadow;
+                }
             }
         }
 

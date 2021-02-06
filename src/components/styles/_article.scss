@@ -31,7 +31,7 @@
 	h2 {
 		font-size: 28pt;
 	}
-	
+
 	.article-readtime,
 	.article-dates {
 		margin: 0;
@@ -40,7 +40,7 @@
 		text-transform: uppercase;
 		letter-spacing: 2px;
 		padding: 0;
-		
+
 		time {
 			font-weight: normal;
 		}
@@ -70,7 +70,7 @@
 	.article-title {
 		text-align: center;
 	}
-    
+
 	.article-abstract {
 		color: $semi-dark;
 		*:not(h2) {
@@ -78,7 +78,6 @@
 		}
 		line-height: $body-line-height;
 	}
-
 
 	.article-body {
 		h2 {
@@ -101,7 +100,7 @@
 				margin: 0;
 			}
 		}
-		
+
 		table {
 			margin: 16px 0;
 		}
@@ -148,7 +147,6 @@
 	h2 {
 		font-size: 21pt;
 	}
-
 	ol {
 		font-size: 13pt;
 
@@ -180,7 +178,8 @@
 		a {
 			box-shadow: none;
 
-			&:hover, :focus {
+			&:hover,
+			:focus {
 				box-shadow: 0 2px 0 0 $primary;
 			}
 		}
