@@ -1,3 +1,7 @@
+<!-- badges:start -->
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dbaca9a5-5c2a-428e-98f3-2c1897daaff4/deploy-status)](https://app.netlify.com/sites/modest-kowalevski-1a643c/deploys)
+<!-- badges:end -->
+
 # Shiny Tutorials
 
 The [shinytutorials](https://davidruvolo51.github.io/shinytutorials/) repository is used for creating the static site for the [shinyAppTutorials](https://github.com/davidruvolo51/shinyAppTutorials) project.
